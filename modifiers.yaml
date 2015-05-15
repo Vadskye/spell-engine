@@ -27,25 +27,48 @@ bloodied:
   healthy_only: 9
 breakable:
   grapple: -1
-  leave_area: -1
+  if_attack: -5
+  if_attack_per_round: -2
+  leave_area: -2
+  leave_area_impeded: -1  # if the effect prevents you from leaving its area
   standard_action_by_any: -2
   standard_action_by_target: -3
+  specific_spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
   violent_action_by_any: -6
 buffs:
-  all_attributes: 9
   alter_weapon: 0
-  attack: 2
-  attribute: 3
-  armor: 1
+  all_attributes:
+    cap5: 9
+    cap10: 12
+  attribute:
+    cap5: 3
+    cap10: 6
+  physical_attributes:
+    cap5: 6
+    cap10: 9
+  mental_attributes:
+    cap5: 6
+    cap10: 9
   blink: 6
+  bonuses:
+    base: 2
+    # these are all added on to the base cost
+    attack: 2
+    armor: 2
+    checks: 2
+    damage: 2
+    fortitude: 2
+    physical_defenses: 3
+    reflex: 2
+    special_defenses: 3
+    will: 2
   concealment: 2
-  damage: 2
   damage_reduction:
     energy_all: 4
     energy_single: 2
-    physical_half: 2
-    physical: 4
-    physical_double: 6
+    physical_half: 3
+    physical: 6
+    physical_double: 9
   darkvision: 3
   delay_damage: 6
   double_speed: 2
@@ -62,25 +85,21 @@ buffs:
   glide: 3
   increase_size: 6
   immune:
+    construct: 9
     death: 2
     negative_energy: 4
     poison: 3
     surprise: 6
-  fortitude: 1
-  mental_attributes: 6
-  physical_attributes: 6
-  physical_defenses: 2
+  invisible: 12
+  levitation: 6
   radiate_light: 0
   ranged_displacement: 4
-  reflex: 1
   retributive_damage: 6
-  special_defenses: 2
   spell_resistance_limited: 4
   spell_resistance: 6
   temporary_hp: 2
   undead: 1
-  walking_flight: 7
-  will: 1
+  walking_flight: 8
 casting_time:
   full_round: -1
   full_round_buff: -0.5
@@ -106,10 +125,13 @@ conditions:
   blinded: 12 # as minus8
   charmed: 9 # as minus6
   confused: 12 # as minus8
+  dancing: 20
   dazed: 18 # as minus12
+  deafened: 3
   dominated: 21
   dimension_lock: 6
   faerie_fire: 3
+  fascinated: 6
   feeblemind: 15
   frightened: 12 # as minus8, limited_action
   grappled: 12 # as minus8
@@ -117,11 +139,14 @@ conditions:
   half_speed: 3
   immobilized: 6
   limited_action: 12
+  lower_max_hp: 6
   no_action: 18
   out_of_battle: 12
   paralyzed: 21 # as dazed + 3
   staggered: 9 # immobilized + minus2
+  slowed: 9 # as staggered
   stunned: 19 # as dazed + 1
+  stasis: 12 # assuming immunity - equivalent to out_of_battle
 # if the spell or effect 
 conditional:
   half: -3
@@ -129,6 +154,10 @@ damage:
   healing: 4
   normal: 4
   weak: 2
+  critical_overbleed:
+    15: 5
+    10: 6
+    5: 7
 # just used with delayed blast fireball for now
 delayable:
   true: 2
@@ -143,12 +172,13 @@ duration:
     concentration: -3
     until_standard_action: -2
     short: 0
-    medium: 1
-    long: 1.5
-    extreme: 2
-    month: 2.5
-    year: 3
-    permanent: 4
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 4 # x4
+    year: 5 # x12
+    permanent: 6 # x???
   buff:
     round: -6
     concentration: -3
@@ -162,23 +192,18 @@ duration:
     permanent: 8
 instant_effect:
   banishment: 15
-  critical_overbleed:
-    15: 1
-    10: 2
-    5: 3
   death: 20
   dispel: 4
   negative_level: 2 # cost per negative level
   shove: 3
   prone: 3
+  remove_conditions:
+    heal: 3 
 expended:
   single_use: -3
   five: -2 # or other values between single_use and caster level
   caster_level: -1
   damage_reduction_cap: -1
-healthy_only:
-  true: -2
-  false: 0
 knowledge:
   alignment: 2
   lies: 3
@@ -194,6 +219,7 @@ limit_affected:
     near_ground: -1 # within 10 feet of the ground
     on_ground: -1
     near_plants: -3 # within 5 feet of plants
+    touching_metal: -2
   buff:
     alignment: -1
     creature_type: -1
@@ -207,12 +233,20 @@ personal_only:
   true: -1
   false: 0
 range:
-  personal: 0
-  touch: 0
-  close: 1
-  medium: 2
-  long: 3
-  extreme: 4
+  normal:
+    personal: 0
+    touch: 0
+    close: 1
+    medium: 2
+    long: 3
+    extreme: 4
+  buff:
+    personal: 0
+    touch: 0
+    close: 1
+    medium: 1.5
+    long: 2
+    extreme: 2.5
 shapeable:
   true: 1
   false: 0
@@ -228,5 +262,6 @@ teleport:
   normal: 4
   unrestricted: 6
 trigger_condition:
-  every_round: 3 #requires duration
+  every_round: 6 #requires duration
+  standard_action_by_you: 3
   standard_action_by_any: 1
