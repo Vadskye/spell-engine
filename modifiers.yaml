@@ -20,17 +20,16 @@ area:
     large: 2
     100foot: 3
 attack:
+  critical_success_only: -9
   success_only: -3
-  failure_only: 6
-bloodied:
-  bloodied_only: -6
-  healthy_only: 9
+  failure_only: 3
 breakable:
   grapple: -1
   if_attack: -5
   if_attack_per_round: -2
-  leave_area: -2
-  leave_area_impeded: -1  # if the effect prevents you from leaving its area
+  if_damaged: -3
+  leave_area: -6
+  leave_area_impeded: -3  # if the effect prevents you from leaving its area
   standard_action_by_any: -2
   standard_action_by_target: -3
   specific_spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
@@ -53,25 +52,33 @@ buffs:
   bonuses:
     base: 2
     # these are all added on to the base cost
-    attack: 2
-    armor: 2
-    checks: 2
+    # some are combined because they don't fully stack, 
+    # such as boosting both physical and special attacks
+    # bonuses which fully stack, such as physical attacks and defenses,
+    # should not be combined
+    attacks: 3
+    armor_defense: 1
+    checks: 1
     damage: 2
-    fortitude: 2
-    physical_defenses: 3
-    reflex: 2
-    special_defenses: 3
-    will: 2
-  concealment: 2
+    defenses: 3
+    fortitude: 1
+    full: 5
+    physical_attacks: 2
+    physical_defenses: 2
+    reflex: 1
+    special_attacks: 2
+    special_defenses: 2
+    will: 1
+  concealment: 6
   damage_reduction:
     energy_all: 4
     energy_single: 2
     physical_half: 3
     physical: 6
-    physical_double: 9
+    spell: 4
   darkvision: 3
   delay_damage: 6
-  double_speed: 2
+  double_speed: 4
   displacement: 8
   earth_glide: 8
   ethereal: 12
@@ -83,6 +90,8 @@ buffs:
   freedom: 9
   gaseous_form: 6
   glide: 3
+  half_miss: 9
+  hide_attack_effects: 3
   increase_size: 6
   immune:
     construct: 9
@@ -95,9 +104,11 @@ buffs:
   radiate_light: 0
   ranged_displacement: 4
   retributive_damage: 6
+  see_invisibility: 3
+  share_pain: 6
   spell_resistance_limited: 4
   spell_resistance: 6
-  temporary_hp: 2
+  temporary_hp: 4
   undead: 1
   walking_flight: 8
 casting_time:
@@ -110,42 +121,49 @@ components:
   nosomatic: 1
   noverbal: 1
 conditions:
-  minus2_single: 1
-  minus2: 3
-  minus4: 6
-  minus6: 9
-  minus8: 12
-  minus10: 15
-  minus14: 21
-  minus20: 30
-  minus2_physical: 2
-  minus4_physical: 5
-  minus6_physical: 8
-  asleep: 20 # as paralyzed
+  penalties:
+    base: 1
+    attacks: 3
+    armor_defense: 1
+    checks: 1
+    damage: 2
+    defenses: 3
+    fortitude: 1
+    full: 5
+    physical_attacks: 2
+    physical_defenses: 2
+    reflex: 1
+    special_attacks: 2
+    special_defenses: 2
+    will: 1
+  asleep: 21 # as paralyzed
   blinded: 12 # as minus8
   charmed: 9 # as minus6
   confused: 12 # as minus8
-  dancing: 20
-  dazed: 18 # as minus12
+  dancing: 18
+  dazed: 15 # as minus10
   deafened: 3
   dominated: 21
   dimension_lock: 6
   faerie_fire: 3
   fascinated: 6
-  feeblemind: 15
+  feeblemind: 12
+  fog: 6
   frightened: 12 # as minus8, limited_action
   grappled: 12 # as minus8
   grease: 3
-  half_speed: 3
-  immobilized: 6
+  half_speed: 6
+  immobilized: 9
   limited_action: 12
+  link_vitality: 9
   lower_max_hp: 6
-  no_action: 18
+  no_action: 15
   out_of_battle: 12
-  paralyzed: 21 # as dazed + 3
+  paralyzed: 18
+  prohibit_summons: 6
   staggered: 9 # immobilized + minus2
   slowed: 9 # as staggered
-  stunned: 19 # as dazed + 1
+  stunned: 16 # as dazed + 1
   stasis: 12 # assuming immunity - equivalent to out_of_battle
 # if the spell or effect 
 conditional:
@@ -168,32 +186,44 @@ dispellable:
   false: ~
 duration:
   normal:
-    round: -6
-    concentration: -3
-    until_standard_action: -2
+    round: -3
+    concentration: -2
+    until_standard_action: -1
     short: 0
     medium: 1 # x10
     long: 1.5 # x6
     extreme: 2 # x12
     week: 3 # x14
-    month: 4 # x4
-    year: 5 # x12
+    month: 3.5 # x4
+    year: 4 # x12
     permanent: 6 # x???
-  buff:
-    round: -6
-    concentration: -3
+  personal_buff:
+    round: -3
+    concentration: -2
     short: 0
-    personal_long: 2
-    medium: 3
-    long: 4
-    extreme: 5
-    month: 6
-    year: 7
-    permanent: 8
+    medium: 2
+    long: 3
+    extreme: 4
+    week: 7
+    month: 7.5
+    year: 8
+    permanent: 10
+  nonpersonal_buff:
+    round: -3
+    concentration: -2
+    short: 0
+    personal_long: 3
+    medium: 5
+    long: 6
+    extreme: 7
+    week: 9
+    month: 10.5
+    year: 11
+    permanent: 13
 instant_effect:
   banishment: 15
-  death: 20
-  dispel: 4
+  death: 18
+  dispel: 7
   negative_level: 2 # cost per negative level
   shove: 3
   prone: 3
@@ -202,10 +232,14 @@ instant_effect:
 expended:
   single_use: -3
   five: -2 # or other values between single_use and caster level
+  temporary_hp: -3
   caster_level: -1
   damage_reduction_cap: -1
 knowledge:
   alignment: 2
+  creature_or_object_location: 5
+  creature_location: 4
+  object_location: 2
   lies: 3
   vulnerabilities: 3
 limit_affected:
@@ -257,7 +291,10 @@ targets:
   all: 0
   allies: 1
   enemies: 1
-  five: 2 #special handling; see get_area_modifier
+  #special handling; see get_area_modifier
+  five: 2 
+  two: 1
+  automatically_find_one: 0
 teleport: 
   normal: 4
   unrestricted: 6
