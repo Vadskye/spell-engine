@@ -328,7 +328,7 @@ class Spell:
             except AttributeError:
                 buff_name = buff
 
-            if buff_name == 'bonus':
+            if buff_name == 'bonuses':
                 # add the modifier for each component of the bonus
                 buffed_statistics = ensure_list(buff[buff_name])
                 for buffed_statistic in buffed_statistics:
@@ -358,7 +358,7 @@ class Spell:
             except AttributeError:
                 condition_name = condition
 
-            if condition_name == 'penalty' or condition_name == 'penalties':
+            if condition_name == 'penalties':
                 # also add the modifier for each component of the penalty
                 penalized_statistics = ensure_list(condition[condition_name])
                 for penalized_statistic in penalized_statistics:

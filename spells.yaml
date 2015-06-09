@@ -22,7 +22,7 @@ acid_arrow_greater:
       damage: normal
     success:
       condition:
-        penalty:
+        penalties:
           - physical_defenses
           - fortitude
       duration: short
@@ -40,13 +40,13 @@ acid_fog:
   zone: medium cylinder
 agony:
   condition: 
-    penalty: full
+    penalties: full
   duration: short
   range: medium
 aid:
   buffs:
     - temporary_hp
-    - bonus: will
+    - bonuses: will
   duration: short
   range: close
 air_walk:
@@ -60,13 +60,13 @@ alter_weapon:
   range: close
   duration: short
   buff:
-    bonus: damage
+    bonuses: damage
 alter_weapon_greater:
   duration: medium
   range: touch
   subeffects:
     - buff:
-        bonus: damage
+        bonuses: damage
 animal_growth:
   buffs:
     - increase_size
@@ -113,7 +113,7 @@ aversion:
       duration: short
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
 bane:
   condition:
@@ -137,14 +137,14 @@ banishment:
       duration: short
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
   triggered: true
   trigger_condition: standard_action_by_you
   trigger_duration: concentration
 barkskin:
   buffs:
-    - bonus: armor_defense
+    - bonuses: armor_defense
     - damage_reduction: physical_half
   duration: short
   range: touch
@@ -152,22 +152,22 @@ bestow_curse:
   attack_subeffects:
     critical_success:
       condition:
-        penalty: full
+        penalties: full
       duration: permanent
       breakable: specific_spell
     success:
       condition:
-        penalty: full
+        penalties: full
       duration: short
     failure:
       condition:
-        penalty: special_defenses
+        penalties: special_defenses
       duration: short
   dispellable: false
   range: close
 bewilder:
   condition:
-    penalty: full
+    penalties: full
   duration: short
   limit_affected: mind_affecting
   range: close
@@ -198,8 +198,8 @@ blade_barrier:
   zone: huge wall
 #blasphemy
 bless:
-  buff:
-    bonus: physical_attacks
+  buffs:
+    - bonuses: physical_attacks
   duration: short
   range: medium
 bless_mass:
@@ -219,7 +219,7 @@ blind:
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
 blink:
   duration: short
@@ -227,12 +227,12 @@ blink:
   personal_only: true
 blur:
   buff:
-    bonus: physical_defenses
+    bonuses: physical_defenses
       # and stealth checks
   duration: personal_long
 buff_all:
   buff:
-    bonus: full
+    bonuses: full
   targets: five
   duration: short
 burning_hands:
@@ -255,7 +255,7 @@ call_lightning_greater:
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
   expended: caster_level
   range: medium
@@ -294,7 +294,7 @@ chaos_hammer:
   subeffects:
     - damage: normal
     - condition:
-        penalty: attacks
+        penalties: attacks
       duration: short
 charm_monster:
   base: charm_person
@@ -314,7 +314,7 @@ charm_person:
       duration: long
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: long
 charm_person_mass:
   base: charm_person
@@ -335,7 +335,7 @@ clenched_fist:
   trigger_duration: short
 cloak_of_chaos:
   buffs:
-    - bonus: physical_defenses
+    - bonuses: physical_defenses
     - spell_resistance_limited
     - retributive_damage
   duration: short
@@ -358,18 +358,18 @@ cloud_of_bats:
   burst: medium cone
   targets: all
   condition:
-    penalty: full
+    penalties: full
   duration: short
 color_spray:
   burst: medium cone
   condition:
-    penalty: attacks
+    penalties: attacks
   duration: short
   targets: all
 combat_transformation:
   buffs:
     - physical_attributes: cap5
-    - bonus:
+    - bonuses:
       - fortitude
       - physical_attacks
   duration: short
@@ -377,7 +377,7 @@ combat_transformation:
 combat_transformation_greater:
   buffs:
     - physical_attributes: cap10
-    - bonus:
+    - bonuses:
       - fortitude
       - physical_attacks
   duration: short
@@ -390,7 +390,7 @@ cone_of_cold:
   subeffects:
     - damage: normal
     - condition:
-        penalty: defenses
+        penalties: defenses
       duration: short
   targets: all
 cone_of_cold_greater:
@@ -404,14 +404,14 @@ confusion:
       duration: short
     success:
       condition:
-        penalty:
+        penalties:
           - attacks
           - checks
           - will
       duration: short
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
   range: medium
 confusion_mass:
@@ -429,17 +429,17 @@ cripple:
     success:
       conditions:
         - staggered
-        - penalty: physical
+        - penalties: physical
       duration: short
     failure:
       condition:
-        penalty: physical
+        penalties: physical
       duration: short
   range: close
 crushing_despair:
   burst: medium cone
   condition:
-    penalty: full
+    penalties: full
   duration: short
   limit_affected: mind_affecting
   targets: all
@@ -478,11 +478,11 @@ death_knell:
   attack_subeffects:
     success:
       conditions:
-        - penalty: special_defenses
+        - penalties: special_defenses
         - die_at_zero
     failure:
       condition:
-        penalty: special_defenses
+        penalties: special_defenses
   duration: short
   range: close
   #missing buff at 0 HP
@@ -515,7 +515,7 @@ deep_slumber:
   range: medium
 deflection:
   buff: 
-    bonus: physical_defenses
+    bonuses: physical_defenses
   duration: personal_long
 delay_damage:
   buff: delay_damage
@@ -545,7 +545,7 @@ destruction:
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
 detect_alignment:
   knowledge: alignment
@@ -591,7 +591,7 @@ discern_vulnerability:
   range: medium
   subeffects:
     - buff:
-        bonus:
+        bonuses:
           - attacks
           - damage
     - knowledge: vulnerabilities 
@@ -608,11 +608,11 @@ dismissal:
       instant_effect: banishment
     success:
       condition:
-        penalty: full
+        penalties: full
       duration: short
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
 dispel_magic:
   range: medium
@@ -631,7 +631,7 @@ displacement:
 #disrupting_weapon
 divine_favor:
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - damage
   duration: short
@@ -639,7 +639,7 @@ divine_favor:
 divine_favor_greater:
   buffs:
     - attribute: cap5
-    - bonus:
+    - bonuses:
         - physical_attacks
         - damage
   duration: short
@@ -671,7 +671,7 @@ drain_life:
   range: close
 earths_pull:
   conditions:
-    - penalty: attacks
+    - penalties: attacks
     - half_speed
   duration: short
   limit_affected: max_size_large
@@ -724,7 +724,7 @@ enervation:
   range: close
 enfeeblement:
   condition:
-    penalty:
+    penalties:
       - physical_attacks
       - physical_defenses
   duration: short
@@ -761,7 +761,7 @@ entangle_fixed:
       condition: immobilized
     effect:
       condition:
-        penalty: attacks
+        penalties: attacks
   duration: short
   range: medium
   limit_affected: near_plants
@@ -802,7 +802,7 @@ fear:
       duration: round
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
   targets: all
   limit_affected: mind_affecting
@@ -825,7 +825,7 @@ feeblemind:
       duration: short
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
   limit_affected: mind_affecting
   range: close
@@ -841,7 +841,7 @@ finger_of_death:
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
 fire_seeds:
   burst: small radius
@@ -902,14 +902,14 @@ foresee_probability:
   range: medium
 foresight:
   buffs:
-    - bonus: physical_defenses
+    - bonuses: physical_defenses
     - immune: unaware
   duration: personal_long
 forget:
   attack_subeffects:
     success:
       condition:
-        penalty: full
+        penalties: full
   duration: long
   limit_affected: mind_affecting
 freedom:
@@ -936,12 +936,12 @@ gender_swap:
         - condition: gender_swap
           duration: permanent
         - condition:
-            penalty: full
+            penalties: full
           duration: short
     success:
       conditions:
         - gender_swap
-        - penalty: full
+        - penalties: full
       duration: short
 gentle_descent:
   buff: glide
@@ -958,7 +958,7 @@ ghoul_touch:
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
 #giant_vermin
 glitterdust:
@@ -1025,7 +1025,7 @@ heroism:
   range: close
   duration: short
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - checks
       - special_defenses
@@ -1034,7 +1034,7 @@ heroism_greater:
   duration: short
   buffs:
     - temporary_hp
-    - bonus:
+    - bonuses:
         - physical_attacks
         - checks
         - special_defenses
@@ -1053,7 +1053,7 @@ hold_person:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: round
 holy_aura:
   base: cloak_of_chaos
@@ -1111,7 +1111,7 @@ imprisonment:
       duration: month
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 inertial_shield:
   range: close
@@ -1130,11 +1130,11 @@ inflict_critical_wounds_mass:
 interposing_hand:
   breakable: deal_physical_damage
   buff:
-    bonus: physical_defenses
+    bonuses: physical_defenses
   duration: short
 invest_magic:
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - damage
       - physical_defenses
@@ -1220,7 +1220,7 @@ link_vitality_mass:
       duration: short
 mage_armor:
   buff:
-    bonus: physical_defenses
+    bonuses: physical_defenses
   duration: personal_long
 #mage_hand
 mages_disjunction:
@@ -1236,7 +1236,7 @@ magic_circle_against_alignment:
   range: ~
   subeffects:
     - buff:
-        bonus: special_defenses
+        bonuses: special_defenses
     - condition: prohibit_summons
       limit_affected: alignment
 magic_fang:
@@ -1246,12 +1246,12 @@ magic_missile:
   range: medium
 magic_vestment:
   buff:
-    bonus: physical_defenses
+    bonuses: physical_defenses
   duration: short
   range: close
 magic_weapon:
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - damage
   duration: short
@@ -1269,7 +1269,7 @@ missile_storm:
   targets: enemies
 moment_of_prescience_lesser:
   buff:
-    bonus:
+    bonuses:
       - attacks
       - checks
   expended: single_use
@@ -1297,7 +1297,7 @@ phantasmal_killer:
       duration: round
     failure:
       condition:
-        penalty: special_defenses
+        penalties: special_defenses
       duration: short
 phantasmal_maze:
   range: medium
@@ -1310,7 +1310,7 @@ phantasmal_maze:
         - deafened
     failure:
       condition:
-        penalty: full
+        penalties: full
 phantasmal_wound:
   range: medium
   duration: short
@@ -1319,7 +1319,7 @@ phantasmal_wound:
       condition: staggered
     failure:
       condition:
-        penalty: physical_defenses
+        penalties: physical_defenses
 #poison
 polar_ray:
   range: close
@@ -1331,7 +1331,7 @@ polar_ray:
           duration: short
         failure:
           condition:
-            penalty: physical_attacks
+            penalties: physical_attacks
           duration: short
 power_word_blind:
   components: nosomatic
@@ -1345,7 +1345,7 @@ power_word_blind:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 power_derp_blind:
   condition: blinded
@@ -1365,13 +1365,13 @@ power_word_daze:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 precognition_lesser:
   personal_only: true
   duration: short
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - damage
       - physical_defenses
@@ -1379,7 +1379,7 @@ precognition:
   personal_only: true
   duration: short
   buff:
-    bonus:
+    bonuses:
       - physical_attacks
       - damage
       - physical_defenses
@@ -1387,7 +1387,7 @@ precognition_greater:
   personal_only: true
   duration: short
   buffs:
-    - bonus:
+    - bonuses:
        - physical_attacks
        - physical_defenses
        - damage
@@ -1396,7 +1396,7 @@ protection_from_alignment:
   range: close
   duration: short
   buff:
-    bonus: special_defenses
+    bonuses: special_defenses
 resilient_sphere:
   range: medium
   attack_subeffects:
@@ -1408,7 +1408,7 @@ searing_light:
   subeffects:
     - damage: normal
     - condition:
-        penalty: physical_attacks
+        penalties: physical_attacks
       duration: short
 see_invisibility:
   duration: personal_long
@@ -1425,7 +1425,7 @@ share_pain:
   buff: share_pain
 shield_of_faith:
   buff:
-    bonus: physical_defenses
+    bonuses: physical_defenses
   duration: personal_long
 shillelagh:
   base: magic_weapon
@@ -1458,7 +1458,7 @@ sleep:
     success:
       conditions:
         - fatigued
-        - penalty: full
+        - penalties: full
       duration: short
     failure:
       condition: fatigued
@@ -1520,7 +1520,7 @@ stinking_cloud:
   breakable: leave_area
 stoneskin:
   buffs:
-    - bonus: armor_defense
+    - bonuses: armor_defense
     - damage_reduction: physical
   duration: short
 storm_of_vengeance:
@@ -1545,7 +1545,7 @@ strip_the_flesh:
       duration: short
     failure:
       condition:
-        penalty: physical_defenses
+        penalties: physical_defenses
       duration: short
 suggestion:
   components: noverbal
@@ -1561,7 +1561,7 @@ suggestion:
       breakable: if_damaged
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
 suggestion_mass:
   base: suggestion
@@ -1598,7 +1598,7 @@ temporal_stasis:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 time_stop:
   buff: time_stop
@@ -1621,7 +1621,7 @@ totemic_power_greater:
 touch_of_idiocy:
   range: close
   condition:
-    penalty: will
+    penalties: will
   duration: short
 transmute_flesh_and_stone:
   range: close
@@ -1631,11 +1631,11 @@ transmute_flesh_and_stone:
     success:
       conditions:
         - die_at_zero
-        - penalty: fortitude
+        - penalties: fortitude
       duration: short
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
       duration: short
 tremorsense:
   buff: tremorsense
@@ -1675,7 +1675,7 @@ turn_to_fruit:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 unholy_blight:
   base: chaos_hammer
@@ -1755,7 +1755,7 @@ waves_of_fatigue:
             - physical_defenses
     failure:
       condition:
-        penalty: fortitude
+        penalties: fortitude
   duration: short
   targets: all
 waves_of_fatigue_greater:
@@ -1788,7 +1788,7 @@ weird:
       duration: short
     failure:
       condition:
-        penalty: full
+        penalties: full
       duration: short
 windstrike:
   range: medium
@@ -1815,7 +1815,7 @@ fruit_cherry:
 fruit_strawberry:
   buffs:
     - temporary_hp
-    - bonus: full
+    - bonuses: full
   duration: short
 fruit_banana:
   damage: normal
@@ -1839,7 +1839,7 @@ fruit_pumpkin:
       duration: round
     failure:
       condition:
-        penalty: will
+        penalties: will
       duration: short
   targets: all
   limit_affected: mind_affecting
