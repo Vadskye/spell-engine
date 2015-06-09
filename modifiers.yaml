@@ -11,23 +11,30 @@ area:
     small: 1
     medium: 2
     large: 3
+    huge: 5 # 100 x 20
   radius:
     small: 2
     medium: 4
     large: 6
+    huge: 7 # 100' radius
+    gargantuan: 8 # 200' radius
+    colossal: 9 # 500' radius
   wall:
     medium: 1
     large: 2
-    100foot: 3
+    huge: 3 # 100'
 attack:
   critical_success_only: -9
   success_only: -3
   failure_only: 3
 breakable:
+  deal_energy_damage: -1 # like wall of fire
+  deal_physical_damage: -1 # like crushing hand
   grapple: -1
   if_attack: -5
   if_attack_per_round: -2
   if_damaged: -3
+  skill_check: -3
   leave_area: -6
   leave_area_impeded: -3  # if the effect prevents you from leaving its area
   standard_action_by_any: -2
@@ -35,40 +42,53 @@ breakable:
   specific_spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
   violent_action_by_any: -6
 buffs:
-  alter_weapon: 0
-  all_attributes:
-    cap5: 9
-    cap10: 12
-  attribute:
-    cap5: 3
-    cap10: 6
-  physical_attributes:
-    cap5: 6
-    cap10: 9
-  mental_attributes:
-    cap5: 6
-    cap10: 9
-  blink: 6
+  # all buff spells have a base cost
+  base: 2
+  # these modifiers all added on to the base cost
+  # some are combined because they don't fully stack, 
+  # such as boosting both physical and special attacks
+  # but bonuses which fully stack, such as physical attacks and defenses,
+  # should not be combined
   bonuses:
-    base: 2
-    # these are all added on to the base cost
-    # some are combined because they don't fully stack, 
-    # such as boosting both physical and special attacks
-    # bonuses which fully stack, such as physical attacks and defenses,
-    # should not be combined
-    attacks: 3
-    armor_defense: 1
-    checks: 1
-    damage: 2
-    defenses: 3
+    attacks: 5
+    armor_defense: 2
+    checks: 2
+    damage: 3
+    defenses: 5
     fortitude: 1
-    full: 5
-    physical_attacks: 2
-    physical_defenses: 2
+    full: 10
+    maneuver_defense: 1
+    physical: 6
+    physical_attacks: 3
+    physical_checks: 1
+    physical_defenses: 3
     reflex: 1
-    special_attacks: 2
+    special_attacks: 3
     special_defenses: 2
     will: 1
+  # attributes
+  all_attributes:
+    cap5: 8
+    cap10: 15
+  attribute:
+    cap5: 2
+    cap10: 5
+  physical_attributes:
+    cap5: 5
+    cap10: 10
+  mental_attributes:
+    cap5: 5
+    cap10: 10
+  # attacks
+  alter_weapon: 1
+  aqueous_blade: 4
+  extra_attack: 4 # at -5 attack bonus
+  flame_blade: 3
+  increase_size: 5
+  true_strike: 6
+  # defenses
+  blink: 7
+  climb_speed: 2
   concealment: 6
   damage_reduction:
     energy_all: 4
@@ -76,107 +96,129 @@ buffs:
     physical_half: 3
     physical: 6
     spell: 4
-  darkvision: 3
   delay_damage: 6
-  double_speed: 4
-  displacement: 8
-  earth_glide: 8
-  ethereal: 12
-  extra_attack: 6 # at -5 attack bonus
-  feather_fall: 1
-  flame_blade: 4
-  flight: 9
-  foresee_probability: 9
-  freedom: 9
-  gaseous_form: 6
-  glide: 3
-  half_miss: 9
-  hide_attack_effects: 3
-  increase_size: 6
+  freedom: 6
+  half_miss: 6
   immune:
     construct: 9
     death: 2
     negative_energy: 4
     poison: 3
-    surprise: 6
-  invisible: 12
-  levitation: 6
-  radiate_light: 0
-  ranged_displacement: 4
+    unaware: 3
   retributive_damage: 6
-  see_invisibility: 3
+  ranged_half_miss: 4
   share_pain: 6
-  spell_resistance_limited: 4
+  spell_resistance_limited: 3
   spell_resistance: 6
-  temporary_hp: 4
+  temporary_hp: 3
+  unapproachable: 6
+  # special/misc
+  darkvision: 1
+  double_speed: 3
+  earth_glide: 6
+  ethereal: 9
+  feather_fall: 1
+  flight: 7
+  foresee_probability: 9
+  gaseous_form: 6
+  glide: 3
+  hide_attack_effects: 3
+  invisible: 12
+  levitation: 4
+  radiate_light: 1
+  see_invisibility: 3
+  telepathy: 6
+  time_stop: 12
+  tremorsense: 3
+  true_seeing: 9
   undead: 1
-  walking_flight: 8
+  walking_flight: 7
+  water_walk: 2
 casting_time:
   full_round: -1
   full_round_buff: -0.5
   immediate: 6
   standard: 0
   swift: 4
+choose_effect:
+  true: 1
+  false: 0
 components:
   nosomatic: 1
   noverbal: 1
 conditions:
+  base: 1
   penalties:
-    base: 1
-    attacks: 3
-    armor_defense: 1
-    checks: 1
-    damage: 2
-    defenses: 3
+    attacks: 5
+    armor_defense: 2
+    checks: 2
+    damage: 3
+    defenses: 5
     fortitude: 1
-    full: 5
-    physical_attacks: 2
-    physical_defenses: 2
+    full: 10
+    maneuver_attacks: 1
+    physical_attacks: 3
+    physical_checks: 1
+    physical_defenses: 3
+    physical: 6
     reflex: 1
-    special_attacks: 2
+    special_attacks: 3
     special_defenses: 2
     will: 1
-  asleep: 21 # as paralyzed
-  blinded: 12 # as minus8
-  charmed: 9 # as minus6
-  confused: 12 # as minus8
-  dancing: 18
-  dazed: 15 # as minus10
+  antimagic: 9
+  asleep: 20 # as paralyzed
+  aversion: 8
+  blinded: 14 # as minus8
+  charmed: 8 # as minus6
+  confused: 14 # as minus8
+  dancing: 20
+  dazed: 17 # as minus10
+  dazzled: 5
   deafened: 3
-  dominated: 21
-  dimension_lock: 6
+  dominated: 20
+  double_damage: 8
+  die_at_zero: 5
+  dimension_lock: 5
   faerie_fire: 3
-  fascinated: 6
-  feeblemind: 12
-  fog: 6
-  frightened: 12 # as minus8, limited_action
-  grappled: 12 # as minus8
-  grease: 3
-  half_speed: 6
-  immobilized: 9
-  limited_action: 12
-  link_vitality: 9
-  lower_max_hp: 6
-  no_action: 15
-  out_of_battle: 12
-  paralyzed: 18
-  prohibit_summons: 6
-  staggered: 9 # immobilized + minus2
-  slowed: 9 # as staggered
-  stunned: 16 # as dazed + 1
-  stasis: 12 # assuming immunity - equivalent to out_of_battle
+  fascinated: 5
+  fatigued: 3
+  feeblemind: 14
+  fog: 5
+  frightened: 14 # as minus8, limited_action
+  gender_swap: 3
+  grappled: 11 # as minus8
+  grease: 4
+  half_speed: 2
+  quarter_speed: 5
+  immobilized: 8
+  impassable: 5
+  limited_action: 14
+  link_vitality: 8
+  lower_max_hp: 5
+  no_action: 17
+  out_of_battle: 11
+  paralyzed: 20
+  prohibit_summons: 5
+  staggered: 8 # immobilized + minus2
+  slowed: 8 # as staggered
+  stunned: 18 # as dazed + 1
+  stasis: 11 # assuming immunity - equivalent to out_of_battle
+  suggestion: 11
 # if the spell or effect 
 conditional:
   half: -3
 damage:
   healing: 4
   normal: 4
+  kill_at_zero: 9
   weak: 2
   critical_overbleed:
-    15: 5
-    10: 6
-    5: 7
+    10: 5
+    5: 6
+    2: 7
+    full: 8
 # just used with delayed blast fireball for now
+# maybe separate modifiers for being visibly avoidable (1) or not (2)?
 delayable:
   true: 2
   false: 0
@@ -196,36 +238,60 @@ duration:
     week: 3 # x14
     month: 3.5 # x4
     year: 4 # x12
+    created: 4
     permanent: 6 # x???
   personal_buff:
     round: -3
     concentration: -2
     short: 0
-    medium: 2
-    long: 3
-    extreme: 4
-    week: 7
-    month: 7.5
-    year: 8
-    permanent: 10
+    medium: 1
+    long: 2
+    extreme: 3
+    week: 6
+    month: 6.5
+    year: 7
+    permanent: 9
   nonpersonal_buff:
     round: -3
     concentration: -2
     short: 0
-    personal_long: 3
+    personal_long: 2
     medium: 5
     long: 6
     extreme: 7
     week: 9
-    month: 10.5
-    year: 11
-    permanent: 13
+    month: 9.5
+    year: 10
+    permanent: 12
+  noncombat_buff:
+    concentration: -2
+    short: 0
+    personal_long: 1
+    medium: 2
+    long: 3
+    extreme: 5
+    week: 8
+    month: 8.5
+    year: 9
+    permanent: 11
+  trigger:
+    concentration: -1
+    short: 0
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 3.5 # x4
+    year: 4 # x12
+    permanent: 6 # x???
 instant_effect:
   banishment: 15
   death: 18
   dispel: 7
   negative_level: 2 # cost per negative level
-  shove: 3
+  nothing: 0
+  shove_weak: 1
+  shove_strong: 4
   prone: 3
   remove_conditions:
     heal: 3 
@@ -252,8 +318,10 @@ limit_affected:
     nonalignment: -1
     near_ground: -1 # within 10 feet of the ground
     on_ground: -1
+    on_stone: -2
     near_plants: -3 # within 5 feet of plants
     touching_metal: -2
+    light_vulnerable: -6
   buff:
     alignment: -1
     creature_type: -1
@@ -289,16 +357,18 @@ spell_resistance:
   false: 1
 targets:
   all: 0
-  allies: 1
+  allies: -1
   enemies: 1
   #special handling; see get_area_modifier
-  five: 2 
-  two: 1
-  automatically_find_one: 0
+  five: 3
+  two: 2
+  automatically_find_one: 3
 teleport: 
   normal: 4
   unrestricted: 6
 trigger_condition:
   every_round: 6 #requires duration
+  damage_every_round: 2 # cost shouldn't stack with damage, since damage is reduced
+  enter_zone: 1
+  standard_action_by_any: 4
   standard_action_by_you: 3
-  standard_action_by_any: 1
