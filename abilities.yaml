@@ -1,0 +1,46 @@
+channel_energy:
+  damage: normal
+  burst: medium radius
+  targets: all
+lesser_domain_aspect_chaos:
+  duration: short
+  attack_subeffects:
+    success:
+      condition: disoriented
+  limit_affected: alignment
+  range: close
+  at_will_class_feature: 1
+domain_aspect_chaos:
+  buff: retributive_damage
+  duration: class_feature
+  limit_affected: alignment
+  range: close
+domain_aspect_travel:
+  buff: double_speed
+  duration: class_feature
+default_spell:
+  casting_time: standard
+  dispellable: true
+  spell_resistance: true
+taunting_rage:
+  attack_subeffects:
+    success:
+      condition: taunted
+      duration: short
+  triggered: true
+  trigger_condition: every_round
+  trigger_duration: short
+taunting_rage_improved:
+  base: taunting_rage
+  targets: five
+terrifying_rage:
+  attack_subeffects:
+    success:
+      condition: shaken
+      duration: short
+  triggered: true
+  trigger_condition: every_round
+  trigger_duration: short
+terrifying_rage_improved:
+  base: terrifying_rage
+  targets: five
