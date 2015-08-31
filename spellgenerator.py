@@ -170,7 +170,7 @@ class Spell:
                 for submodifier in self.get_modifier(modifier_name):
                     level += submodifier
         if level <= 0 and not self.ignore_warnings:
-            print "Warning: Spell {0} has nonpositive raw level {1}, which is usually bad".format(self.name, level)
+            print "#Warning: Spell {0} has nonpositive raw level {1}, which is usually bad".format(self.name, level)
         if raw:
             return level
         else:
@@ -293,7 +293,7 @@ class Spell:
             all_modifiers['attack']['success_only']
         ])
         if modifier <= 0 and not self.ignore_warnings:
-            print "Warning: Spell {0} has success subeffect with level {1}, which may be too weak".format(
+            print "#Warning: Spell {0} has success subeffect with level {1}, which may be too weak".format(
                 self.name, modifier)
         return max(1, modifier)
 
@@ -304,10 +304,10 @@ class Spell:
             -success_modifier
         ])
         if modifier < -1 and not self.ignore_warnings:
-            print "Warning: Spell {0} has crit success subeffect with level {1}, which may be too weak".format(
+            print "#Warning: Spell {0} has crit success subeffect with level {1}, which may be too weak".format(
                 self.name, modifier)
         elif modifier > 0 and not self.ignore_warnings:
-            print "Warning: Spell {0} has crit success subeffect with level {1}, which may be too strong".format(
+            print "#Warning: Spell {0} has crit success subeffect with level {1}, which may be too strong".format(
                 self.name, modifier)
         return modifier
 
@@ -318,10 +318,10 @@ class Spell:
             -success_modifier
         ])
         if modifier < -1 and not self.ignore_warnings:
-                print "Warning: Spell {0} has failure subeffect with level {1}, which may be too weak".format(
+            print "#Warning: Spell {0} has failure subeffect with level {1}, which may be too weak".format(
                     self.name, modifier)
         elif modifier > 0 and not self.ignore_warnings:
-            print "Warning: Spell {0} has failure subeffect with level {1}, which may be too strong".format(
+            print "#Warning: Spell {0} has failure subeffect with level {1}, which may be too strong".format(
                 self.name, modifier)
         return modifier
 
