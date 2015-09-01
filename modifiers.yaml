@@ -121,7 +121,8 @@ buffs:
   climb_speed: 2
   darkvision: 1
   disguise: 1
-  double_speed: 2
+  double_speed: 3
+  ten_foot_speed: 1
   earth_glide: 6
   ethereal: 9
   feather_fall: 1
@@ -135,7 +136,7 @@ buffs:
   lifesight: 6
   radiate_light: 0
   see_invisibility: 2
-  telepathy: 6
+  telepathy: 5
   time_stop: 12
   tremorsense: 2
   true_seeing: 9
@@ -256,26 +257,25 @@ duration:
     year: 4 # x12
     created: 4
     permanent: 6 # x???
-    class_feature: 2
   personal_buff:
     round: -3
     concentration: -2
     short: 0
-    medium: 1
-    long: 2
-    extreme: 3
+    medium: 2
+    long: 3
+    extreme: 4
     week: 6
     month: 6.5
     year: 7
     permanent: 9
     # 'personal_only' is redundant with being a class feature, so increase
     # the cost
-    class_feature: 3
+    class_feature: 4
   nonpersonal_buff:
     round: -3
     concentration: -2
     short: 0
-    personal_long: 2
+    personal_long: 1 # actually making it long requires +2 spell levels
     medium: 5
     long: 6
     extreme: 7
@@ -283,7 +283,8 @@ duration:
     month: 9.5
     year: 10
     permanent: 12
-    class_feature: 2
+    # match cost of long duration personal-only buff
+    class_feature: 3
   noncombat_buff:
     concentration: -2
     short: 0
@@ -295,7 +296,7 @@ duration:
     month: 8.5
     year: 9
     permanent: 11
-    class_feature: 2
+    class_feature: 3
   trigger:
     concentration: -1
     short: 0

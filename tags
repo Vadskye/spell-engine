@@ -1,0 +1,59 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AREA_NAMES	.\spellgenerator.py	/^AREA_NAMES = set('burst emanation limit wall zone'.split())$/;"	v
+BONUS_ATTRIBUTES	.\spellgenerator.py	/^BONUS_ATTRIBUTES = set('plus1 plus2 plus3 plus4 plus5'.split())$/;"	v
+NONGENERIC_MODIFIERS	.\spellgenerator.py	/^NONGENERIC_MODIFIERS = set('dispellable duration ignore_warnings limit_affected shapeable trigger_condition trigger_duration'.split())$/;"	v
+PLURAL_MAPPINGS	.\spellgenerator.py	/^PLURAL_MAPPINGS = {$/;"	v
+PRIMARY_ATTRIBUTES	.\spellgenerator.py	/^PRIMARY_ATTRIBUTES = 'attack_subeffects bloodied_subeffects buffs conditions damage instant_effect knowledge subeffects misc teleport'.split()$/;"	v
+PrettyPrinter	.\spellgenerator.py	/^from pprint import pprint, PrettyPrinter$/;"	i
+SINGLE_MODIFIERS	.\spellgenerator.py	/^SINGLE_MODIFIERS = set('breakable casting_time components damage delayable expended knowledge instant_effect personal_only range spell_resistance targets'.split())$/;"	v
+SPELL_POINT_COSTS	.\spellgenerator.py	/^SPELL_POINT_COSTS = ($/;"	v
+SUBSPELL_INHERITED_ATTRIBUTES	.\spellgenerator.py	/^SUBSPELL_INHERITED_ATTRIBUTES = set(list(SINGLE_MODIFIERS) + list(AREA_NAMES) + list(NONGENERIC_MODIFIERS))$/;"	v
+Spell	.\spellgenerator.py	/^class Spell:$/;"	c
+TARGETING_ATTRIBUTES	.\spellgenerator.py	/^TARGETING_ATTRIBUTES = set('casting_time components limit_affected personal_only range spell_resistance targets'.split() + list(AREA_NAMES))$/;"	v
+__init__	.\spellgenerator.py	/^    def __init__(self, name, attributes, all_modifiers, verbose = False):$/;"	m	class:Spell
+__str__	.\spellgenerator.py	/^    def __str__(self):$/;"	m	class:Spell	file:
+add_attribute	.\spellgenerator.py	/^    def add_attribute(self, attribute_name, attribute, replace_existing=True, require_nonexisting=False):$/;"	m	class:Spell
+add_modifier	.\spellgenerator.py	/^    def add_modifier(self, modifier_name, value):$/;"	m	class:Spell
+all_modifiers	.\spellgenerator.py	/^    all_modifiers = data['modifiers']$/;"	v
+argparse	.\spellgenerator.py	/^import argparse$/;"	i
+args	.\spellgenerator.py	/^    args = initialize_argument_parser()$/;"	v
+assert_valid_attributes	.\spellgenerator.py	/^    def assert_valid_attributes(self):$/;"	m	class:Spell
+calculate_area_modifier	.\spellgenerator.py	/^    def calculate_area_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_attack_subeffects_modifier	.\spellgenerator.py	/^    def calculate_attack_subeffects_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_bloodied_subeffects_modifier	.\spellgenerator.py	/^    def calculate_bloodied_subeffects_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_buffs_modifier	.\spellgenerator.py	/^    def calculate_buffs_modifier(self, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_conditions_modifier	.\spellgenerator.py	/^    def calculate_conditions_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_duration_modifier	.\spellgenerator.py	/^    def calculate_duration_modifier(self, attribute, all_modifiers, duration_type = 'normal'):$/;"	m	class:Spell
+calculate_generic_modifier	.\spellgenerator.py	/^    def calculate_generic_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_instant_effect_modifier	.\spellgenerator.py	/^    def calculate_instant_effect_modifier(self, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_level	.\spellgenerator.py	/^    def calculate_level(self, raw = False, ignore_targeting_attributes = False):$/;"	m	class:Spell
+calculate_limit_affected_modifier	.\spellgenerator.py	/^    def calculate_limit_affected_modifier(self, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_modifiers	.\spellgenerator.py	/^    def calculate_modifiers(self, all_modifiers, ignore_targeting_attributes = False):$/;"	m	class:Spell
+calculate_range_modifier	.\spellgenerator.py	/^    def calculate_range_modifier(self, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_subeffect_modifier	.\spellgenerator.py	/^    def calculate_subeffect_modifier(self, subeffect, all_modifiers):$/;"	m	class:Spell
+calculate_targets_modifier	.\spellgenerator.py	/^    def calculate_targets_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_teleport_modifier	.\spellgenerator.py	/^    def calculate_teleport_modifier(self, attribute, all_modifiers):$/;"	m	class:Spell
+calculate_triggered_modifier	.\spellgenerator.py	/^    def calculate_triggered_modifier(self, all_modifiers):$/;"	m	class:Spell
+calculate_triggers_modifier	.\spellgenerator.py	/^    def calculate_triggers_modifier(self, attribute_name, attribute, all_modifiers):$/;"	m	class:Spell
+create_by_name	.\spellgenerator.py	/^    def create_by_name(cls, spell_name, spells, all_modifiers, verbose = None):$/;"	m	class:Spell
+data	.\spellgenerator.py	/^    data = import_data()$/;"	v
+enforce_plural_attributes	.\spellgenerator.py	/^def enforce_plural_attributes(attributes):$/;"	f
+get_attribute	.\spellgenerator.py	/^    def get_attribute(self, attribute):$/;"	m	class:Spell
+get_modifier	.\spellgenerator.py	/^    def get_modifier(self, modifier_name):$/;"	m	class:Spell
+has_attribute	.\spellgenerator.py	/^    def has_attribute(self, attribute_name):$/;"	m	class:Spell
+ignore_warnings	.\spellgenerator.py	/^    def ignore_warnings(self):$/;"	m	class:Spell
+import_data	.\spellgenerator.py	/^def import_data():$/;"	f
+initialize_argument_parser	.\spellgenerator.py	/^def initialize_argument_parser():$/;"	f
+pprint	.\spellgenerator.py	/^from pprint import pprint, PrettyPrinter$/;"	i
+pprinter	.\spellgenerator.py	/^pprinter = PrettyPrinter(indent=4, width=60)$/;"	v
+spell	.\spellgenerator.py	/^            spell = Spell.create_by_name(spell_name, spells, all_modifiers, args['verbose'])$/;"	v
+spell	.\spellgenerator.py	/^        spell = Spell.create_by_name(spell_name, spells, all_modifiers, verbose = True)$/;"	v
+spell_name	.\spellgenerator.py	/^        spell_name = args['spell_name']$/;"	v
+spells	.\spellgenerator.py	/^    spells = data['spells']$/;"	v
+super_get	.\spellgenerator.py	/^def super_get(nested_dict, thing):$/;"	f
+yaml	.\spellgenerator.py	/^import yaml$/;"	i

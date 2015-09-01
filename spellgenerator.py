@@ -415,6 +415,13 @@ class Spell:
         # advantage is usually minimal
         if attribute == 'concentration' and self.has_attribute('knowledge'):
             modifier = min(modifier + 1, 0)
+        # long duration matters less for temporary hit points 
+        if (
+            attribute not in ('short', 'concentration', 'round', 'personal_long')
+            and self.has_attribute('buffs')
+            and 'temporary_hp' in self.get_attribute('buffs')
+        ):
+            modifier = max(0, modifier - 1)
         return modifier
 
     def calculate_instant_effect_modifier(self, attribute, all_modifiers):

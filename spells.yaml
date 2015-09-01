@@ -69,7 +69,7 @@ animal_growth:
   targets: five
 antilife_shell:
   buff: unapproachable
-  duration: long
+  duration: medium
   emanation: small radius
   targets: all
   personal_only: true
@@ -90,6 +90,7 @@ assimilate:
       duration: extreme
       personal_only: true
       no_prebuff: true
+      noncombat_buff: true
 aversion:
   limit_affected: mind_affecting
   range: medium
@@ -167,6 +168,7 @@ bless_mass:
 blur:
   buff: concealment
   duration: personal_long
+  range: close
 burning_hands:
   burst: medium cone
   damage: normal
@@ -793,7 +795,7 @@ fireball:
   targets: all
 flame_blade:
   buff: flame_blade
-  duration: long
+  duration: medium
   personal_only: true
 flame_strike:
   range: close
@@ -835,13 +837,13 @@ foresee_probability:
 foresight:
   buffs:
     - immune: unaware
-  duration: extreme
+  duration: long
   personal_only: true
 foresight_greater:
   buffs:
     - immune: unaware
     - win_initiative
-  duration: extreme
+  duration: long
   personal_only: true
 forget:
   attack_subeffects:
@@ -1156,7 +1158,7 @@ locate_object:
   knowledge: object_location
   range: extreme
 longstrider:
-  buff: double_speed
+  buff: ten_foot_speed
   duration: long
   personal_only: true
 link_vitality_mass:
@@ -1170,6 +1172,7 @@ mage_armor:
   buff: mage_armor
   duration: long
   personal_only: true
+  misc: -1 # it's sort of necessary to have defense?
 #mage_hand
 mages_disjunction:
   burst: medium radius
@@ -1459,10 +1462,12 @@ resist_energy:
   buff:
     damage_reduction: energy_single
   duration: personal_long
+  range: close
 resist_energy_greater:
   buff:
     damage_reduction: energy_all
   duration: personal_long
+  range: close
 retributive_shield:
   buffs:
     - damage_reduction: physical
