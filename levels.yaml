@@ -1,12 +1,24 @@
-ablate_impact: 5
-ablative_shield: 3
+_cantrip_blur: -2
+_cantrip_damage: -2
+_cantrip_damage_reduction: -2
+_cantrip_daze: -2
+_cantrip_disorient: 1
+_cantrip_drain_life: -2
+_cantrip_exhaustion: -2
+#Warning: Spell _cantrip_fear has success subeffect with level 0, which may be too weak
+_cantrip_fear: -2
+_cantrip_flare: -1
+_cantrip_precognition: -2
+#Warning: Spell _cantrip_slow.subspell has nonpositive raw level 0, which is usually bad
+_cantrip_slow: -1
+ablate_impact: 4
+ablative_spellshield: 3
 acid_arrow: 2
 acid_arrow_greater: 6
 acid_fog: 7
 agony: 2
 aid: 2
 air_walk: 4
-animal_growth: 8.0
 antilife_shell: 7
 antimagic_field: 7
 aqueous_blade: 2
@@ -39,16 +51,16 @@ charm_person_mass: 6
 clenched_fist: 8
 cloak_of_chaos: 8
 cloak_of_single_chaos: 5
-cloud_of_bats: 3
+cloud_of_bats: 1
 color_spray: 1
 command: 1
 command_mass: 4
 cone_of_cold: 4
 cone_of_cold_greater: 7
+cone_of_nauseated: 15
 confusion: 3
 confusion_mass: 6
-#Warning: Spell cripple has crit success subeffect with level 2, which may be too strong
-cripple: 9
+cripple: 7
 #Warning: Spell crushing_hand has crit success subeffect with level 2, which may be too strong
 crushing_hand: 10
 cure_light_wounds: 1
@@ -103,6 +115,7 @@ entangling_growth: 4
 entropic_shield: 1
 ethereal_jaunt: 6
 etherealness: 10
+excrete_slime: 1
 eyebite: 4
 faerie_fire: 2
 fear: 2
@@ -128,6 +141,8 @@ forget: 2
 freedom: 3
 freedom_mass: 6.5
 freedom_personal: 4
+frost_shield: 1
+fungal_growth: 2
 funny_hats: 1
 gaseous_form: 5
 gentle_descent: 1
@@ -140,9 +155,9 @@ grease: 1
 gust_of_wind: 2
 harm: 5
 haste: 5
-haste_greater: 7
 haste_lesser: 2
 haste_mass: 8.5
+haste_personal: 6
 heal: 6
 heat_metal: 2
 heroism: 4
@@ -167,7 +182,7 @@ interposing_hand: 0
 invisibility: 3
 invisibility_greater: 6
 invisibility_mass: 6.5
-iron_body: 8.5
+iron_body: 7.5
 #Warning: Spell irresistible_dance has failure subeffect with level -3, which may be too weak
 irresistible_dance: 10
 levitate: 3.5
@@ -191,6 +206,7 @@ missile_storm_greater: 8
 moment_of_prescience: 4
 moment_of_prescience_greater: 8
 orders_wrath: 3
+personal_shield: 2
 #Warning: Spell phantasmal_killer has crit success subeffect with level 2, which may be too strong
 phantasmal_killer: 4
 #Warning: Spell phantasmal_killer_mass has crit success subeffect with level 2, which may be too strong
@@ -229,11 +245,15 @@ regeneration_lesser: 1
 repulsion: 5
 resist_energy: 1
 resist_energy_greater: 3
-retributive_shield: 5
+retributive_shield: 4
 revelation_of_destruction: 8
 revelation_of_prowess: 7
 reverse_gravity: 8
-righteous_might: 5.5
+righteous_might: 4.5
+rock_blast: 2
+rotburst: 3
+rotburst_greater: 7
+rotting_touch: 1
 scorching_ray: 3
 searing_light: 3
 see_invisibility: 1
@@ -257,6 +277,7 @@ sound_burst: 2
 spell_resistance: 3
 spider_climb: 2
 spiritual_weapon: 3
+spore_cloud: 2
 stinking_cloud: 3
 stoneskin: 3
 storm_of_vengeance: 12
@@ -273,12 +294,14 @@ time_stop: 9
 timestream: 5
 totemic_mind: 2
 totemic_mind_greater: 5
+totemic_mind_mass: 4.0
 totemic_power: 2
 totemic_power_greater: 5
+totemic_power_mass: 4.0
 transmute_flesh_and_stone: 6
 tremorsense: 1
 true_seeing: 7
-true_strike: 2
+true_strike: 0.5
 unholy_blight: 3
 unliving_eyes: 5
 unliving_heart: 1
