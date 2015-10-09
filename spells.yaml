@@ -1,3 +1,67 @@
+_cantrip_blur:
+  buff: cover_miss_physical
+  duration: round
+  range: close
+_cantrip_fear:
+  attack_subeffects:
+    critical_success:
+      condition: frightened
+    success:
+      condition: shaken
+  duration: short
+  limit_affected: mind_affecting
+  range: medium
+_cantrip_disorient:
+  limit_affected: mind_affecting
+  attack_subeffects:
+    success:
+      condition: disoriented
+      duration: short
+  range: close
+_cantrip_damage_reduction:
+  breakable: damage_reduction_easy
+  buff:
+    damage_reduction: physical
+  duration: round
+  range: close
+_cantrip_flare:
+  attack_subeffects:
+    success:
+      condition: impaired
+  duration: short
+  range: close
+_cantrip_daze:
+  attack_subeffects:
+    success:
+      condition: dazed
+  duration: round
+_cantrip_damage:
+  damage: weak
+  range: close
+_cantrip_drain_life:
+  damage: weak
+  misc: 1 # really weak life drain
+_cantrip_exhaustion:
+  attack_subeffects:
+    success:
+      condition: fatigued
+    critical_success:
+      condition: exhausted
+  duration: short
+  range: close
+_cantrip_precognition:
+  buffs:
+    - awesome_point: attacks
+  duration: round
+  range: close
+_cantrip_slow:
+  attack_subeffects:
+    success:
+      condition: slowed
+    failure:
+      condition: half_speed
+  duration: round
+  range: close
 ablate_impact:
   buff:
     damage_reduction: physical
@@ -5,7 +69,7 @@ ablate_impact:
   components: nosomatic
   duration: round
   personal_only: true
-ablative_shield:
+ablative_spellshield:
   buff:
     damage_reduction: spell
   casting_time: immediate
@@ -57,16 +121,6 @@ air_walk:
   duration: short
   range: touch
 #align_weapon:
-animal_growth:
-  buffs:
-    - increase_size
-    - attribute: cap5
-  casting_time: full_round_buff
-  duration: short
-  limit: medium radius
-  range: medium
-  limit_affected: creature_type
-  targets: five
 antilife_shell:
   buff: unapproachable
   duration: medium
@@ -282,8 +336,13 @@ cloak_of_chaos:
 cloud_of_bats:
   burst: medium cone
   targets: all
-  condition: dazzled
-  duration: short
+  attack_subeffects:
+    success:
+      condition: impaired
+      duration: short
+    critical_success:
+      condition: severely_impaired
+      duration: short
 color_spray:
   burst: medium cone
   attack_subeffects:
@@ -873,6 +932,16 @@ freedom_personal:
   range: ~
   personal_only: true
   duration: long
+frost_shield:
+  buff: retributive_damage
+  duration: short
+  personal_only: true
+fungal_growth:
+  condition: sickened
+  duration: created
+  breakable: standard_action_by_any
+  range: close
+  misc: 1 # deals damage over time and if improperly removed
 funny_hats:
   burst: large radius
   targets: all
@@ -947,14 +1016,14 @@ haste_lesser:
 haste:
   buffs:
     - double_speed
-    - extra_attack
+    - extra_attack_with_penalty
   duration: short
   range: close
-haste_greater:
+haste_personal:
   buffs:
     - double_speed
-    - extra_attack
-  duration: extreme
+    - extra_attack_with_penalty
+  duration: long
   personal_only: true
 # haste scales too well
 haste_mass:
@@ -1081,6 +1150,11 @@ imprisonment:
       duration: short
 inertial_shield:
   duration: short
+  buff:
+    damage_reduction: physical
+  range: close
+personal_shield:
+  duration: personal_long
   buff:
     damage_reduction: physical
 inflict_critical_wounds:
@@ -1417,10 +1491,9 @@ prohibition:
   trigger_condition: break_prohibition
   trigger_duration: short
 protection_from_alignment:
-  buff: retributive_damage
-  limit_affected: alignment
+  buff:
+    damage_reduction: alignment
   duration: short
-  range: close # of retributive damage
 read_mind:
   attack_subeffects:
     success:
@@ -1496,6 +1569,15 @@ righteous_might:
   casting_time: full_round_buff
   duration: short
   personal_only: true
+rotting_touch:
+  damage: over_time
+rotburst:
+  damage: over_time
+  burst: small radius
+  targets: all
+rotburst_greater:
+  base: rotburst
+  burst: large radius
 scorching_ray:
   range: close
   attack_subeffects:
@@ -1634,6 +1716,11 @@ spiritual_weapon:
   trigger_condition: damage_every_round
   trigger_duration: short
   range: medium
+spore_cloud:
+  burst: medium radius
+  condition: sickened
+  duration: short
+  targets: all
 stinking_cloud:
   zone: medium radius
   duration: short
@@ -1648,6 +1735,7 @@ stoneskin:
   buff:
     damage_reduction: physical
   duration: personal_long
+  range: close
 storm_of_vengeance:
   damage: normal
   burst: colossal radius
@@ -1664,7 +1752,7 @@ stormlord:
 strip_the_flesh:
   range: medium
   dispellable: false
-  breakable: skill_check
+  breakable: standard_skill_check
   attack_subeffects:
     effect:
       damage: normal
@@ -1726,18 +1814,27 @@ time_stop:
   personal_only: true
 totemic_mind:
   buff:
-    attribute: cap5
+    attribute: plus2
   duration: personal_long
   choose_effect: true
+totemic_mind_mass:
+  buff:
+    attribute: plus2
+  duration: short
+  range: medium
+  targets: five
+  misc: -0.5 # giving the same attribute to everyone is less useful
 totemic_mind_greater:
   buff:
-    attribute: cap10
+    attribute: plus4
   duration: personal_long
   choose_effect: true
 totemic_power:
   base: totemic_mind
 totemic_power_greater:
   base: totemic_mind_greater
+totemic_power_mass:
+  base: totemic_mind_mass
 #touch_of_idiocy:
 transmute_flesh_and_stone:
   range: close
@@ -1765,11 +1862,11 @@ true_seeing:
   buff: true_seeing
   duration: short
 true_strike:
-  casting_time: swift
   buff:
     awesome_point: attacks
   duration: round
-  range: close
+  misc: 2 # round duration doesn't significantly reduce power of legend points
+  range: medium
 unholy_blight:
   limit_affected: nonalignment
   range: medium
@@ -1885,3 +1982,17 @@ zephyr_blade_greater:
     - melee_weapon_range
   duration: personal_long
   range: close
+cone_of_nauseated:
+  condition: nauseated
+  duration: short
+  burst: medium cone
+  targets:  all
+excrete_slime:
+  buff: retributive_damage
+  duration: short
+  personal_only: true
+rock_blast:
+  damage: normal
+  burst: medium line
+  targets: all
+  spell_resistance: false

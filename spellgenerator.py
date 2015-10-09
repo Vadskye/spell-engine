@@ -157,6 +157,8 @@ class Spell:
             raise Exception("Spell {0} does not have modifier {1}".format(self.name, modifier_name))
 
     def calculate_level(self, raw = False, ignore_targeting_attributes = False):
+        if self.has_attribute('ignore') and self.get_attribute('ignore'):
+            return ''
         self.assert_valid_attributes()
         self.calculate_modifiers(all_modifiers, ignore_targeting_attributes)
 
@@ -529,7 +531,7 @@ class Spell:
             # remove 'base' so we can tell if there are no more base spells left
             base_spell = spells[spell_attributes.pop('base')]
             for key in base_spell:
-                if key not in spell_attributes:
+                if key not in spell_attributes and key != 'ignore':
                     spell_attributes[key] = base_spell[key]
         # every spell also inherits from the default spell to avoid unnecessary duplication
         default_spell = spells['default_spell']

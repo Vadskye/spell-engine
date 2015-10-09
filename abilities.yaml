@@ -1,3 +1,68 @@
+# ambush attacks don't require a swift action, but require overwhelming
+# these disadvantages are similarly powerful
+ambush:
+  range: close
+  ignore: true
+  casting_time: swift_on_attack
+ambush_lethal:
+  base: ambush
+  attack_subeffects:
+    success:
+      condition: staggered
+      duration: short
+    critical_success:
+      instant_effect: death
+ambush_paralyzing:
+  base: ambush
+  attack_subeffects:
+    success:
+      condition: staggered
+      duration: short
+    critical_success:
+      condition: paralyzed
+      duration: short
+ambush_hamstring:
+  base: ambush
+  condition: half_speed
+  duration: short
+ambush_dazing:
+  base: ambush
+  condition: staggered
+  duration: short
+ambush_confusing:
+  base: ambush
+  attack_subeffects:
+    success:
+      condition: disoriented
+    critical_success:
+      condition: confused
+  duration: short
+ambush_dispelling:
+  base: ambush
+  attack_subeffects:
+    success:
+      instant_effect: dispel
+ambush_immobilizing:
+  base: ambush
+  condition: immobilized
+  duration: short
+invoke_trickery:
+  attack_subeffects:
+    success:
+      condition: disoriented
+      duration: round
+  range: medium
+invoke_damage:
+  damage: normal
+  range: medium
+invoke_war:
+  damage: normal
+  burst: small radius
+  targets: all
+invoke_damage_area:
+  damage: normal
+  burst: medium radius
+  targets: all
 channel_energy:
   damage: normal
   burst: medium radius
@@ -8,8 +73,11 @@ lesser_domain_aspect_chaos:
     success:
       condition: disoriented
   limit_affected: alignment
-  range: close
-  at_will_class_feature: 1
+  range: medium
+lore_resist_energy:
+  buff:
+    damage_reduction: energy_all
+  duration: class_feature
 domain_aspect_chaos:
   buff: retributive_damage
   duration: class_feature
@@ -22,6 +90,48 @@ default_spell:
   casting_time: standard
   dispellable: true
   spell_resistance: true
+smite:
+  range: close # some smites are melee, some smites are ranged
+  ignore: true
+  casting_time: swift_on_attack
+smite_disorienting:
+  base: smite
+  condition: disoriented
+  duration: short
+smite_dispelling:
+  base: smite
+  attack_subeffects:
+    success:
+      instant_effect: dispel
+smite_dispelling_greater:
+  base: smite
+  instant_effect: dispel
+smite_staggering:
+  base: smite
+  attack_subeffects:
+    success:
+      condition: staggered
+      duration: short
+smite_devastating:
+  base: smite
+  damage: normal
+smite_prone:
+  base: smite
+  subeffects:
+    - damage: physical_attack
+    - instant_effect: prone
+smite_suggestion:
+  base: smite
+  limit_affected: mind_affecting
+  attack_subeffects:
+    success:
+      condition: suggestion
+      duration: short
+strike_taunting:
+  casting_time: swift_on_attack
+  condition: taunted
+  duration: short
+  range: close
 taunting_rage:
   attack_subeffects:
     success:

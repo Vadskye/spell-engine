@@ -29,7 +29,7 @@ attack:
   success_only: -3
   failure_only: 3
 breakable:
-  damage_reduction_easy: -2 # like bludgeoning, piercing, slashing, fire
+  damage_reduction_easy: -1 # like bludgeoning, piercing, slashing, fire
   deal_energy_damage: -1 # like wall of fire
   deal_physical_damage: -1 # like crushing hand
   grapple: -1
@@ -37,7 +37,7 @@ breakable:
   if_attack_per_round: -2
   if_damaged: -3
   maze: -1
-  skill_check: -3
+  standard_skill_check: -3
   leave_area: -6
   leave_area_impeded: -3  # if the effect prevents you from leaving its area
   leave_area_lingering: -2 # if the effect lingers after leaving the area
@@ -64,21 +64,22 @@ buffs:
     medium: 0
   # attributes
   all_attributes:
-    cap5: 8
-    cap10: 15
+    plus2: 8
+    plus4: 15
   attribute:
-    cap5: 2
-    cap10: 5
+    plus2: 2
+    plus4: 5
   physical_attributes:
-    cap5: 5
-    cap10: 10
+    plus2: 5
+    plus4: 10
   mental_attributes:
-    cap5: 5
-    cap10: 10
+    plus2: 5
+    plus4: 10
   # attacks
   alter_weapon: 1
   aqueous_blade: 3
-  extra_attack: 3 # at -5 attack bonus
+  extra_attack: 5
+  extra_attack_with_penalty: 3 # at -5 attack bonus
   flame_blade: 3
   increase_size: 5
   increase_weapon_size: 2
@@ -92,12 +93,15 @@ buffs:
     energy_all: 3
     energy_single: 1
     physical_half: 2
-    physical: 4
+    physical: 3
     spell: 2
+    alignment: 4
+    all: 4
   delay_damage: 4
   half_miss_all: 6
   half_miss_physical: 4
   half_miss_ranged: 2
+  cover_miss_physical: 2
   immune:
     construct: 9
     death: 1
@@ -109,9 +113,12 @@ buffs:
     regeneration: 5
     unaware: 3
     underwater: 1
+  low_light_vision: 1
   mage_armor: 2
   shield_of_faith: 2
   retributive_damage: 4
+  scent: 3
+  skill: 0.5
   share_pain: 3
   spell_resistance_limited: 2
   spell_resistance: 4
@@ -131,9 +138,11 @@ buffs:
   gaseous_form: 6
   glide: 2
   hide_attack_effects: 1
+  increase_overwhelm: 3
   invisible: 9
   levitation: 4
   lifesight: 6
+  natural_weapon: 1
   radiate_light: 0
   see_invisibility: 2
   telepathy: 5
@@ -154,6 +163,8 @@ casting_time:
   immediate: 6
   standard: 0
   swift: 4
+  # the casting time is somewhat offset by the double roll
+  swift_on_attack: 2
 choose_effect:
   true: 1
   false: 0
@@ -203,7 +214,7 @@ conditions:
   no_action: 17
   no_violence: 14
   out_of_battle: 11
-  paralyzed: 20
+  paralyzed: 18
   partially_blinded: 5
   panicked: 14
   require_concentration: 2
@@ -213,7 +224,7 @@ conditions:
   silenced: 5
   slowed: 8 # as staggered
   staggered: 8
-  stunned: 17 # as dazed + 1
+  stunned: 17
   stasis: 11 # assuming immunity - equivalent to out_of_battle
   suggestion: 11
   take_double_damage: 8
@@ -224,10 +235,12 @@ conditions:
 conditional:
   half: -3
 damage:
+  physical_attack: 1
   fast_healing: 6
   healing: 4
   normal: 4
   kill_at_zero: 9
+  over_time: 6
   weak: 2
   critical_overbleed:
     10: 5
@@ -271,6 +284,7 @@ duration:
     # 'personal_only' is redundant with being a class feature, so increase
     # the cost
     class_feature: 4
+    activated_class_feature: 3
   nonpersonal_buff:
     round: -3
     concentration: -2
@@ -285,6 +299,7 @@ duration:
     permanent: 12
     # match cost of long duration personal-only buff
     class_feature: 3
+    activated_class_feature: 2
   noncombat_buff:
     concentration: -2
     short: 0
@@ -297,6 +312,7 @@ duration:
     year: 9
     permanent: 11
     class_feature: 3
+    activated_class_feature: 2
   trigger:
     concentration: -1
     short: 0
