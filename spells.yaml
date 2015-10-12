@@ -16,8 +16,10 @@ _cantrip_disorient:
   attack_subeffects:
     success:
       condition: disoriented
-      duration: short
+    critical_success:
+      condition: confused
   range: close
+  duration: round
 _cantrip_damage_reduction:
   breakable: damage_reduction_easy
   buff:
@@ -36,10 +38,10 @@ _cantrip_daze:
       condition: dazed
   duration: round
 _cantrip_damage:
-  damage: weak
+  damage: cantrip
   range: close
 _cantrip_drain_life:
-  damage: weak
+  damage: cantrip
   misc: 1 # really weak life drain
 _cantrip_exhaustion:
   attack_subeffects:
@@ -183,19 +185,19 @@ barkskin:
     damage_reduction: physical
   duration: personal_long
 black_tentacles:
-  duration: concentration
+  duration: short
   attack_subeffects:
     effect:
       subeffects:
-        - damage: normal
+        - damage: physical_attack
         - condition: half_speed
     critical_success:
       subeffects:
-        - condition: grappled
+        - condition: immobilized
   breakable: leave_area_impeded
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: concentration
+  trigger_condition: every_round
+  trigger_duration: short
   targets: all
   zone: medium radius
 blade_barrier:
@@ -484,7 +486,7 @@ death_knell:
     success:
       condition: die_at_zero
       duration: short
-  range: close
+  range: medium
   #missing buff at 0 HP
 death_ward:
   buffs:
@@ -531,7 +533,7 @@ delayed_blast_fireball:
   range: medium
   targets: all
 destruction:
-  range: close
+  range: medium
   attack_subeffects:
     noncritical_effect:
       damage: normal
@@ -659,7 +661,7 @@ drain_life:
     - buff: temporary_hp
       duration: short
       personal_only: true
-  range: close
+  range: medium
 earths_pull:
   attack_subeffects:
     success:
@@ -813,7 +815,7 @@ feeblemind:
   limit_affected: mind_affecting
   range: close
 finger_of_death:
-  range: close
+  range: medium
   attack_subeffects:
     noncritical_effect:
       damage: normal
@@ -1005,10 +1007,7 @@ harm:
   range: medium
   attack_subeffects:
     effect:
-      damage:
-        critical_overbleed: 2
-    critical_success:
-      instant_effect: negative_levels
+      damage: kill_at_zero
 haste_lesser:
   buff: double_speed
   duration: short
@@ -1118,8 +1117,9 @@ ice_storm:
     - condition: grease
       duration: short
       breakable: leave_area_impeded
+      misc: 1 # min level 1
 implosion:
-  range: close
+  range: medium
   attack_subeffects:
     noncritical_effect:
       damage: normal
@@ -1665,11 +1665,12 @@ sleep:
   attack_subeffects:
     critical_success:
       condition: exhausted
-      duration: short
+      duration: medium
+      misc: 1 # for the compulsion to sleep
     success:
       condition: fatigued
-      duration: short
-  misc: 2 # for the compulsion to sleep
+      duration: medium
+      misc: 1 # for the compulsion to sleep
 sleep_mass:
   base: sleep
   limit: medium radius
@@ -1750,15 +1751,12 @@ stormlord:
   duration: short
   range: long
 strip_the_flesh:
-  range: medium
+  range: close
   dispellable: false
   breakable: standard_skill_check
   attack_subeffects:
     effect:
       damage: normal
-    critical_success:
-      condition: take_double_damage
-      duration: year
     success:
       condition: take_double_damage
       duration: short
@@ -1969,7 +1967,7 @@ windstrike:
     - damage: normal
     - instant_effect: shove_weak
 windstrike_greater:
-  range: long
+  range: extreme
   subeffects:
     - damage: normal
     - instant_effect: shove_strong

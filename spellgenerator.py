@@ -176,7 +176,7 @@ class Spell:
         if raw:
             return level
         else:
-            return level - 5
+            return level - 4
 
     def calculate_modifiers(self, all_modifiers, ignore_targeting_attributes = False):
         self.modifiers = dict()

@@ -2,33 +2,36 @@ _cantrip_blur: -2
 _cantrip_damage: -2
 _cantrip_damage_reduction: -2
 _cantrip_daze: -2
-_cantrip_disorient: 1
+_cantrip_disorient: -1
 _cantrip_drain_life: -2
-_cantrip_exhaustion: -2
-#Warning: Spell _cantrip_fear has success subeffect with level 0, which may be too weak
-_cantrip_fear: -2
+#Warning: Spell _cantrip_exhaustion has success subeffect with level 0, which may be too weak
+#Warning: Spell _cantrip_exhaustion has crit success subeffect with level -2, which may be too weak
+_cantrip_exhaustion: -1
+#Warning: Spell _cantrip_fear has success subeffect with level -1, which may be too weak
+#Warning: Spell _cantrip_fear has crit success subeffect with level -2, which may be too weak
+_cantrip_fear: -1
 _cantrip_flare: -1
 _cantrip_precognition: -2
-#Warning: Spell _cantrip_slow.subspell has nonpositive raw level 0, which is usually bad
-_cantrip_slow: -1
+#Warning: Spell _cantrip_slow.subspell has nonpositive raw level -1, which is usually bad
+#Warning: Spell _cantrip_slow has failure subeffect with level 1, which may be too strong
+_cantrip_slow: 0
 ablate_impact: 4
 ablative_spellshield: 3
 acid_arrow: 2
-acid_arrow_greater: 6
-acid_fog: 7
+acid_arrow_greater: 5
+acid_fog: 6
 agony: 2
 aid: 2
 air_walk: 4
 antilife_shell: 7
 antimagic_field: 7
 aqueous_blade: 2
-assimilate: 11
+assimilate: 10
 aversion: 3
 bane: 1
 bane_mass: 5
 banishment: 5
 barkskin: 1
-#Warning: Spell black_tentacles has crit success subeffect with level 1, which may be too strong
 black_tentacles: 5
 blade_barrier: 4
 blasphemy: 6
@@ -36,8 +39,8 @@ bless: 1
 bless_mass: 4
 blur: 3
 burning_hands: 1
-call_lightning: 4
-call_lightning_greater: 8
+call_lightning: 3
+call_lightning_greater: 6
 calm_emotions: 3
 certain_blind: 11
 certain_daze: 5
@@ -48,24 +51,25 @@ charm_monster: 4
 charm_monster_mass: 8
 charm_person: 2
 charm_person_mass: 6
-clenched_fist: 8
+clenched_fist: 6
 cloak_of_chaos: 8
 cloak_of_single_chaos: 5
 cloud_of_bats: 1
 color_spray: 1
 command: 1
 command_mass: 4
-cone_of_cold: 4
-cone_of_cold_greater: 7
+cone_of_cold: 3
+cone_of_cold_greater: 6
 cone_of_nauseated: 15
 confusion: 3
 confusion_mass: 6
+#Warning: Spell cripple has crit success subeffect with level 1, which may be too strong
 cripple: 7
-#Warning: Spell crushing_hand has crit success subeffect with level 2, which may be too strong
-crushing_hand: 10
+#Warning: Spell crushing_hand has crit success subeffect with level 1, which may be too strong
+crushing_hand: 7
 cure_light_wounds: 1
 cure_light_wounds_mass: 5
-curse_of_blood_and_bone: 3
+curse_of_blood_and_bone: 2
 curse_of_enfeeblement: 4.0
 curse_of_the_wayward_mind: 8.0
 darkvision: 2
@@ -90,8 +94,8 @@ discordant_song: 8
 disintegrate: 6
 dismissal: 2
 dismissal_mass: 5
-dispel_magic: 2
-dispel_magic_greater: 6
+dispel_magic: 3
+dispel_magic_greater: 7
 displacement: 3
 divine_favor: 1
 divine_favor_greater: 5
@@ -103,7 +107,7 @@ earthquake: 8
 earths_pull: 1
 earthspike: 1
 earthspike_mass: 4
-energy_conversion: 9
+energy_conversion: 8
 enervation: 4
 enervation_greater: 8
 enlarge_monster: 4.0
@@ -116,14 +120,14 @@ entropic_shield: 1
 ethereal_jaunt: 6
 etherealness: 10
 excrete_slime: 1
-eyebite: 4
+eyebite: 3
 faerie_fire: 2
 fear: 2
 fear_mass: 6
 feather_fall: 0.5
 feeblemind: 8
 finger_of_death: 7
-fire_seeds: 6
+fire_seeds: 5
 fire_shield: 3
 fire_storm: 9
 fireball: 3
@@ -143,23 +147,24 @@ freedom_mass: 6.5
 freedom_personal: 4
 frost_shield: 1
 fungal_growth: 2
-funny_hats: 1
+funny_hats: 2
 gaseous_form: 5
 gentle_descent: 1
 gentle_descent_mass: 4.5
 ghoul_touch: 2
 glitterdust: 2
-grasping_hand: 12
+grasping_hand: 10
 #Warning: Spell grease has success subeffect with level -1, which may be too weak
+#Warning: Spell grease.subspell has nonpositive raw level 0, which is usually bad
 grease: 1
 gust_of_wind: 2
-harm: 5
+harm: 6
 haste: 5
 haste_lesser: 2
 haste_mass: 8.5
 haste_personal: 6
 heal: 6
-heat_metal: 2
+heat_metal: 1
 heroism: 4
 heroism_mass: 7.5
 hold_monster: 4
@@ -174,7 +179,8 @@ hypnotic_pattern: 2
 hypnotic_pattern_greater: 6
 ice_storm: 4
 implosion: 9
-imprisonment: 8
+#Warning: Spell imprisonment has crit success subeffect with level 1.0, which may be too strong
+imprisonment: 8.0
 inertial_shield: 2
 inflict_critical_wounds: 4
 inflict_critical_wounds_mass: 7
@@ -182,7 +188,7 @@ interposing_hand: 0
 invisibility: 3
 invisibility_greater: 6
 invisibility_mass: 6.5
-iron_body: 7.5
+iron_body: 8.0
 #Warning: Spell irresistible_dance has failure subeffect with level -3, which may be too weak
 irresistible_dance: 10
 levitate: 3.5
@@ -192,10 +198,10 @@ link_vitality: 3
 link_vitality_mass: 4
 locate_creature: 3
 locate_entity: 4
-locate_object: 1
+locate_object: 2
 longstrider: 1
 mage_armor: 1
-mages_disjunction: 9
+mages_disjunction: 10
 magic_circle_against_alignment: 5
 magic_missile: 1
 maze: 8
@@ -211,7 +217,7 @@ personal_shield: 2
 phantasmal_killer: 4
 #Warning: Spell phantasmal_killer_mass has crit success subeffect with level 2, which may be too strong
 phantasmal_killer_mass: 8
-polar_ray: 6
+polar_ray: 5
 #Warning: Spell power_word_blind has failure subeffect with level -3, which may be too weak
 power_word_blind: 9
 power_word_confuse: 8
@@ -225,14 +231,14 @@ precognition_greater: 9
 precognition_lesser: 1
 prismatic_beam: 3
 prismatic_blue: 3
-prismatic_green: 4
+prismatic_green: 3
 prismatic_indigo: 6
 prismatic_orange: 6
-prismatic_red: 4
+prismatic_red: 3
 prismatic_spray: 6
 prismatic_storm: 9
 prismatic_wall: 5
-prismatic_yellow: 4
+prismatic_yellow: 3
 prohibition: 6
 protection_from_alignment: 2
 read_mind: 2
@@ -240,7 +246,7 @@ read_mind_greater: 6
 read_mind_mass: 5
 reduce_person: 1.0
 reduce_person_mass: 4.0
-regeneration: 7
+regeneration: 6
 regeneration_lesser: 1
 repulsion: 5
 resist_energy: 1
@@ -254,8 +260,8 @@ rock_blast: 2
 rotburst: 3
 rotburst_greater: 7
 rotting_touch: 1
-scorching_ray: 3
-searing_light: 3
+scorching_ray: 2
+searing_light: 2
 see_invisibility: 1
 see_invisibility_mass: 5.5
 shadow_umbra: 6
@@ -263,7 +269,9 @@ share_pain: 2
 shield_of_faith: 1
 shillelagh: 1
 shocking_grasp: 1
+#Warning: Spell shout has success subeffect with level 0, which may be too weak
 shout: 3
+#Warning: Spell shout_greater has success subeffect with level 0, which may be too weak
 shout_greater: 6
 silence: 2
 silence_mass: 5
@@ -291,14 +299,14 @@ telepathy: 5
 #Warning: Spell temporal_stasis has failure subeffect with level -3, which may be too weak
 temporal_stasis: 7
 time_stop: 9
-timestream: 5
+timestream: 3
 totemic_mind: 2
 totemic_mind_greater: 5
 totemic_mind_mass: 4.0
 totemic_power: 2
 totemic_power_greater: 5
 totemic_power_mass: 4.0
-transmute_flesh_and_stone: 6
+transmute_flesh_and_stone: 5
 tremorsense: 1
 true_seeing: 7
 true_strike: 0.5
@@ -309,8 +317,8 @@ wail_of_the_banshee: 9
 wall_of_fire: 2
 wall_of_fire_greater: 5
 wall_of_force: 6
-wall_of_thorns: 3
-wall_of_thorns_greater: 6
+wall_of_thorns: 2
+wall_of_thorns_greater: 5
 water_walk: 3
 waves_of_fatigue: 4
 #Warning: Spell waves_of_fatigue_greater has failure subeffect with level 1, which may be too strong

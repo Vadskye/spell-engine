@@ -47,7 +47,7 @@ breakable:
   violent_action_by_any: -6
 buffs:
   # all buff spells have a base cost
-  base: 3
+  base: 2
   # these modifiers all added on to the base cost
   # some are combined because they don't fully stack, 
   # such as boosting both physical and special attacks
@@ -172,7 +172,7 @@ components:
   nosomatic: 1
   noverbal: 1
 conditions:
-  base: 1
+  base: 0
   penalties:
     attribute: 5
   antimagic: 9
@@ -227,7 +227,7 @@ conditions:
   stunned: 17
   stasis: 11 # assuming immunity - equivalent to out_of_battle
   suggestion: 11
-  take_double_damage: 8
+  take_double_damage: 11
   take_double_damage_once: 2
   taunted: 5
   underwater_penalties: 5
@@ -236,17 +236,17 @@ conditional:
   half: -3
 damage:
   physical_attack: 1
-  fast_healing: 6
-  healing: 4
-  normal: 4
-  kill_at_zero: 9
-  over_time: 6
-  weak: 2
+  fast_healing: 5
+  healing: 3
+  normal: 3
+  kill_at_zero: 8
+  over_time: 5
+  cantrip: 1
   critical_overbleed:
-    10: 5
-    5: 6
-    2: 7
-    full: 8
+    10: 4
+    5: 5
+    2: 6
+    full: 7
 # just used with delayed blast fireball for now
 # maybe separate modifiers for being visibly avoidable (1) or not (2)?
 delayable:
@@ -314,7 +314,7 @@ duration:
     class_feature: 3
     activated_class_feature: 2
   trigger:
-    concentration: -1
+    concentration: 0 # part of "standard action by you"
     short: 0
     medium: 1 # x10
     long: 1.5 # x6
@@ -324,15 +324,15 @@ duration:
     year: 4 # x12
     permanent: 6 # x???
 instant_effect:
-  banishment: 15
-  death: 18
+  banishment: 14
+  death: 17
   dispel: 7
-  negative_levels: 8 # one negative level per two spell levels
-  full_negative_levels: 15 # one negative level per spell level
+  negative_levels: 7 # one negative level per two spell levels
+  full_negative_levels: 14 # one negative level per spell level
   nothing: 0
   shove_weak: 1
-  shove_strong: 3
-  prismatic: 6
+  shove_strong: 2
+  prismatic: 5
   prone: 2
   remove_conditions:
     heal: 3 
@@ -341,13 +341,13 @@ expended:
   five: -2 # or other values between single_use and caster level
   caster_level: -1
 knowledge:
-  alignment: 4
-  creature_or_object_location: 5
-  creature_location: 4
+  alignment: 3
+  creature_or_object_location: 4
+  creature_location: 3
   object_location: 2
-  lies: 6
-  thoughts: 8
-  vulnerabilities: 2
+  lies: 5
+  thoughts: 7
+  vulnerabilities: 1
 limit_affected:
   normal:
     alignment: -2
@@ -405,12 +405,15 @@ targets:
   two: 2
   automatically_find_one: 3
 teleport: 
-  normal: 4
-  unrestricted: 6
+  normal: 3
+  unrestricted: 5
 trigger_condition:
-  every_round: 6 #requires duration
+  every_round: 4 # requires duration, assumes effects don't stack
+  every_round_stacking: 6 # requires duration
   damage_every_round: 2 # cost shouldn't stack with damage, since damage is reduced
+  # damage_every_round has unique damage scaling; if inescapable, it's
+  # spellpower. If AOE escapable, there is a -1 die size penalty.
   enter_zone: 1
   break_prohibition: 1
-  standard_action_by_any: 4
-  standard_action_by_you: 3
+  standard_action_by_any: 3
+  standard_action_by_you: 2
