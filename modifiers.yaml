@@ -49,7 +49,7 @@ buffs:
   # all buff spells have a base cost
   base: 2
   # these modifiers all added on to the base cost
-  # some are combined because they don't fully stack, 
+  # some are combined because they don't fully stack,
   # such as boosting both physical and special attacks
   # but bonuses which fully stack, such as physical attacks and defenses,
   # should not be combined
@@ -204,7 +204,7 @@ conditions:
   half_speed: 2
   quarter_speed: 5
   ignited: 5 # impaired + d6 / round, but removable
-  immobilized: 8
+  immobilized: 11
   impassable: 5
   impaired: 5
   limited_action: 14
@@ -228,10 +228,10 @@ conditions:
   stasis: 11 # assuming immunity - equivalent to out_of_battle
   suggestion: 11
   take_double_damage: 11
-  take_double_damage_once: 2
+  take_double_damage_once: 5
   taunted: 5
   underwater_penalties: 5
-# if the spell or effect 
+# if the spell or effect
 conditional:
   half: -3
 damage:
@@ -335,7 +335,7 @@ instant_effect:
   prismatic: 5
   prone: 2
   remove_conditions:
-    heal: 3 
+    heal: 3
 expended:
   single_use: -3
   five: -2 # or other values between single_use and caster level
@@ -351,7 +351,7 @@ knowledge:
 limit_affected:
   normal:
     alignment: -2
-    creature_type: -3
+    creature_type: -2
     falling: -4
     language: -2
     max_size_large: -1
@@ -404,7 +404,7 @@ targets:
   five: 3
   two: 2
   automatically_find_one: 3
-teleport: 
+teleport:
   normal: 3
   unrestricted: 5
 trigger_condition:

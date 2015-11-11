@@ -32,6 +32,7 @@ bane: 1
 bane_mass: 5
 banishment: 5
 barkskin: 2
+#Warning: Spell black_tentacles has crit success subeffect with level 1, which may be too strong
 black_tentacles: 5
 blade_barrier: 4
 blasphemy: 6
@@ -50,7 +51,7 @@ chaos_hammer: 3
 charm_monster: 4
 charm_monster_mass: 8
 charm_person: 2
-charm_person_mass: 6
+charm_person_mass: 7
 clenched_fist: 6
 cloak_of_chaos: 8
 cloak_of_single_chaos: 5
@@ -99,11 +100,11 @@ dispel_magic_greater: 7
 displacement: 3
 divine_favor: 1
 divine_favor_greater: 5
-dominate_monster: 7
-dominate_person: 5
+dominate_monster: 9
+dominate_person: 7
 drain_life: 3
 earth_glide: 4
-earthquake: 8
+earthquake: 9
 earths_pull: 1
 earthspike: 1
 earthspike_mass: 4
@@ -167,10 +168,10 @@ heal: 6
 heat_metal: 1
 heroism: 4
 heroism_mass: 7.5
-hold_monster: 4
-hold_monster_mass: 8
-hold_person: 2
-hold_person_mass: 6
+hold_monster: 5
+hold_monster_mass: 9
+hold_person: 3
+hold_person_mass: 7
 holy_aura: 8
 holy_smite: 3
 holy_word: 6
@@ -324,7 +325,8 @@ waves_of_fatigue: 4
 #Warning: Spell waves_of_fatigue_greater has failure subeffect with level 1, which may be too strong
 waves_of_fatigue_greater: 7
 waves_of_fatigue_lesser: 1
-web: 4
+#Warning: Spell web has failure subeffect with level -3, which may be too weak
+web: 8
 windstrike: 2
 windstrike_greater: 5
 zephyr_blade: 1

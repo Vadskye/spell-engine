@@ -184,17 +184,19 @@ barkskin:
   buff:
     damage_reduction: physical
   duration: personal_long
+  range: close
 black_tentacles:
   duration: short
   attack_subeffects:
     effect:
       subeffects:
-        - damage: physical_attack
+        - damage: normal
         - condition: half_speed
     critical_success:
       subeffects:
         - condition: immobilized
-  breakable: leave_area_impeded
+          breakable: grapple
+  breakable: leave_area
   triggered: true
   trigger_condition: every_round
   trigger_duration: short
@@ -291,6 +293,7 @@ chaos_hammer:
 charm_monster:
   base: charm_person
   limit_affected: mind_affecting
+  range: medium
 charm_monster_mass:
   base: charm_monster
   limit: large radius
@@ -299,7 +302,7 @@ charm_monster_mass:
 charm_person:
   components: noverbal
   limit_affected: creature_type
-  range: medium
+  range: close
   attack_subeffects:
     success:
       condition: charmed
@@ -512,7 +515,7 @@ deep_slumber:
   limit_affected: mind_affecting
   range: medium
 deflection:
-  buffs: 
+  buffs:
     - awesome_point: defenses
     - awesome_point_regeneration: short
   duration: long
@@ -586,7 +589,7 @@ discern_lies:
 discern_vulnerability:
   casting_time: swift
   range: medium
-  knowledge: vulnerabilities 
+  knowledge: vulnerabilities
 discordant_song:
   burst: medium radius
   range: medium
@@ -641,6 +644,7 @@ divine_favor_greater:
   duration: long
   personal_only: true
 dominate_person:
+  range: close
   attack_subeffects:
     critical_success:
       condition: dominated
@@ -654,6 +658,7 @@ dominate_person:
   limit_affected: creature_type
 dominate_monster:
   base: dominate_person
+  range: medium
   limit_affected: mind_affecting
 drain_life:
   subeffects:
@@ -661,11 +666,12 @@ drain_life:
     - buff: temporary_hp
       duration: short
       personal_only: true
+      no_prebuff: true
   range: medium
 earths_pull:
   attack_subeffects:
     success:
-      condition: immobilized
+      condition: slowed
     failure:
       condition: half_speed
   duration: short
@@ -677,7 +683,7 @@ earth_glide:
   duration: short
 earthquake:
   targets: all
-  zone: large radius
+  zone: medium radius
   attack_subeffects:
     effect:
       instant_effect: prone
@@ -736,7 +742,7 @@ enlarge_person_mass:
 entangle:
   attack_subeffects:
     success:
-      condition: immobilized
+      condition: slowed
     failure:
       condition: half_speed
   duration: short
@@ -1032,7 +1038,7 @@ haste_mass:
 heal:
   range: close
   subeffects:
-    - damage: 
+    - damage:
         critical_overbleed: 2
     - instant_effect:
         remove_conditions: heal
@@ -1059,14 +1065,19 @@ heroism_mass:
 hold_monster:
   base: hold_person
   limit_affected: mind_affecting
+  range: medium
 hold_monster_mass:
   base: hold_monster
-  range: medium
+  range: long
   targets: five
 hold_person:
   range: close
   limit_affected: creature_type
-  condition: immobilized
+  attack_subeffects:
+    success:
+      condition: immobilized
+    failure:
+      condition: quarter_speed
   duration: short
 hold_person_mass:
   base: hold_person
@@ -1310,7 +1321,7 @@ orders_wrath:
     effect:
       damage: normal
     critical_success:
-      condition: immobilized
+      condition: slowed
       duration: short
   burst: small radius
   targets: all
@@ -1391,7 +1402,7 @@ power_word_stun:
   range: close
   attack_subeffects:
     success:
-      conditions: 
+      conditions:
         - dazed
         - half_speed
       duration: short
@@ -1559,7 +1570,9 @@ revelation_of_prowess:
 reverse_gravity:
   zone: medium cylinder
   duration: concentration
-  condition: immobilized
+  attack_subeffects:
+    success:
+      condition: immobilized
   targets: all
   range: medium
 righteous_might:
@@ -1607,7 +1620,7 @@ see_invisibility_mass:
 shadow_umbra:
   duration: short
   range: close
-  buffs: 
+  buffs:
     - half_miss_all
     - hide_attack_effects
 share_pain:
@@ -1919,7 +1932,7 @@ wall_of_thorns:
   duration: short
   range: medium
   targets: all
-  subeffects: 
+  subeffects:
     - damage: normal
       triggered: true
       trigger_condition: enter_zone
@@ -1961,6 +1974,9 @@ web:
       condition: immobilized
     failure:
       condition: half_speed
+  misc: -2 # between two opposing sides
+  misc: -1 # webs are easy to destroy
+  range: medium
 windstrike:
   range: medium
   subeffects:
