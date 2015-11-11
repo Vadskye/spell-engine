@@ -20,7 +20,7 @@ ablative_spellshield: 3
 acid_arrow: 2
 acid_arrow_greater: 5
 acid_fog: 6
-agony: 2
+agony: 5
 aid: 2
 air_walk: 4
 antilife_shell: 7
@@ -31,7 +31,7 @@ aversion: 3
 bane: 1
 bane_mass: 5
 banishment: 5
-barkskin: 1
+barkskin: 2
 black_tentacles: 5
 blade_barrier: 4
 blasphemy: 6
@@ -101,7 +101,7 @@ divine_favor: 1
 divine_favor_greater: 5
 dominate_monster: 7
 dominate_person: 5
-drain_life: 5
+drain_life: 3
 earth_glide: 4
 earthquake: 8
 earths_pull: 1
