@@ -15,8 +15,8 @@ _cantrip_precognition: -2
 #Warning: Spell _cantrip_slow.subspell has nonpositive raw level -1, which is usually bad
 #Warning: Spell _cantrip_slow has failure subeffect with level 1, which may be too strong
 _cantrip_slow: 0
-ablate_impact: 4
-ablative_spellshield: 3
+ablate_impact: 2
+ablative_spellshield: 1
 acid_arrow: 2
 acid_arrow_greater: 5
 acid_fog: 6
@@ -108,7 +108,7 @@ earthquake: 9
 earths_pull: 1
 earthspike: 1
 earthspike_mass: 4
-energy_conversion: 8
+energy_conversion: 7
 enervation: 4
 enervation_greater: 8
 enlarge_monster: 4.0
@@ -122,14 +122,15 @@ ethereal_jaunt: 6
 etherealness: 10
 excrete_slime: 1
 eyebite: 3
-faerie_fire: 2
+faerie_fire: 1
 fear: 2
 fear_mass: 6
 feather_fall: 0.5
 feeblemind: 8
 finger_of_death: 7
 fire_seeds: 5
-fire_shield: 3
+fire_shield: 4
+fire_shield_long: 5
 fire_storm: 9
 fireball: 3
 flame_blade: 2
@@ -153,7 +154,8 @@ gaseous_form: 5
 gentle_descent: 1
 gentle_descent_mass: 4.5
 ghoul_touch: 2
-glitterdust: 2
+glitterdust: 3
+glitterdust_alt: 2
 grasping_hand: 10
 #Warning: Spell grease has success subeffect with level -1, which may be too weak
 #Warning: Spell grease.subspell has nonpositive raw level 0, which is usually bad
@@ -189,6 +191,7 @@ interposing_hand: 0
 invisibility: 3
 invisibility_greater: 6
 invisibility_mass: 6.5
+invulnerability_lesser: 4
 iron_body: 8.0
 #Warning: Spell irresistible_dance has failure subeffect with level -3, which may be too weak
 irresistible_dance: 10
@@ -205,13 +208,15 @@ mage_armor: 1
 mages_disjunction: 10
 magic_circle_against_alignment: 5
 magic_missile: 1
+mark_of_tracking: 2
 maze: 8
 #Warning: Spell meteor_swarm has success subeffect with level -1, which may be too weak
 meteor_swarm: 9
 missile_storm: 4
 missile_storm_greater: 8
-moment_of_prescience: 4
-moment_of_prescience_greater: 8
+moment_of_prescience: 2
+moment_of_prescience_greater: 6
+nondetection: 5
 orders_wrath: 3
 personal_shield: 2
 #Warning: Spell phantasmal_killer has crit success subeffect with level 2, which may be too strong
@@ -242,6 +247,7 @@ prismatic_wall: 5
 prismatic_yellow: 3
 prohibition: 6
 protection_from_alignment: 2
+radiant_lance: 1
 read_mind: 2
 read_mind_greater: 6
 read_mind_mass: 5
@@ -251,7 +257,6 @@ regeneration: 6
 regeneration_lesser: 1
 repulsion: 5
 resist_energy: 1
-resist_energy_greater: 3
 retributive_shield: 4
 revelation_of_destruction: 8
 revelation_of_prowess: 7
@@ -310,7 +315,7 @@ totemic_power_mass: 4.0
 transmute_flesh_and_stone: 5
 tremorsense: 1
 true_seeing: 7
-true_strike: 0.5
+true_strike: 1.5
 unholy_blight: 3
 unliving_eyes: 5
 unliving_heart: 1
@@ -331,3 +336,5 @@ windstrike: 2
 windstrike_greater: 5
 zephyr_blade: 1
 zephyr_blade_greater: 4
+zoom_zoom: 3
+
