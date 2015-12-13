@@ -46,6 +46,13 @@ ambush_immobilizing:
   base: ambush
   condition: immobilized
   duration: short
+boots_of_swift_passage:
+  teleport:
+    range: close
+  casting_time: move
+bracers_of_repulsion:
+  casting_time: immediate
+  instant_effect: shove_strong
 invoke_trickery:
   attack_subeffects:
     success:
@@ -90,6 +97,19 @@ default_spell:
   casting_time: standard
   dispellable: true
   spell_resistance: true
+greatreach_bracers:
+  casting_time: swift
+  duration: round
+  buff: weapon_reach
+heroic_recovery:
+  casting_time: immediate
+  damage: healing
+  misc: -2 # heroic: only works on a 20
+heroic_vengeance:
+  range: medium
+  casting_time: immediate
+  damage: normal
+  misc: -2 # heroic: only works on a 20
 smite:
   range: close # some smites are melee, some smites are ranged
   ignore: true
@@ -127,6 +147,12 @@ smite_suggestion:
     success:
       condition: suggestion
       duration: short
+strike_immobilizing:
+  casting_time: swift_on_attack
+  attack_subeffects:
+    success:
+      condition: immobilized
+      duration: short
 strike_taunting:
   casting_time: swift_on_attack
   condition: taunted
@@ -154,3 +180,16 @@ terrifying_rage:
 terrifying_rage_improved:
   base: terrifying_rage
   targets: five
+wild_aspect_climb:
+  buff: climb_speed
+  duration: class_feature
+wild_aspect_grow:
+  buff: increase_size
+  duration: class_feature
+wild_aspect_weapon:
+  buff: natural_weapon
+  duration: class_feature
+wild_aspect_swiftstrike:
+  buff: extra_attack
+  misc: -1 # must be with natural weapon
+  duration: class_feature
