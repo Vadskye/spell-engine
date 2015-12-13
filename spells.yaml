@@ -848,8 +848,14 @@ fire_shield:
     - retributive_damage
     - radiate_light
   duration: short
-  personal_only: true
   range: close # of the retributive damage
+fire_shield_long:
+  buffs:
+    - damage_reduction: energy_single
+    - retributive_damage
+    - radiate_light
+  duration: long
+  personal_only: true
 fire_storm:
   range: medium
   burst: large radius
@@ -979,9 +985,21 @@ ghoul_touch:
 glitterdust:
   condition: faerie_fire
   duration: short
-  burst: small radius
+  burst: medium radius
   range: medium
   targets: all
+  spell_resistance: false
+  breakable: deal_energy_damage
+glitterdust_alt:
+  range: medium
+  attack_subeffects:
+    effect:
+      condition: faerie_fire
+    success:
+      condition: partially_blinded
+    critical_success:
+      condition: severely_impaired
+  duration: short
   spell_resistance: false
   breakable: deal_energy_damage
 grasping_hand:
@@ -1164,6 +1182,11 @@ inertial_shield:
   buff:
     damage_reduction: physical
   range: close
+invulnerability_lesser:
+  duration: long
+  buff:
+    damage_reduction: all
+  personal_only: true
 personal_shield:
   duration: personal_long
   buff:
@@ -1275,6 +1298,12 @@ magic_circle_against_alignment:
 magic_missile:
   damage: normal
   range: medium
+mark_of_tracking:
+  knowledge: creature_or_object_location
+  # long duration is +2
+  # but having to target the creature offsets this by about 2
+  # so skip both
+  range: medium
 #magic_vestment:
 ##magic_weapon
 #major_image
@@ -1314,6 +1343,10 @@ moment_of_prescience_greater:
   duration: round
   personal_only: true
   casting_time: immediate
+nondetection:
+  buff: spell_resistance_limited
+  duration: extreme
+  noncombat_buff: true
 orders_wrath:
   limit_affected: nonalignment
   range: medium
@@ -1875,8 +1908,7 @@ true_seeing:
 true_strike:
   buff:
     awesome_point: attacks
-  duration: round
-  misc: 2 # round duration doesn't significantly reduce power of legend points
+  duration: short
   range: medium
 unholy_blight:
   limit_affected: nonalignment
@@ -1937,7 +1969,7 @@ wall_of_thorns:
       triggered: true
       trigger_condition: enter_zone
       trigger_duration: short
-    - condition: half_speed
+    - condition: quarter_speed
 wall_of_thorns_greater:
   base: wall_of_thorns
   zone: huge wall
@@ -2010,3 +2042,13 @@ rock_blast:
   burst: medium line
   targets: all
   spell_resistance: false
+zoom_zoom:
+  buff: double_speed
+  duration: long
+  personal_only: true
+radiant_lance:
+  subeffects:
+    - damage: normal
+    - condition: faerie_fire
+      duration: short
+  range: close
