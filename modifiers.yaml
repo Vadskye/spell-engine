@@ -90,7 +90,7 @@ buffs:
   concealment: 3
   cover: 3
   damage_reduction:
-    energy_all: 3
+    energy_all: 2
     energy_single: 1
     physical_half: 2
     physical: 3
@@ -160,7 +160,8 @@ no_prebuff:
 casting_time:
   full_round: -1
   full_round_buff: -0.5
-  immediate: 6
+  immediate: 4
+  move: 3 # only very few spells should be move - stuff like teleport
   standard: 0
   swift: 4
   # the casting time is somewhat offset by the double roll
@@ -191,7 +192,7 @@ conditions:
   dominated: 20
   dimension_lock: 5
   exhausted: 8
-  faerie_fire: 2
+  faerie_fire: 1
   fascinated: 5
   fatigued: 3
   feeblemind: 14
@@ -235,6 +236,7 @@ conditions:
 conditional:
   half: -3
 damage:
+  combo_attack: 4 # attack + damage
   physical_attack: 1
   fast_healing: 5
   healing: 3
@@ -251,6 +253,9 @@ damage:
 # maybe separate modifiers for being visibly avoidable (1) or not (2)?
 delayable:
   true: 2
+  false: 0
+difficult_trigger:
+  true: -1
   false: 0
 # this is handled as a multiplier on duration
 dispellable:
