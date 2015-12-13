@@ -6,7 +6,7 @@ pprinter = PrettyPrinter(indent=4, width=60)
 
 AREA_NAMES = set('burst emanation limit wall zone'.split())
 PRIMARY_ATTRIBUTES = 'attack_subeffects buffs conditions damage instant_effect knowledge subeffects teleport'.split()
-SINGLE_MODIFIERS = set('casting_time choose_effect components delayable expended knowledge instant_effect no_prebuff personal_only range spell_resistance targets'.split())
+SINGLE_MODIFIERS = set('casting_time choose_effect components delayable difficult_trigger expended knowledge instant_effect no_prebuff personal_only range spell_resistance targets'.split())
 #PLURAL_MODIFIERS = set('buffs conditions'.split())
 # these modifiers are factored in as part of other modifiers
 NONGENERIC_MODIFIERS = set('dispellable duration ignore_warnings limit_affected noncombat_buff shapeable trigger_condition trigger_duration'.split())
@@ -44,6 +44,8 @@ def initialize_argument_parser():
             help='Name of specific spells')
     parser.add_argument('-a', '--abilities', dest='abilities', type=str,
                         nargs='*', help = 'if provided, process abilities instead of spells')
+    parser.add_argument('-m', '--magicitems', dest='magic_items', type=str,
+                        nargs='*', help = 'if provided, process abilities instead of spells')
     parser.add_argument('-t', '--type', dest='type', type=str,
             help='type of spells to get')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
@@ -55,6 +57,8 @@ def import_data(args):
         modifiers = yaml.load(modifiersfile)
     if args.get('abilities') is not None:
         filename = 'abilities.yaml'
+    elif args.get('magic_items') is not None:
+        filename = 'magic_items.yaml'
     else:
         filename = 'spells.yaml'
     with open(filename, 'r') as spellsfile:
