@@ -433,9 +433,8 @@ cure_light_wounds:
   range: medium
 cure_light_wounds_mass:
   damage: healing
-  burst: medium radius
   range: medium
-  targets: allies
+  targets: five
 curse_of_blood_and_bone:
   attack_subeffects:
     effect:
@@ -702,7 +701,8 @@ earthspike:
   limit_affected: near_ground
 earthspike_mass:
   base: earthspike
-  targets: five
+  burst: small radius
+  targets: enemies
 #elemental_swarm
 energy_conversion:
   range: close
@@ -1191,13 +1191,19 @@ personal_shield:
   duration: personal_long
   buff:
     damage_reduction: physical
+inflict_light_wounds:
+  damage: normal
+  range: medium
+inflict_light_wounds_mass:
+  damage: normal
+  range: medium
+  targets: five
 inflict_critical_wounds:
   damage:
     critical_overbleed: 2
   range: medium
 inflict_critical_wounds_mass:
   base: inflict_critical_wounds
-  burst: medium radius
   range: medium
   targets: five
 interposing_hand:
@@ -1580,11 +1586,6 @@ resist_energy:
     damage_reduction: energy_single
   duration: personal_long
   range: close
-resist_energy_greater:
-  buff:
-    damage_reduction: energy_all
-  duration: personal_long
-  range: close
 retributive_shield:
   buffs:
     - damage_reduction: physical
@@ -1964,8 +1965,9 @@ wall_of_thorns:
   duration: short
   range: medium
   targets: all
+  misc: -1 # can be hacked through / burned
   subeffects:
-    - damage: normal
+    - damage: cantrip
       triggered: true
       trigger_condition: enter_zone
       trigger_duration: short
