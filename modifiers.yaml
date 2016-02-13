@@ -23,28 +23,28 @@ area:
     medium: 1
     large: 2
     huge: 3 # 100'
-at_will_class_feature: 1
+at will class feature: 1
 attack:
-  critical_success_only: -9
-  success_only: -3
-  failure_only: 3
+  critical success only: -9
+  success only: -3
+  failure only: 3
 breakable:
-  damage_reduction_easy: -1 # like bludgeoning, piercing, slashing, fire
-  deal_energy_damage: -1 # like wall of fire
-  deal_physical_damage: -1 # like crushing hand
+  damage reduction easy: -1 # like bludgeoning, piercing, slashing, fire
+  deal energy damage: -1 # like wall of fire
+  deal physical damage: -1 # like crushing hand
   grapple: -1
-  if_attack: -5
-  if_attack_per_round: -2
-  if_damaged: -3
+  if attack: -5
+  if attack per round: -2
+  if damaged: -3
   maze: -1
-  standard_skill_check: -3
-  leave_area: -6
-  leave_area_impeded: -3  # if the effect prevents you from leaving its area
-  leave_area_lingering: -2 # if the effect lingers after leaving the area
-  standard_action_by_any: -2
-  standard_action_by_target: -3
-  specific_spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
-  violent_action_by_any: -6
+  standard skill check: -3
+  leave area: -6
+  leave area impeded: -3  # if the effect prevents you from leaving its area
+  leave area lingering: -2 # if the effect lingers after leaving the area
+  standard action by any: -2
+  standard action by target: -3
+  specific spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
+  violent action by any: -6
 buffs:
   # all buff spells have a base cost
   base: 2
@@ -53,120 +53,120 @@ buffs:
   # such as boosting both physical and special attacks
   # but bonuses which fully stack, such as physical attacks and defenses,
   # should not be combined
-  awesome_point:
+  awesome point:
     all: 4
     attacks: 2
     checks: 2
     defenses: 2
-  awesome_point_regeneration:
+  awesome point regeneration:
     # the cost is already paid for the spell duration
     short: 1
     medium: 0
   # attributes
-  all_attributes:
+  all attributes:
     plus2: 8
     plus4: 15
   attribute:
     plus2: 2
     plus4: 5
-  physical_attributes:
+  physical attributes:
     plus2: 5
     plus4: 10
-  mental_attributes:
+  mental attributes:
     plus2: 5
     plus4: 10
   # attacks
-  alter_weapon: 1
-  aqueous_blade: 3
-  extra_attack: 5
-  extra_attack_with_penalty: 3 # at -5 attack bonus
-  flame_blade: 3
-  increase_size: 5
-  increase_weapon_size: 2
-  reduce_size: 3
-  weapon_reach: 2
-  melee_weapon_range: 2 # plus spell range
+  alter weapon: 1
+  aqueous blade: 3
+  extra attack: 5
+  extra attack with penalty: 3 # at -5 attack bonus
+  flame blade: 3
+  increase size: 5
+  increase weapon size: 2
+  reduce size: 3
+  weapon reach: 2
+  melee weapon range: 2 # plus spell range
   # defenses
   concealment: 3
   cover: 3
-  damage_reduction:
-    energy_all: 2
-    energy_single: 1
-    physical_half: 2
+  damage reduction:
+    energy all: 2
+    energy single: 1
+    physical half: 2
     physical: 3
     spell: 2
     alignment: 4
     all: 4
-  delay_damage: 4
-  half_miss_all: 6
-  half_miss_physical: 4
-  half_miss_ranged: 2
-  cover_miss_physical: 2
+  delay damage: 4
+  half miss all: 6
+  half miss physical: 4
+  half miss ranged: 2
+  cover miss physical: 2
   immune:
     construct: 9
     death: 1
     fear: 1
     grapple: 2
-    movement_effects: 1
-    negative_energy: 3
+    movement effects: 1
+    negative energy: 3
     poison: 3
     regeneration: 5
     unaware: 3
     underwater: 1
-  low_light_vision: 1
-  mage_armor: 2
-  shield_of_faith: 2
-  retributive_damage: 4
+  low light vision: 1
+  mage armor: 2
+  shield of faith: 2
+  retributive damage: 4
   scent: 3
   skill: 0.5
-  share_pain: 3
-  spell_resistance_limited: 2
-  spell_resistance: 4
-  temporary_hp: 2
+  share pain: 3
+  spell resistance limited: 2
+  spell resistance: 4
+  temporary hp: 2
   unapproachable: 6
   # special/misc
-  climb_speed: 2
+  climb speed: 2
   darkvision: 1
   disguise: 1
-  double_speed: 3
-  ten_foot_speed: 1
-  earth_glide: 6
+  double speed: 3
+  ten foot speed: 1
+  earth glide: 6
   ethereal: 9
-  feather_fall: 1
+  feather fall: 1
   flight: 6
-  foresee_probability: 3
-  gaseous_form: 6
+  foresee probability: 3
+  gaseous form: 6
   glide: 2
-  hide_attack_effects: 1
-  increase_overwhelm: 3
+  hide attack effects: 1
+  increase overwhelm: 3
   invisible: 9
   levitation: 4
   lifesight: 6
-  natural_weapon: 1
-  radiate_light: 0
-  see_invisibility: 2
+  natural weapon: 1
+  radiate light: 0
+  see invisibility: 2
   telepathy: 5
-  time_stop: 12
+  time stop: 12
   tremorsense: 2
-  true_seeing: 9
+  true seeing: 9
   undead: 1
-  walking_flight: 6
-  water_walk: 2
-  win_initiative: 6
+  walking flight: 6
+  water walk: 2
+  win initiative: 6
 # buffs that can't be cast precombat are weaker
-no_prebuff:
+no prebuff:
   true: -2
   false: 0
-casting_time:
-  full_round: -1
-  full_round_buff: -0.5
+casting time:
+  full round: -1
+  full round buff: -0.5
   immediate: 4
   move: 3 # only very few spells should be move - stuff like teleport
   standard: 0
   swift: 4
   # the casting time is somewhat offset by the double roll
-  swift_on_attack: 2
-choose_effect:
+  swift on attack: 2
+choose effect:
   true: 1
   false: 0
 components:
@@ -183,68 +183,70 @@ conditions:
   charmed: 8 # as minus6
   command: 18 # like stunned, but better
   confused: 14 # as minus8
-  damage_if_damaged: 4
+  damage if damaged: 4
   dazed: 8 # as staggered
   dazzled: 5
   deafened: 3
-  die_at_zero: 8
+  die at zero: 8
   disoriented: 8 # compelled to move randomly
   dominated: 20
-  dimension_lock: 5
+  dimension lock: 5
   exhausted: 8
-  faerie_fire: 1
+  faerie fire: 1
   fascinated: 5
   fatigued: 3
   feeblemind: 14
   fog: 4
   forget: 5
   frightened: 8
-  gender_swap: 3
+  gender swap: 3
   grappled: 11
   grease: 3
-  half_speed: 2
-  quarter_speed: 5
+  half speed: 2
+  quarter speed: 5
   ignited: 5 # impaired + d6 / round, but removable
   immobilized: 11
   impassable: 5
   impaired: 5
-  limited_action: 14
-  link_vitality: 8
-  lower_max_hp: 3
+  limited action: 14
+  link vitality: 8
+  lower max hp: 3
   nauseated: 17
-  no_action: 17
-  no_violence: 14
-  out_of_battle: 11
+  no action: 17
+  no zero threshold: 5
+  no violence: 14
+  out of battle: 11
   paralyzed: 18
-  partially_blinded: 5
+  partially blinded: 5
   panicked: 14
-  require_concentration: 2
+  require concentration: 2
   sickened: 2
-  severely_impaired: 11
+  severely impaired: 11
   shaken: 2
   silenced: 5
   slowed: 8 # as staggered
   staggered: 8
   stunned: 17
-  stasis: 11 # assuming immunity - equivalent to out_of_battle
+  stasis: 11 # assuming immunity - equivalent to out of battle
   suggestion: 11
-  take_double_damage: 11
-  take_double_damage_once: 5
+  summon: 4
+  take double damage: 11
+  take double damage once: 5
   taunted: 5
-  underwater_penalties: 5
+  underwater penalties: 5
 # if the spell or effect
 conditional:
   half: -3
 damage:
-  combo_attack: 4 # attack + damage
-  physical_attack: 1
-  fast_healing: 5
+  combo attack: 4 # attack + damage
+  physical attack: 1
+  fast healing: 5
   healing: 3
   normal: 3
-  kill_at_zero: 8
-  over_time: 5
+  kill at zero: 8
+  over time: 5
   cantrip: 1
-  critical_overbleed:
+  critical overbleed:
     10: 4
     5: 5
     2: 6
@@ -254,7 +256,7 @@ damage:
 delayable:
   true: 2
   false: 0
-difficult_trigger:
+difficult trigger:
   true: -1
   false: 0
 # this is handled as a multiplier on duration
@@ -265,7 +267,7 @@ duration:
   normal:
     round: -3
     concentration: -2
-    until_standard_action: -1
+    until standard action: -1
     short: 0
     medium: 1 # x10
     long: 1.5 # x6
@@ -275,7 +277,7 @@ duration:
     year: 4 # x12
     created: 4
     permanent: 6 # x???
-  personal_buff:
+  personal buff:
     round: -3
     concentration: -2
     short: 0
@@ -286,15 +288,15 @@ duration:
     month: 6.5
     year: 7
     permanent: 9
-    # 'personal_only' is redundant with being a class feature, so increase
+    # 'personal only' is redundant with being a class feature, so increase
     # the cost
-    class_feature: 4
-    activated_class_feature: 3
-  nonpersonal_buff:
+    class feature: 4
+    activated class feature: 3
+  nonpersonal buff:
     round: -3
     concentration: -2
     short: 0
-    personal_long: 1 # actually making it long requires +2 spell levels
+    personal long: 1 # actually making it long requires +2 spell levels
     medium: 5
     long: 6
     extreme: 7
@@ -303,12 +305,12 @@ duration:
     year: 10
     permanent: 12
     # match cost of long duration personal-only buff
-    class_feature: 3
-    activated_class_feature: 2
-  noncombat_buff:
+    class feature: 3
+    activated class feature: 2
+  noncombat buff:
     concentration: -2
     short: 0
-    personal_long: 1
+    personal long: 1
     medium: 2
     long: 3
     extreme: 5
@@ -316,8 +318,8 @@ duration:
     month: 8.5
     year: 9
     permanent: 11
-    class_feature: 3
-    activated_class_feature: 2
+    class feature: 3
+    activated class feature: 2
   trigger:
     concentration: 0 # part of "standard action by you"
     short: 0
@@ -328,56 +330,58 @@ duration:
     month: 3.5 # x4
     year: 4 # x12
     permanent: 6 # x???
-instant_effect:
+instant effect:
   banishment: 14
+  critical damage:
+    one: 8
   death: 17
   dispel: 7
-  negative_levels: 7 # one negative level per two spell levels
-  full_negative_levels: 14 # one negative level per spell level
+  negative levels: 7 # one negative level per two spell levels
+  full negative levels: 14 # one negative level per spell level
   nothing: 0
-  shove_weak: 1
-  shove_strong: 2
+  shove weak: 1
+  shove strong: 2
   prismatic: 5
   prone: 2
-  remove_conditions:
+  remove conditions:
     heal: 3
 expended:
-  single_use: -3
-  five: -2 # or other values between single_use and caster level
-  caster_level: -1
+  single use: -3
+  five: -2 # or other values between single use and caster level
+  caster level: -1
 knowledge:
   alignment: 3
-  creature_or_object_location: 4
-  creature_location: 3
-  object_location: 2
+  creature or object location: 4
+  creature location: 3
+  object location: 2
   lies: 5
   thoughts: 7
   vulnerabilities: 1
-limit_affected:
+limit affected:
   normal:
     alignment: -2
-    creature_type: -2
+    creature type: -2
     falling: -4
     language: -2
-    max_size_large: -1
-    mind_affecting: -1
+    max size large: -1
+    mind affecting: -1
     nonalignment: -1
-    near_ground: -1 # within 10 feet of the ground
-    on_ground: -1
-    on_stone: -2
-    near_plants: -2 # within 5 feet of plants
-    touching_metal: -2
-    light_vulnerable: -6
+    near ground: -1 # within 10 feet of the ground
+    on ground: -1
+    on stone: -2
+    near plants: -2 # within 5 feet of plants
+    touching metal: -2
+    light vulnerable: -6
   buff:
     alignment: -1
-    creature_type: -1
+    creature type: -1
     falling: -4
-    max_size_large: 0
-    mind_affecting: 0
+    max size large: 0
+    mind affecting: 0
     nonalignment: -0.5
-    near_ground: -0.5 # within 10 feet of the ground
-    on_ground: -0.5
-personal_only:
+    near ground: -0.5 # within 10 feet of the ground
+    on ground: -0.5
+personal only:
   true: -1
   false: 0
 range:
@@ -398,27 +402,27 @@ range:
 shapeable:
   true: 1
   false: 0
-spell_resistance:
+spell resistance:
   true: 0
   false: 1
 targets:
   all: 0
   allies: 0
   enemies: 1
-  #special handling; see get_area_modifier
+  #special handling; see get area modifier
   five: 3
   two: 2
-  automatically_find_one: 3
+  automatically find one: 3
 teleport:
   normal: 3
   unrestricted: 5
-trigger_condition:
-  every_round: 4 # requires duration, assumes effects don't stack
-  every_round_stacking: 6 # requires duration
-  damage_every_round: 2 # cost shouldn't stack with damage, since damage is reduced
-  # damage_every_round has unique damage scaling; if inescapable, it's
+trigger condition:
+  every round: 4 # requires duration, assumes effects don't stack
+  every round stacking: 6 # requires duration
+  damage every round: 2 # cost shouldn't stack with damage, since damage is reduced
+  # damage every round has unique damage scaling; if inescapable, it's
   # spellpower. If AOE escapable, there is a -1 die size penalty.
-  enter_zone: 1
-  break_prohibition: 1
-  standard_action_by_any: 3
-  standard_action_by_you: 2
+  enter zone: 1
+  break prohibition: 1
+  standard action by any: 3
+  standard action by you: 2

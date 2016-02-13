@@ -1,403 +1,403 @@
-_cantrip_blur:
-  buff: cover_miss_physical
+_cantrip blur:
+  buff: cover miss physical
   duration: round
   range: close
-_cantrip_fear:
-  attack_subeffects:
-    critical_success:
+_cantrip fear:
+  attack subeffects:
+    critical success:
       condition: frightened
     success:
       condition: shaken
   duration: short
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: medium
-_cantrip_disorient:
-  limit_affected: mind_affecting
-  attack_subeffects:
+_cantrip disorient:
+  limit affected: mind affecting
+  attack subeffects:
     success:
       condition: disoriented
-    critical_success:
+    critical success:
       condition: confused
   range: close
   duration: round
-_cantrip_damage_reduction:
-  breakable: damage_reduction_easy
+_cantrip damage reduction:
+  breakable: damage reduction easy
   buff:
-    damage_reduction: physical
+    damage reduction: physical
   duration: round
   range: close
-_cantrip_flare:
-  attack_subeffects:
+_cantrip flare:
+  attack subeffects:
     success:
       condition: impaired
   duration: short
   range: close
-_cantrip_daze:
-  attack_subeffects:
+_cantrip daze:
+  attack subeffects:
     success:
       condition: dazed
   duration: round
-_cantrip_damage:
+_cantrip damage:
   damage: cantrip
   range: close
-_cantrip_drain_life:
+_cantrip drain life:
   damage: cantrip
   misc: 1 # really weak life drain
-_cantrip_exhaustion:
-  attack_subeffects:
+_cantrip exhaustion:
+  attack subeffects:
     success:
       condition: fatigued
-    critical_success:
+    critical success:
       condition: exhausted
   duration: short
   range: close
-_cantrip_precognition:
+_cantrip precognition:
   buffs:
-    - awesome_point: attacks
+    - awesome point: attacks
   duration: round
   range: close
-_cantrip_slow:
-  attack_subeffects:
+_cantrip slow:
+  attack subeffects:
     success:
       condition: slowed
     failure:
-      condition: half_speed
+      condition: half speed
   duration: round
   range: close
-ablate_impact:
+ablate impact:
   buff:
-    damage_reduction: physical
-  casting_time: immediate
+    damage reduction: physical
+  casting time: immediate
   components: nosomatic
   duration: round
-  personal_only: true
-ablative_spellshield:
+  personal only: true
+ablative spellshield:
   buff:
-    damage_reduction: spell
-  casting_time: immediate
+    damage reduction: spell
+  casting time: immediate
   components: nosomatic
   duration: round
-  personal_only: true
-acid_arrow:
+  personal only: true
+acid arrow:
   damage: normal
   range: medium
-  spell_resistance: false
-acid_arrow_greater:
-  attack_subeffects:
+  spell resistance: false
+acid arrow greater:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: staggered
       duration: concentration
   range: medium
-  spell_resistance: false
-acid_fog:
-  breakable: leave_area
+  spell resistance: false
+acid fog:
+  breakable: leave area
   range: medium
   subeffects:
     - condition: fog
       duration: short
     - damage: normal
       triggered: true
-      trigger_condition: damage_every_round
-      trigger_duration: short
+      trigger condition: damage every round
+      trigger duration: short
   targets: all
-  spell_resistance: false
+  spell resistance: false
   zone: medium cylinder
 agony:
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: take_double_damage
+      condition: take double damage
     failure:
-      condition: take_double_damage_once
+      condition: take double damage once
   duration: short
   range: medium
-  limit_affected: mind_affecting
+  limit affected: mind affecting
 aid:
   buffs:
-    - temporary_hp
+    - temporary hp
     - immune: fear
-  duration: personal_long
-air_walk:
-  buff: walking_flight
+  duration: personal long
+air walk:
+  buff: walking flight
   duration: short
   range: touch
-#align_weapon:
-antilife_shell:
+#align weapon:
+antilife shell:
   buff: unapproachable
   duration: medium
   emanation: small radius
   targets: all
-  personal_only: true
-antimagic_field:
+  personal only: true
+antimagic field:
   condition: antimagic
   duration: short
   emanation: small radius
   targets: all
-aqueous_blade:
-  buff: aqueous_blade
+aqueous blade:
+  buff: aqueous blade
   duration: short
   range: close
 assimilate:
   range: close
   subeffects:
-    - damage: kill_at_zero
+    - damage: kill at zero
     - buff: disguise
       duration: extreme
-      personal_only: true
-      no_prebuff: true
-      noncombat_buff: true
+      personal only: true
+      no prebuff: true
+      noncombat buff: true
 aversion:
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: medium
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: aversion
       duration: permanent
     success:
       condition: aversion
       duration: short
 bane:
-  # condition: damage_if_damaged
+  # condition: damage if damaged
   condition: impaired
   range: close
   duration: short
-  limit_affected: mind_affecting
-bane_mass:
+  limit affected: mind affecting
+bane mass:
   base: bane
   targets: five
   range: medium
 banishment:
   range: medium
-  spell_resistance: false
-  attack_subeffects:
-    noncritical_effect:
+  spell resistance: false
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      instant_effect: banishment
-      limit_affected: creature_type
+    critical success:
+      instant effect: banishment
+      limit affected: creature type
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: concentration
+  trigger condition: standard action by you
+  trigger duration: concentration
 barkskin:
-  breakable: damage_reduction_easy
+  breakable: damage reduction easy
   buff:
-    damage_reduction: physical
-  duration: personal_long
+    damage reduction: physical
+  duration: personal long
   range: close
-black_tentacles:
+black tentacles:
   duration: short
-  attack_subeffects:
+  attack subeffects:
     effect:
       subeffects:
         - damage: normal
-        - condition: half_speed
-    critical_success:
+        - condition: half speed
+    critical success:
       subeffects:
         - condition: immobilized
           breakable: grapple
-  breakable: leave_area
+  breakable: leave area
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
+  trigger condition: every round
+  trigger duration: short
   targets: all
   zone: medium radius
-blade_barrier:
+blade barrier:
   damage: normal
   triggered: true
-  trigger_condition: enter_zone
-  trigger_duration: short
+  trigger condition: enter zone
+  trigger duration: short
   shapeable: true
   targets: all
   zone: huge wall
 blasphemy:
   components: nosomatic
-  base: unholy_blight
+  base: unholy blight
   range: ~
   burst: large radius
 bless:
   buff:
-    awesome_point: attacks
+    awesome point: attacks
   duration: short
   range: close
-bless_mass:
+bless mass:
   base: bless
   targets: five
 blur:
   buff: concealment
-  duration: personal_long
+  duration: personal long
   range: close
-burning_hands:
+burning hands:
   burst: medium cone
   damage: normal
   targets: all
-call_lightning: #-1 die size - lower than normal, higher than AOE
+call lightning: #-1 die size - lower than normal, higher than AOE
   damage: normal
-  expended: caster_level
+  expended: caster level
   range: medium
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: medium
-call_lightning_greater:
-  attack_subeffects:
+  trigger condition: standard action by you
+  trigger duration: medium
+call lightning greater:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: staggered
       duration: short
-  expended: caster_level
+  expended: caster level
   range: medium
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: medium
-calm_emotions:
+  trigger condition: standard action by you
+  trigger duration: medium
+calm emotions:
   burst: large radius
-  breakable: violent_action_by_any
-  attack_subeffects:
+  breakable: violent action by any
+  attack subeffects:
     success:
-      condition: no_violence
-  limit_affected: mind_affecting
+      condition: no violence
+  limit affected: mind affecting
   duration: concentration
   range: medium
   targets: all
   misc: -3 # has to affect everyone to be really useful
-certain_blind:
+certain blind:
   condition: blinded
   range: close
   duration: short
-certain_daze:
+certain daze:
   condition: dazed
   range: close
   duration: short
-certain_daze_round:
+certain daze round:
   condition: dazed
   range: close
   duration: round
-chain_lightning:
+chain lightning:
   damage: normal
   burst: medium radius
   range: medium
   targets: enemies
 #changestaff
-chaos_hammer:
-  limit_affected: nonalignment
+chaos hammer:
+  limit affected: nonalignment
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: disoriented
       duration: short
   burst: small radius
   targets: all
-charm_monster:
-  base: charm_person
-  limit_affected: mind_affecting
+charm monster:
+  base: charm person
+  limit affected: mind affecting
   range: medium
-charm_monster_mass:
-  base: charm_monster
+charm monster mass:
+  base: charm monster
   limit: large radius
   targets: all
   range: ~
-charm_person:
+charm person:
   components: noverbal
-  limit_affected: creature_type
+  limit affected: creature type
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: charmed
       duration: medium
     critical:
       condition: charmed
       duration: permanent
-charm_person_mass:
-  base: charm_person
+charm person mass:
+  base: charm person
   limit: large radius
   targets: all
   range: ~
-#circle_of_death:
-clenched_fist:
+#circle of death:
+clenched fist:
   subeffects:
     - damage: normal
-    - attack_subeffects:
-        critical_success:
+    - attack subeffects:
+        critical success:
           condition: staggered
           duration: short
   range: medium
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
-cloak_of_single_chaos:
-  base: cloak_of_chaos
+  trigger condition: every round
+  trigger duration: short
+cloak of single chaos:
+  base: cloak of chaos
   targets: ~
-cloak_of_chaos:
+cloak of chaos:
   buffs:
-    - spell_resistance_limited
-    - retributive_damage
+    - spell resistance limited
+    - retributive damage
   duration: short
   targets: five
   range: close
 #cloudkill:
-cloud_of_bats:
+cloud of bats:
   burst: medium cone
   targets: all
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: impaired
       duration: short
-    critical_success:
-      condition: severely_impaired
+    critical success:
+      condition: severely impaired
       duration: short
-color_spray:
+color spray:
   burst: medium cone
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       conditions:
-        - partially_blinded
-        - partially_blinded
+        - partially blinded
+        - partially blinded
       duration: short
     success:
-      condition: partially_blinded
+      condition: partially blinded
       duration: short
   targets: all
-#combat_transformation:
+#combat transformation:
 command:
-  limit_affected: language
-  attack_subeffects:
-    critical_success:
+  limit affected: language
+  attack subeffects:
+    critical success:
       condition: stunned
     success:
-      condition: severely_impaired
+      condition: severely impaired
     failure:
       condition: impaired
   duration: round
   misc: -1 # instead of suffering the given effects, the target can obey the command
   range: medium
-#command_greater:
-command_mass:
+#command greater:
+command mass:
   base: command
   targets: five
-cone_of_cold:
+cone of cold:
   burst: medium cone
   subeffects:
     - damage: normal
-    - condition: half_speed
+    - condition: half speed
       duration: short
   targets: all
-cone_of_cold_greater:
-  base: cone_of_cold
+cone of cold greater:
+  base: cone of cold
   burst: large cone
 confusion:
-  limit_affected: mind_affecting
-  attack_subeffects:
-    critical_success:
+  limit affected: mind affecting
+  attack subeffects:
+    critical success:
       condition: confused
       duration: short
     success:
       condition: disoriented
       duration: short
   range: medium
-confusion_mass:
+confusion mass:
   base: confusion
   limit: medium radius
   targets: five
@@ -405,65 +405,65 @@ confusion_mass:
 #create sound
 #creeping doom
 cripple:
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: paralyzed
       duration: short
     success:
       condition: staggered
       duration: short
   range: close
-#crushing_despair:
-crushing_hand:
-  attack_subeffects:
+#crushing despair:
+crushing hand:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
-      breakable: deal_physical_damage
+    critical success:
+      breakable: deal physical damage
       condition: grappled
       duration: short
   range: medium
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
-cure_light_wounds:
+  trigger condition: every round
+  trigger duration: short
+cure light wounds:
   damage: healing
   range: medium
-cure_light_wounds_mass:
+cure light wounds mass:
   damage: healing
   range: medium
   targets: five
-curse_of_blood_and_bone:
-  attack_subeffects:
+curse of blood and bone:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
-      condition: lower_max_hp
+    critical success:
+      condition: lower max hp
       duration: year
     success:
-      condition: lower_max_hp
+      condition: lower max hp
       duration: short
   range: medium
   dispellable: false
-  breakable: specific_spell
-curse_of_enfeeblement:
-  attack_subeffects:
+  breakable: specific spell
+curse of enfeeblement:
+  attack subeffects:
     success:
       condition:
         penalties:
           - attribute
   duration: year
-  breakable: specific_spell
+  breakable: specific spell
   dispellable: false
   range: close
-curse_of_the_wayward_mind:
+curse of the wayward mind:
   duration: year
   dispellable: false
-  breakable: specific_spell
-  attack_subeffects:
-    critical_success:
+  breakable: specific spell
+  attack subeffects:
+    critical success:
       condition: confused
     success:
       condition: disoriented
@@ -475,34 +475,34 @@ curse_of_the_wayward_mind:
 darkvision:
   buff: darkvision
   duration: long
-  noncombat_buff: true
-default_spell:
-  casting_time: standard
+  noncombat buff: true
+default spell:
+  casting time: standard
   dispellable: true
-  spell_resistance: true
+  spell resistance: true
 #daylight
-death_knell:
-  attack_subeffects:
+death knell:
+  attack subeffects:
     effect:
       damage: normal
     success:
-      condition: die_at_zero
+      condition: die at zero
       duration: short
   range: medium
   #missing buff at 0 HP
-death_ward:
+death ward:
   buffs:
     - immune: death
-    - immune: negative_energy
+    - immune: negative energy
   duration: short
   range: close
-death_ward_mass:
-  base: death_ward
+death ward mass:
+  base: death ward
   range: medium
   targets: five
-deep_slumber:
-  attack_subeffects:
-    critical_success:
+deep slumber:
+  attack subeffects:
+    critical success:
       condition: asleep
       duration: short
     success:
@@ -511,24 +511,24 @@ deep_slumber:
     failure:
       condition: dazed
       duration: short
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: medium
 deflection:
   buffs:
-    - awesome_point: defenses
-    - awesome_point_regeneration: short
+    - awesome point: defenses
+    - awesome point regeneration: short
   duration: long
-  personal_only: true
-delay_damage:
-  buff: delay_damage
+  personal only: true
+delay damage:
+  buff: delay damage
   duration: medium
-  personal_only: true
-delay_poison:
+  personal only: true
+delay poison:
   duration: short
   range: close
   buff:
     immune: poison
-delayed_blast_fireball:
+delayed blast fireball:
   damage: normal
   burst: medium radius
   delayable: true
@@ -536,116 +536,120 @@ delayed_blast_fireball:
   targets: all
 destruction:
   range: medium
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      instant_effect: death
+    critical success:
+      instant effect: death
     success:
       condition: staggered
       duration: short
-detect_alignment:
+detect alignment:
   knowledge: alignment
   emanation: large cone
   duration: concentration
   targets: all
 dictum:
   components: nosomatic
-  base: orders_wrath
+  base: orders wrath
   range: ~
   burst: large radius
-dimension_door:
+dimension door:
   teleport:
     range: extreme
     unrestricted: true
-  personal_only: true
+  personal only: true
   components: nosomatic
-dimension_door_mass:
-  base: dimension_door
+dimension door mass:
+  base: dimension door
   targets: five
-  personal_only: false
-dimension_slide:
+  personal only: false
+dimension slide:
   range: medium
   teleport:
     range: medium
-dimensional_anchor:
+dimensional anchor:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: dimension_lock
+      condition: dimension lock
       duration: short
-    critical_success:
-      condition: dimension_lock
+    critical success:
+      condition: dimension lock
       duration: year
-  spell_resistance: false
+  spell resistance: false
   dispellable: false
-discern_lies:
+discern lies:
   emanation: large cone
   duration: concentration
   knowledge: lies
-  spell_resistance: false
+  spell resistance: false
   targets: all
-discern_vulnerability:
-  casting_time: swift
+discern vulnerability:
+  casting time: swift
   range: medium
   knowledge: vulnerabilities
-discordant_song:
+discordant song:
   burst: medium radius
   range: medium
   targets: all
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: disoriented
-    critical_success:
+    critical success:
       condition: confused
   duration: short
 disintegrate:
-  damage: kill_at_zero
+  damage: kill at zero
   range: close
   misc: 1 #disintegrate objects
+disjointed time:
+  condition: impaired
+  duration: short
+  range: medium
 dismissal:
   range: medium
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      instant_effect: banishment
-      limit_affected: creature_type
-dismissal_mass:
+    critical success:
+      instant effect: banishment
+      limit affected: creature type
+dismissal mass:
   base: dismissal
   targets: five
-dispel_magic:
+dispel magic:
   range: medium
-  spell_resistance: false
-  attack_subeffects:
+  spell resistance: false
+  attack subeffects:
     success:
-      instant_effect: dispel
-dispel_magic_greater:
-  base: dispel_magic
+      instant effect: dispel
+dispel magic greater:
+  base: dispel magic
   burst: medium radius
   targets: all
 displacement:
-  buff: half_miss_physical
+  buff: half miss physical
   duration: short
   range: close
-#disrupting_weapon
-divine_favor:
+#disrupting weapon
+divine favor:
   buffs:
-    - awesome_point:
+    - awesome point:
       - all
   duration: short
-  personal_only: true
-divine_favor_greater:
+  personal only: true
+divine favor greater:
   buffs:
-    - awesome_point:
+    - awesome point:
       - all
-    - awesome_point_regeneration: short
+    - awesome point regeneration: short
   duration: long
-  personal_only: true
-dominate_person:
+  personal only: true
+dominate person:
   range: close
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: dominated
       duration: short
     success:
@@ -654,162 +658,162 @@ dominate_person:
     failure:
       condition: staggered
       duration: short
-  limit_affected: creature_type
-dominate_monster:
-  base: dominate_person
+  limit affected: creature type
+dominate monster:
+  base: dominate person
   range: medium
-  limit_affected: mind_affecting
-drain_life:
+  limit affected: mind affecting
+drain life:
   subeffects:
     - damage: normal
-    - buff: temporary_hp
+    - buff: temporary hp
       duration: short
-      personal_only: true
-      no_prebuff: true
+      personal only: true
+      no prebuff: true
   range: medium
-earths_pull:
-  attack_subeffects:
+earths pull:
+  attack subeffects:
     success:
       condition: slowed
     failure:
-      condition: half_speed
+      condition: half speed
   duration: short
-  limit_affected: max_size_large
+  limit affected: max size large
   range: close
-#earthen_blade:
-earth_glide:
-  buff: earth_glide
+#earthen blade:
+earth glide:
+  buff: earth glide
   duration: short
 earthquake:
   targets: all
   zone: medium radius
-  attack_subeffects:
+  attack subeffects:
     effect:
-      instant_effect: prone
+      instant effect: prone
     success:
       condition: immobilized
       breakable: grapple
       duration: short
       dispellable: false
-  limit_affected: on_ground
+  limit affected: on ground
 earthspike:
   range: medium
-  spell_resistance: false
-  attack_subeffects:
+  spell resistance: false
+  attack subeffects:
     effect:
       damage: normal
-  limit_affected: near_ground
-earthspike_mass:
+  limit affected: near ground
+earthspike mass:
   base: earthspike
   burst: small radius
   targets: enemies
-#elemental_swarm
-energy_conversion:
+#elemental swarm
+energy conversion:
   range: close
   subeffects:
     - buff:
-        damage_reduction: energy_all
+        damage reduction: energy all
       duration: long
-      personal_only: true
+      personal only: true
     - damage: normal
 enervation:
-  instant_effect: negative_levels
+  instant effect: negative levels
   range: close
-enervation_greater:
-  attack_subeffects:
+enervation greater:
+  attack subeffects:
     success:
-      instant_effect: full_negative_levels
+      instant effect: full negative levels
     failure:
-      instant_effect: negative_levels
+      instant effect: negative levels
   range: close
-enlarge_monster:
-  base: enlarge_person
-  limit_affected: max_size_large
-enlarge_monster_mass:
-  base: enlarge_person_mass
-  limit_affected: max_size_large
-enlarge_person:
+enlarge monster:
+  base: enlarge person
+  limit affected: max size large
+enlarge monster mass:
+  base: enlarge person mass
+  limit affected: max size large
+enlarge person:
   buffs:
-    - increase_size
-  casting_time: full_round_buff
+    - increase size
+  casting time: full round buff
   duration: short
-  limit_affected: creature_type
+  limit affected: creature type
   range: medium
-enlarge_person_mass:
-  base: enlarge_person
+enlarge person mass:
+  base: enlarge person
   range: medium
   targets: five
 entangle:
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: slowed
     failure:
-      condition: half_speed
+      condition: half speed
   duration: short
   range: medium
   breakable: grapple
-  limit_affected: near_plants
-  spell_resistance: false
-entangling_growth:
+  limit affected: near plants
+  spell resistance: false
+entangling growth:
   base: entangle
   range: long
-  limit_affected: ~
-entropic_shield:
-  buff: half_miss_ranged
+  limit affected: ~
+entropic shield:
+  buff: half miss ranged
   range: close
   duration: short
-ethereal_jaunt:
+ethereal jaunt:
   buff: ethereal
   duration: short
-  personal_only: true
+  personal only: true
 etherealness:
   buff: ethereal
   duration: short
   targets: five
 eyebite:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: impaired
       duration: short
     critical:
-      condition: severely_impaired
+      condition: severely impaired
       duration: short
-faerie_fire:
-  condition: faerie_fire
+faerie fire:
+  condition: faerie fire
   duration: short
   burst: small radius
   range: medium
   targets: all
-#false_reality
+#false reality
 fear:
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: panicked
     success:
       condition: frightened
     failure:
       condition: shaken
   duration: short
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-fear_mass:
+fear mass:
   base: fear
   range: medium
   targets: five
-feather_fall:
-  casting_time: swift
+feather fall:
+  casting time: swift
   components: nosomatic
-  buff: feather_fall
+  buff: feather fall
   duration: short
-  limit_affected: falling
-  misc: -1 # max_size_medium
+  limit affected: falling
+  misc: -1 # max size medium
   range: medium
 feeblemind:
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: feeblemind
       duration: permanent
     success:
@@ -818,45 +822,45 @@ feeblemind:
     failure:
       condition: dazed
       duration: short
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-finger_of_death:
+finger of death:
   range: medium
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      instant_effect: death
+    critical success:
+      instant effect: death
     success:
       condition: staggered
       duration: short
     failure:
       condition: sickened
       duration: short
-fire_seeds:
+fire seeds:
   burst: small radius
   damage: normal
-  expended: single_use
+  expended: single use
   range: medium
   triggered: true
-  trigger_condition: standard_action_by_any
-  trigger_duration: extreme
+  trigger condition: standard action by any
+  trigger duration: extreme
   targets: all
-fire_shield:
+fire shield:
   buffs:
-    - damage_reduction: energy_single
-    - retributive_damage
-    - radiate_light
+    - damage reduction: energy single
+    - retributive damage
+    - radiate light
   duration: short
   range: close # of the retributive damage
-fire_shield_long:
+fire shield long:
   buffs:
-    - damage_reduction: energy_single
-    - retributive_damage
-    - radiate_light
+    - damage reduction: energy single
+    - retributive damage
+    - radiate light
   duration: long
-  personal_only: true
-fire_storm:
+  personal only: true
+fire storm:
   range: medium
   burst: large radius
   damage: normal
@@ -866,11 +870,11 @@ fireball:
   burst: small radius
   damage: normal
   targets: all
-flame_blade:
-  buff: flame_blade
+flame blade:
+  buff: flame blade
   duration: medium
-  personal_only: true
-flame_strike:
+  personal only: true
+flame strike:
   range: close
   burst: medium cylinder
   damage: normal
@@ -878,32 +882,32 @@ flame_strike:
 fly:
   duration: short
   buff: flight
-fog_cloud:
-  breakable: leave_area
+fog cloud:
+  breakable: leave area
   condition: fog
   duration: short
   range: medium
-  spell_resistance: false
+  spell resistance: false
   targets: all
   zone: medium radius
-fog_sea:
-  base: fog_cloud
+fog sea:
+  base: fog cloud
   zone: colossal radius
-fog_shield:
+fog shield:
   condition: fog
   duration: short
-  spell_resistance: false
+  spell resistance: false
   targets: all
   emanation: medium radius
 forcecage:
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: out_of_battle
+      condition: out of battle
   duration: short
   range: medium
-  limit_affected: max_size_large
-foresee_probability:
-  buff: foresee_probability
+  limit affected: max size large
+foresee probability:
+  buff: foresee probability
   duration: short
   expended: five
   range: medium
@@ -911,145 +915,145 @@ foresight:
   buffs:
     - immune: unaware
   duration: long
-  personal_only: true
-foresight_greater:
+  personal only: true
+foresight greater:
   buffs:
     - immune: unaware
-    - win_initiative
+    - win initiative
   duration: long
-  personal_only: true
+  personal only: true
 forget:
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: forget
       duration: permanent
     success:
       condition: forget
       duration: medium
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   components: noverbal
   range: medium
 freedom:
   buffs:
     - immune: grapple
-    - immune: movement_effects
+    - immune: movement effects
     - immune: underwater
   range: close
   duration: short
-freedom_mass:
+freedom mass:
   base: freedom
   range: medium
   targets: five
   duration: short
-freedom_personal:
+freedom personal:
   base: freedom
   range: ~
-  personal_only: true
+  personal only: true
   duration: long
-frost_shield:
-  buff: retributive_damage
+frost shield:
+  buff: retributive damage
   duration: short
-  personal_only: true
-fungal_growth:
+  personal only: true
+fungal growth:
   condition: sickened
   duration: created
-  breakable: standard_action_by_any
+  breakable: standard action by any
   range: close
   misc: 1 # deals damage over time and if improperly removed
-funny_hats:
+funny hats:
   burst: large radius
   targets: all
-  instant_effect: nothing
-gaseous_form:
+  instant effect: nothing
+gaseous form:
   components: noverbal
   duration: short
-  buff: gaseous_form
-gentle_descent:
+  buff: gaseous form
+gentle descent:
   buff: glide
   duration: short
   range: close
-gentle_descent_mass:
-  base: gentle_descent
+gentle descent mass:
+  base: gentle descent
   range: medium
   targets: five
-ghoul_touch:
+ghoul touch:
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: staggered
       duration: short
     failure:
       condition: sickened
       duration: short
-#giant_vermin
+#giant vermin
 glitterdust:
-  condition: faerie_fire
+  condition: faerie fire
   duration: short
   burst: medium radius
   range: medium
   targets: all
-  spell_resistance: false
-  breakable: deal_energy_damage
-glitterdust_alt:
+  spell resistance: false
+  breakable: deal energy damage
+glitterdust alt:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
-      condition: faerie_fire
+      condition: faerie fire
     success:
-      condition: partially_blinded
-    critical_success:
-      condition: severely_impaired
+      condition: partially blinded
+    critical success:
+      condition: severely impaired
   duration: short
-  spell_resistance: false
-  breakable: deal_energy_damage
-grasping_hand:
-  attack_subeffects:
+  spell resistance: false
+  breakable: deal energy damage
+grasping hand:
+  attack subeffects:
     success:
       condition: grappled
       duration: short
   range: medium
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
+  trigger condition: every round
+  trigger duration: short
 grease:
   range: close
   zone: small radius
-  spell_resistance: false
-  attack_subeffects:
+  spell resistance: false
+  attack subeffects:
     effect:
       condition: grease
-      breakable: leave_area_impeded
+      breakable: leave area impeded
       duration: short
     success:
-      instant_effect: prone
+      instant effect: prone
   targets: all
-gust_of_wind:
-  instant_effect: shove_strong
+gust of wind:
+  instant effect: shove strong
   zone: large line
   targets: all
 harm:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
-      damage: kill_at_zero
-haste_lesser:
-  buff: double_speed
+      damage: kill at zero
+haste lesser:
+  buff: double speed
   duration: short
   range: close
 haste:
   buffs:
-    - double_speed
-    - extra_attack_with_penalty
+    - double speed
+    - extra attack with penalty
   duration: short
   range: close
-haste_personal:
+haste personal:
   buffs:
-    - double_speed
-    - extra_attack_with_penalty
+    - double speed
+    - extra attack with penalty
   duration: long
-  personal_only: true
+  personal only: true
 # haste scales too well
-haste_mass:
+haste mass:
   base: haste
   range: medium
   targets: five
@@ -1057,87 +1061,87 @@ heal:
   range: close
   subeffects:
     - damage:
-        critical_overbleed: 2
-    - instant_effect:
-        remove_conditions: heal
-heat_metal:
+        critical overbleed: 2
+    - instant effect:
+        remove conditions: heal
+heat metal:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: dazed
       duration: round
-  limit_affected: touching_metal
+  limit affected: touching metal
 heroism:
   duration: short
   buffs:
-    - temporary_hp
+    - temporary hp
     - immune: fear
-    - awesome_point: attacks
+    - awesome point: attacks
   range: close
-heroism_mass:
+heroism mass:
   base: heroism
   range: medium
   targets: five
-hold_monster:
-  base: hold_person
-  limit_affected: mind_affecting
+hold monster:
+  base: hold person
+  limit affected: mind affecting
   range: medium
-hold_monster_mass:
-  base: hold_monster
+hold monster mass:
+  base: hold monster
   range: long
   targets: five
-hold_person:
+hold person:
   range: close
-  limit_affected: creature_type
-  attack_subeffects:
+  limit affected: creature type
+  attack subeffects:
     success:
       condition: immobilized
     failure:
-      condition: quarter_speed
+      condition: quarter speed
   duration: short
-hold_person_mass:
-  base: hold_person
+hold person mass:
+  base: hold person
   range: medium
   targets: five
-holy_aura:
-  base: cloak_of_chaos
-holy_smite:
-  limit_affected: nonalignment
+holy aura:
+  base: cloak of chaos
+holy smite:
+  limit affected: nonalignment
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: dazed
       duration: short
   burst: small radius
   targets: all
-holy_word:
+holy word:
   components: nosomatic
-  base: holy_smite
+  base: holy smite
   range: ~
   burst: large radius
-horrid_wilting:
+horrid wilting:
   damage: normal
   range: long
   burst: large radius
   targets: enemies
-hypnotic_pattern:
+hypnotic pattern:
   zone: large radius
   range: medium
   duration: short
   targets: all
   condition: fascinated
-  limit_affected: mind_affecting
-  breakable: violent_action_by_any
-hypnotic_pattern_greater:
-  base: hypnotic_pattern
+  limit affected: mind affecting
+  breakable: violent action by any
+hypnotic pattern greater:
+  base: hypnotic pattern
   duration: medium
   range: extreme
   misc: 1 # make the lights mobile
-ice_storm:
+ice storm:
   range: medium
   zone: small cylinder
   targets: all
@@ -1145,98 +1149,102 @@ ice_storm:
     - damage: normal
     - condition: grease
       duration: short
-      breakable: leave_area_impeded
+      breakable: leave area impeded
       misc: 1 # min level 1
 implosion:
   range: medium
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      instant_effect: death
+    critical success:
+      instant effect: death
     success:
       condition: staggered
       duration: short
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: concentration
+  trigger condition: standard action by you
+  trigger duration: concentration
 imprisonment:
   range: medium
-  limit_affected: on_ground
+  limit affected: on ground
   dispellable: false
-  attack_subeffects:
-    noncritical_effect:
+  attack subeffects:
+    noncritical effect:
       damage: normal
-    critical_success:
-      breakable: specific_spell
+    critical success:
+      breakable: specific spell
       condition: stasis
       duration: permanent
     success:
       condition: slowed
       duration: short
     failure:
-      condition: half_speed
+      condition: half speed
       duration: short
-inertial_shield:
+inertial shield:
   duration: short
   buff:
-    damage_reduction: physical
+    damage reduction: physical
   range: close
-invulnerability_lesser:
+inertial shield mass:
+  base: inertial shield
+  range: close
+  targets: five
+invulnerability lesser:
   duration: long
   buff:
-    damage_reduction: all
-  personal_only: true
-personal_shield:
-  duration: personal_long
+    damage reduction: all
+  personal only: true
+personal shield:
+  duration: personal long
   buff:
-    damage_reduction: physical
-inflict_light_wounds:
+    damage reduction: physical
+inflict light wounds:
   damage: normal
   range: medium
-inflict_light_wounds_mass:
+inflict light wounds mass:
   damage: normal
   range: medium
   targets: five
-inflict_critical_wounds:
+inflict critical wounds:
   damage:
-    critical_overbleed: 2
+    critical overbleed: 2
   range: medium
-inflict_critical_wounds_mass:
-  base: inflict_critical_wounds
+inflict critical wounds mass:
+  base: inflict critical wounds
   range: medium
   targets: five
-interposing_hand:
-  breakable: deal_physical_damage
+interposing hand:
+  breakable: deal physical damage
   buff: cover
   duration: short
-#invest_magic:
+#invest magic:
 invisibility:
   buff: invisible
   duration: short
-  breakable: if_attack
+  breakable: if attack
   range: close
-invisibility_greater:
+invisibility greater:
   base: invisibility
-  breakable: if_attack_per_round
-invisibility_mass:
+  breakable: if attack per round
+invisibility mass:
   base: invisibility
   range: medium
   limit: medium radius
   targets: five
-iron_body:
+iron body:
   duration: short
   buffs:
-    - damage_reduction: physical
+    - damage reduction: physical
     - immune: construct
   antibuffs:
-    - half_speed
-  personal_only: true
-irresistible_dance:
+    - half speed
+  personal only: true
+irresistible dance:
   range: close
   duration: short
-  limit_affected: mind_affecting
-  attack_subeffects:
+  limit affected: mind affecting
+  attack subeffects:
     success:
       condition: stunned
     failure:
@@ -1246,130 +1254,130 @@ levitate:
   range: medium
   duration: short
   buff: levitation
-lifeseeking_missile:
-  base: magic_missile
+lifeseeking missile:
+  base: magic missile
   limit: medium radius
-  targets: automatically_find_one
+  targets: automatically find one
   range: medium
-lightning_bolt:
+lightning bolt:
   damage: normal
   burst: large line
   targets: all
-link_vitality:
+link vitality:
   limit: medium radius
   targets: two
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: link_vitality
+      condition: link vitality
       duration: short
-locate_creature:
-  knowledge: creature_location
+locate creature:
+  knowledge: creature location
   range: extreme
-locate_entity:
-  knowledge: creature_or_object_location
+locate entity:
+  knowledge: creature or object location
   range: extreme
-locate_object:
-  knowledge: object_location
+locate object:
+  knowledge: object location
   range: extreme
 longstrider:
-  buff: ten_foot_speed
+  buff: ten foot speed
   duration: long
-  personal_only: true
-link_vitality_mass:
+  personal only: true
+link vitality mass:
   limit: medium radius
   targets: five
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: link_vitality
+      condition: link vitality
       duration: short
-mage_armor:
-  buff: mage_armor
+mage armor:
+  buff: mage armor
   duration: long
-  personal_only: true
+  personal only: true
   misc: -1 # it's sort of necessary to have defense?
-#mage_hand
-mages_disjunction:
+#mage hand
+mages disjunction:
   burst: medium radius
   range: medium
-  instant_effect: dispel
-  spell_resistance: false
+  instant effect: dispel
+  spell resistance: false
   targets: all
-magic_circle_against_alignment:
+magic circle against alignment:
   duration: short
   emanation: medium radius
   targets: all
-  limit_affected: alignment
-  buff: retributive_damage
-#magic_fang:
-magic_missile:
+  limit affected: alignment
+  buff: retributive damage
+#magic fang:
+magic missile:
   damage: normal
   range: medium
-mark_of_tracking:
-  knowledge: creature_or_object_location
+mark of tracking:
+  knowledge: creature or object location
   # long duration is +2
   # but having to target the creature offsets this by about 2
   # so skip both
   range: medium
-#magic_vestment:
-##magic_weapon
-#major_image
+#magic vestment:
+##magic weapon
+#major image
 maze:
   range: close
-  condition: out_of_battle
+  condition: out of battle
   duration: medium
   breakable: maze
-#manipulate_probability:
-meteor_swarm:
+#manipulate probability:
+meteor swarm:
   range: medium
   burst: large cylinder
   targets: all
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
-      instant_effect: prone
-missile_storm:
+      instant effect: prone
+missile storm:
   range: medium
   damage: normal
   targets: five
-missile_storm_greater:
+missile storm greater:
   burst: huge radius
   damage: normal
   targets: enemies
-moment_of_prescience:
+moment of prescience:
   buff:
-    awesome_point: all
+    awesome point: all
   duration: round
-  personal_only: true
-  casting_time: immediate
-moment_of_prescience_greater:
+  personal only: true
+  casting time: immediate
+moment of prescience greater:
   buffs:
-    - awesome_point: all
-    - awesome_point: all
+    - awesome point: all
+    - awesome point: all
   duration: round
-  personal_only: true
-  casting_time: immediate
+  personal only: true
+  casting time: immediate
 nondetection:
-  buff: spell_resistance_limited
+  buff: spell resistance limited
   duration: extreme
-  noncombat_buff: true
-orders_wrath:
-  limit_affected: nonalignment
+  noncombat buff: true
+orders wrath:
+  limit affected: nonalignment
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: slowed
       duration: short
   burst: small radius
   targets: all
-phantasmal_killer:
+phantasmal killer:
   range: close
-  limit_affected: mind_affecting
-  attack_subeffects:
-    critical_success:
-      instant_effect: death
+  limit affected: mind affecting
+  attack subeffects:
+    critical success:
+      instant effect: death
       misc: -1 # must hit both Will and Fort
     success:
       condition: frightened
@@ -1377,159 +1385,159 @@ phantasmal_killer:
     failure:
       condition: shaken
       duration: short
-phantasmal_killer_mass:
-  base: phantasmal_killer
+phantasmal killer mass:
+  base: phantasmal killer
   range: medium
   targets: five
-#phantasmal_maze
-#phantasmal_wound:
+#phantasmal maze
+#phantasmal wound:
 #poison
-polar_ray:
+polar ray:
   range: close
   subeffects:
     - damage: normal
-    - attack_subeffects:
+    - attack subeffects:
         success:
           condition: slowed
           duration: short
         failure:
-          condition: half_speed
+          condition: half speed
           duration: short
-power_word_blind:
+power word blind:
   components: nosomatic
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: blinded
       duration: short
     failure:
       condition: impaired
       duration: short
-power_word_confuse:
+power word confuse:
   components: nosomatic
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: confused
       duration: short
     failure:
       condition: disoriented
       duration: short
-power_word_daze:
+power word daze:
   components: nosomatic
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: dazed
       duration: short
-power_word_impair:
+power word impair:
   components: nosomatic
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
-      condition: severely_impaired
+      condition: severely impaired
       duration: short
     failure:
       condition: impaired
       duration: short
-power_word_stun:
+power word stun:
   components: nosomatic
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: close
-  attack_subeffects:
+  attack subeffects:
     success:
       conditions:
         - dazed
-        - half_speed
+        - half speed
       duration: short
-    critical_success:
+    critical success:
       condition: stunned
       duration: short
     failure:
-      condition: half_speed
+      condition: half speed
       duration: short
-precognition_lesser:
+precognition lesser:
   buffs:
-    - awesome_point: all
+    - awesome point: all
   duration: short
-  personal_only: true
+  personal only: true
 precognition:
   buffs:
-    - awesome_point: all
-    - awesome_point: all
+    - awesome point: all
+    - awesome point: all
   duration: short
-  personal_only: true
-precognition_greater:
+  personal only: true
+precognition greater:
   buffs:
-    - awesome_point: all
-    - awesome_point: all
-    - awesome_point: all
+    - awesome point: all
+    - awesome point: all
+    - awesome point: all
   duration: short
-  personal_only: true
-prismatic_beam:
-  instant_effect: prismatic
+  personal only: true
+prismatic beam:
+  instant effect: prismatic
   range: medium
-prismatic_spray:
-  instant_effect: prismatic
+prismatic spray:
+  instant effect: prismatic
   burst: large cone
   targets: all
-prismatic_storm:
-  instant_effect: prismatic
+prismatic storm:
+  instant effect: prismatic
   burst: large radius
   targets: all
   range: medium
-prismatic_wall:
-  breakable: deal_energy_damage
+prismatic wall:
+  breakable: deal energy damage
   zone: large wall
-  instant_effect: prismatic
+  instant effect: prismatic
   targets: all
   triggered: true
-  trigger_condition: enter_zone
-  trigger_duration: short
+  trigger condition: enter zone
+  trigger duration: short
   range: medium
-prismatic_red:
+prismatic red:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: impaired
       duration: short
-prismatic_orange:
+prismatic orange:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: blinded
       duration: round
-prismatic_yellow:
+prismatic yellow:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: staggered
       duration: round
-prismatic_green:
+prismatic green:
   range: medium
   subeffects:
     - damage: normal
     - condition: sickened
       duration: short
-prismatic_blue:
+prismatic blue:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: slowed
       duration: short
     failure:
-      condition: half_speed
+      condition: half speed
       duration: short
-prismatic_indigo:
+prismatic indigo:
   range: medium
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: confused
       duration: round
@@ -1538,143 +1546,149 @@ prohibition:
   damage: normal
   targets: all
   triggered: true
-  trigger_condition: break_prohibition
-  trigger_duration: short
-protection_from_alignment:
+  trigger condition: break prohibition
+  trigger duration: short
+protection from alignment:
   buff:
-    damage_reduction: alignment
+    damage reduction: alignment
   duration: short
-read_mind:
-  attack_subeffects:
+read mind:
+  attack subeffects:
     success:
       knowledge: thoughts
   duration: concentration
   range: medium
-read_mind_greater:
+read mind greater:
   knowledge: thoughts
   duration: concentration
   range: long
-read_mind_mass:
-  base: read_mind
+read mind mass:
+  base: read mind
   targets: five
-reduce_person:
-  buff: reduce_size
-  casting_time: full_round_buff
+reduce person:
+  buff: reduce size
+  casting time: full round buff
   duration: short
-  limit_affected: creature_type
+  limit affected: creature type
   range: medium
-reduce_person_mass:
-  base: reduce_person
+reduce person mass:
+  base: reduce person
   targets: five
-regeneration_lesser:
-  damage: fast_healing
+regeneration lesser:
+  damage: fast healing
 regeneration:
   subeffects:
-    - damage: fast_healing
+    - damage: fast healing
     - buff:
         immune: regeneration
       duration: short
-      no_prebuff: true
+      no prebuff: true
 repulsion:
   condition: shaken
   emanation: large radius
   duration: short
   targets: all
   misc: 1 # slightly larger range than shaken
-resist_energy:
+resist energy:
   buff:
-    damage_reduction: energy_single
-  duration: personal_long
+    damage reduction: energy single
+  duration: personal long
   range: close
-retributive_shield:
+protection from energy mass:
+  buff:
+    damage reduction: energy all
+  duration: short
+  range: close
+  targets: five
+retributive shield:
   buffs:
-    - damage_reduction: physical
-    - retributive_damage
+    - damage reduction: physical
+    - retributive damage
   range: close
   duration: short
   misc: -2 # the retributive damage isn't fully effective
-revelation_of_destruction:
+revelation of destruction:
   range: close
-  condition: severely_impaired
+  condition: severely impaired
   duration: short
-revelation_of_prowess:
+revelation of prowess:
   base: precognition
   range: close
-  personal_only: false
-reverse_gravity:
+  personal only: false
+reverse gravity:
   zone: medium cylinder
   duration: concentration
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: immobilized
   targets: all
   range: medium
-righteous_might:
+righteous might:
   buffs:
-    - increase_size
-    - damage_reduction: physical
-  casting_time: full_round_buff
+    - increase size
+    - damage reduction: physical
+  casting time: full round buff
   duration: short
-  personal_only: true
-rotting_touch:
-  damage: over_time
+  personal only: true
+rotting touch:
+  damage: over time
 rotburst:
-  damage: over_time
+  damage: over time
   burst: small radius
   targets: all
-rotburst_greater:
+rotburst greater:
   base: rotburst
   burst: large radius
-scorching_ray:
+scorching ray:
   range: close
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: ignited
       duration: short
-searing_light:
+searing light:
   range: close
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: impaired
       duration: short
-see_invisibility:
-  duration: personal_long
-  buff: see_invisibility
-  noncombat_buff: true
-see_invisibility_mass:
-  casting_time: full_round_buff
-  buff: see_invisibility
-  noncombat_buff: true
+see invisibility:
+  duration: personal long
+  buff: see invisibility
+  noncombat buff: true
+see invisibility mass:
+  casting time: full round buff
+  buff: see invisibility
+  noncombat buff: true
   duration: long
   targets: five
-shadow_umbra:
+shadow umbra:
   duration: short
   range: close
   buffs:
-    - half_miss_all
-    - hide_attack_effects
-share_pain:
+    - half miss all
+    - hide attack effects
+share pain:
   duration: short
   range: close
-  buff: share_pain
-shield_of_faith:
-  buff: shield_of_faith
-  duration: personal_long
+  buff: share pain
+shield of faith:
+  buff: shield of faith
+  duration: personal long
 shillelagh:
   buffs:
-    - increase_weapon_size
-    - awesome_point: attacks
+    - increase weapon size
+    - awesome point: attacks
   duration: short
-  personal_only: true
-shocking_grasp:
-  attack_subeffects:
+  personal only: true
+shocking grasp:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: staggered
       duration: short
   misc: 1 # for the bonus against metallic targets
@@ -1682,35 +1696,35 @@ shout:
   components: nosomatic
   burst: medium cone
   targets: all
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       condition: deafened
       duration: short
-shout_greater:
+shout greater:
   base: shout
   burst: large cone
 silence:
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: silenced
       duration: short
   range: medium
   misc: 2 # for utility as a buff
-silence_mass:
+silence mass:
   base: silence
   targets: five
 skysmite:
   range: extreme
   damage: normal
-  targets: automatically_find_one
+  targets: automatically find one
 sleep:
   components: noverbal
-  limit_affected: mind_affecting
+  limit affected: mind affecting
   range: medium
-  attack_subeffects:
-    critical_success:
+  attack subeffects:
+    critical success:
       condition: exhausted
       duration: medium
       misc: 1 # for the compulsion to sleep
@@ -1718,107 +1732,107 @@ sleep:
       condition: fatigued
       duration: medium
       misc: 1 # for the compulsion to sleep
-sleep_mass:
+sleep mass:
   base: sleep
   limit: medium radius
   targets: five
 slow:
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: slowed
     failure:
-      condition: half_speed
+      condition: half speed
   duration: short
   range: close
-slow_mass:
+slow mass:
   base: slow
   range: medium
   targets: five
-solid_fog:
+solid fog:
   zone: medium cylinder
   range: medium
-  spell_resistance: false
+  spell resistance: false
   conditions:
-    - underwater_penalties
+    - underwater penalties
     - fog
   targets: all
   duration: short
-  breakable: leave_area
-sound_burst:
+  breakable: leave area
+sound burst:
   burst: small radius
   range: close
   damage: normal
   targets: all
-spell_resistance:
+spell resistance:
   range: close
   duration: short
-  buff: spell_resistance
-#spell_turning
-spider_climb:
-  buff: climb_speed
+  buff: spell resistance
+#spell turning
+spider climb:
+  buff: climb speed
   duration: medium
-  noncombat_buff: true
-spiritual_weapon:
+  noncombat buff: true
+spiritual weapon:
   damage: normal
   triggered: true
-  trigger_condition: damage_every_round
-  trigger_duration: short
+  trigger condition: damage every round
+  trigger duration: short
   range: medium
-spore_cloud:
+spore cloud:
   burst: medium radius
   condition: sickened
   duration: short
   targets: all
-stinking_cloud:
+stinking cloud:
   zone: medium radius
   duration: short
-  spell_resistance: false
+  spell resistance: false
   conditions:
     - fog
     - sickened
   range: medium
   targets: all
-  breakable: leave_area
+  breakable: leave area
 stoneskin:
   buff:
-    damage_reduction: physical
-  duration: personal_long
+    damage reduction: physical
+  duration: personal long
   range: close
-storm_of_vengeance:
+storm of vengeance:
   damage: normal
   burst: colossal radius
   targets: enemies
   triggered: true
-  trigger_condition: standard_action_by_you
-  trigger_duration: concentration
+  trigger condition: standard action by you
+  trigger duration: concentration
 stormlord:
   buffs:
-    - half_miss_ranged
-    - retributive_damage
+    - half miss ranged
+    - retributive damage
   duration: short
   range: long
-strip_the_flesh:
+strip the flesh:
   range: close
   dispellable: false
-  breakable: standard_skill_check
-  attack_subeffects:
+  breakable: standard skill check
+  attack subeffects:
     effect:
       damage: normal
     success:
-      condition: take_double_damage
+      condition: take double damage
       duration: short
 suggestion:
   components: nosomatic
   range: close
-  limit_affected: mind_affecting
-  attack_subeffects:
-    critical_success:
+  limit affected: mind affecting
+  attack subeffects:
+    critical success:
       condition: suggestion
       duration: permanent
     success:
       condition: suggestion
       duration: short
-suggestion_mass:
+suggestion mass:
   base: suggestion
   range: medium
   targets: five
@@ -1827,140 +1841,140 @@ sunbeam:
   targets: all
   subeffects:
     - damage: normal
-    - attack_subeffects:
-        critical_success:
+    - attack subeffects:
+        critical success:
           conditions:
             - blinded
           duration: short
-          limit_affected: light_vulnerable
+          limit affected: light vulnerable
 sunburst:
   base: sunbeam
   burst: medium radius
   range: medium
 telepathy:
   buff: telepathy
-  personal_only: true
+  personal only: true
   duration: long
-temporal_stasis:
+temporal stasis:
   range: medium
-  attack_subeffects:
-    critical_success:
-      condition: out_of_battle
+  attack subeffects:
+    critical success:
+      condition: out of battle
       duration: permanent
     success:
-      condition: out_of_battle
+      condition: out of battle
       duration: short
     failure:
-      condition: half_speed
+      condition: half speed
       duration: short
-time_stop:
-  buff: time_stop
+time stop:
+  buff: time stop
   duration: short
-  personal_only: true
-totemic_mind:
+  personal only: true
+totemic mind:
   buff:
     attribute: plus2
-  duration: personal_long
-  choose_effect: true
-totemic_mind_mass:
+  duration: personal long
+  choose effect: true
+totemic mind mass:
   buff:
     attribute: plus2
   duration: short
   range: medium
   targets: five
   misc: -0.5 # giving the same attribute to everyone is less useful
-totemic_mind_greater:
+totemic mind greater:
   buff:
     attribute: plus4
-  duration: personal_long
-  choose_effect: true
-totemic_power:
-  base: totemic_mind
-totemic_power_greater:
-  base: totemic_mind_greater
-totemic_power_mass:
-  base: totemic_mind_mass
-#touch_of_idiocy:
-transmute_flesh_and_stone:
+  duration: personal long
+  choose effect: true
+totemic power:
+  base: totemic mind
+totemic power greater:
+  base: totemic mind greater
+totemic power mass:
+  base: totemic mind mass
+#touch of idiocy:
+transmute flesh and stone:
   range: close
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
     success:
       conditions:
-        - die_at_zero
+        - die at zero
       duration: short
 tremorsense:
   buff: tremorsense
-  duration: personal_long
-  noncombat_buff: true
+  duration: personal long
+  noncombat buff: true
 timestream:
   condition: slowed
-  breakable: leave_area
+  breakable: leave area
   duration: round
   zone: large line
   triggered: true
-  trigger_duration: short
-  trigger_condition: every_round
+  trigger duration: short
+  trigger condition: every round
   targets: all
-true_seeing:
-  buff: true_seeing
+true seeing:
+  buff: true seeing
   duration: short
-true_strike:
+true strike:
   buff:
-    awesome_point: attacks
+    awesome point: attacks
   duration: short
   range: medium
-unholy_blight:
-  limit_affected: nonalignment
+unholy blight:
+  limit affected: nonalignment
   range: medium
-  attack_subeffects:
+  attack subeffects:
     effect:
       damage: normal
-    critical_success:
+    critical success:
       condition: staggered
       duration: short
   burst: small radius
   targets: all
-unliving_eyes:
+unliving eyes:
   buff: lifesight
-  duration: personal_long
-  noncombat_buff: true
-unliving_heart:
+  duration: personal long
+  noncombat buff: true
+unliving heart:
   buffs:
-    - temporary_hp
+    - temporary hp
     - undead
   duration: long
   misc: -1 # temporary hit points don't scale well with long duration
-  personal_only: true
-wail_of_the_banshee:
+  personal only: true
+wail of the banshee:
   burst: medium radius
   components: nosomatic
   targets: all
-  attack_subeffects:
+  attack subeffects:
     effect:
-      damage: kill_at_zero
-wall_of_fire:
-  breakable: deal_energy_damage
+      damage: kill at zero
+wall of fire:
+  breakable: deal energy damage
   zone: medium wall
   damage: normal
   targets: all
   triggered: true
-  trigger_condition: enter_zone
-  trigger_duration: short
+  trigger condition: enter zone
+  trigger duration: short
   range: medium
-wall_of_fire_greater:
-  base: wall_of_fire
+wall of fire greater:
+  base: wall of fire
   zone: huge wall
   shapeable: true
-wall_of_force:
+wall of force:
   zone: huge wall
   condition: impassable
   targets: all
   duration: short
   range: medium
-wall_of_thorns:
-  breakable: leave_area_impeded
+wall of thorns:
+  breakable: leave area impeded
   zone: medium wall
   duration: short
   range: medium
@@ -1969,33 +1983,33 @@ wall_of_thorns:
   subeffects:
     - damage: cantrip
       triggered: true
-      trigger_condition: enter_zone
-      trigger_duration: short
-    - condition: quarter_speed
-wall_of_thorns_greater:
-  base: wall_of_thorns
+      trigger condition: enter zone
+      trigger duration: short
+    - condition: quarter speed
+wall of thorns greater:
+  base: wall of thorns
   zone: huge wall
   shapeable: true
-water_walk:
-  buff: water_walk
+water walk:
+  buff: water walk
   duration: long
-  noncombat_buff: true
-waves_of_fatigue_greater:
+  noncombat buff: true
+waves of fatigue greater:
   burst: large cone
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: exhausted
     failure:
       condition: fatigued
   duration: short
   targets: all
-waves_of_fatigue_lesser:
+waves of fatigue lesser:
   burst: medium cone
   condition: fatigued
   duration: short
   targets: all
-waves_of_fatigue:
-  base: waves_of_fatigue_lesser
+waves of fatigue:
+  base: waves of fatigue lesser
   burst: large cone
 web:
   breakable: grapple
@@ -2003,11 +2017,11 @@ web:
   zone: medium radius
   targets: all
   duration: short
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: immobilized
     failure:
-      condition: half_speed
+      condition: half speed
   misc: -2 # between two opposing sides
   misc: -1 # webs are easy to destroy
   range: medium
@@ -2015,42 +2029,94 @@ windstrike:
   range: medium
   subeffects:
     - damage: normal
-    - instant_effect: shove_weak
-windstrike_greater:
+    - instant effect: shove weak
+windstrike greater:
   range: extreme
   subeffects:
     - damage: normal
-    - instant_effect: shove_strong
-zephyr_blade:
-  buff: weapon_reach
-  duration: personal_long
-zephyr_blade_greater:
+    - instant effect: shove strong
+zephyr blade:
+  buff: weapon reach
+  duration: personal long
+zephyr blade greater:
   buffs:
-    - weapon_reach
-    - melee_weapon_range
-  duration: personal_long
+    - weapon reach
+    - melee weapon range
+  duration: personal long
   range: close
-cone_of_nauseated:
+cone of nauseated:
   condition: nauseated
   duration: short
   burst: medium cone
   targets:  all
-excrete_slime:
-  buff: retributive_damage
+excrete slime:
+  buff: retributive damage
   duration: short
-  personal_only: true
-rock_blast:
+  personal only: true
+rock blast:
   damage: normal
   burst: medium line
   targets: all
-  spell_resistance: false
-zoom_zoom:
-  buff: double_speed
+  spell resistance: false
+zoom zoom:
+  buff: double speed
   duration: long
-  personal_only: true
-radiant_lance:
+  personal only: true
+radiant lance:
   subeffects:
     - damage: normal
-    - condition: faerie_fire
+    - condition: faerie fire
       duration: short
   range: close
+resilient sphere:
+  attack subeffects:
+    success:
+      condition: out of battle
+      duration: short
+  range: close
+gender swap:
+  attack subeffects:
+    success:
+      condition: severely impaired
+      duration: short
+      misc: 1
+    critical success:
+      condition: severely impaired
+      duration: short
+      misc: 6
+    failure:
+      condition: impaired
+      duration: short
+  range: close
+  dispellable: false
+  breakable: specific spell
+  limit affected: creature type
+living missile:
+  subeffects:
+    - range: medium
+      damage: normal
+    - teleport:
+        range: medium # throwing the ally
+  misc: 1 # ally damage reduction
+  # ally must be adjacent
+  # round down for size limitation on ally
+  # ally can charge
+bleed:
+  attack subeffects:
+    effect:
+      damage: normal
+    success:
+      instant effect:
+        critical damage: one
+  range: close
+super death knell:
+  attack subeffects:
+    success:
+      conditions:
+        - die at zero
+        - summon
+      misc: -1 # summon only happens if the creature dies
+    failure:
+      condition: no zero threshold
+  range: medium
+  duration: short

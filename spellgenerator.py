@@ -4,14 +4,14 @@ import yaml
 
 pprinter = PrettyPrinter(indent=4, width=60)
 
-AREA_NAMES = set('burst emanation limit wall zone'.split())
-PRIMARY_ATTRIBUTES = 'attack_subeffects buffs conditions damage instant_effect knowledge subeffects teleport'.split()
-SINGLE_MODIFIERS = set('casting_time choose_effect components delayable difficult_trigger expended knowledge instant_effect no_prebuff personal_only range spell_resistance targets'.split())
+AREA_NAMES = set('burst, emanation, limit, wall, zone'.split(', '))
+PRIMARY_ATTRIBUTES = 'attack subeffects, buffs, conditions, damage, instant effect, knowledge, subeffects, teleport'.split(', ')
+SINGLE_MODIFIERS = set('casting time, choose effect, components, delayable, difficult trigger, expended, knowledge, instant effect, no prebuff, personal only, range, spell resistance, targets'.split(', '))
 #PLURAL_MODIFIERS = set('buffs conditions'.split())
 # these modifiers are factored in as part of other modifiers
-NONGENERIC_MODIFIERS = set('dispellable duration ignore_warnings limit_affected noncombat_buff shapeable trigger_condition trigger_duration'.split())
+NONGENERIC_MODIFIERS = set('dispellable, duration, ignore warnings, limit affected, noncombat buff, shapeable, trigger condition, trigger duration'.split(', '))
 # convert singular to plural for consistency
-TARGETING_ATTRIBUTES = set('casting_time components personal_only range shapeable spell_resistance targets'.split() + list(AREA_NAMES))
+TARGETING_ATTRIBUTES = set('casting time, components, personal only, range, shapeable, spell resistance, targets'.split(', ') + list(AREA_NAMES))
 PLURAL_MAPPINGS = {
     'antibuff': 'antibuffs',
     'buff': 'buffs',
@@ -19,8 +19,8 @@ PLURAL_MAPPINGS = {
     'subeffect': 'subeffects',
     'trigger': 'triggers',
 }
-NESTING_ATTRIBUTES = set('subeffects attack_subeffects')
-SUBSPELL_INHERITED_ATTRIBUTES = set(list(SINGLE_MODIFIERS) + list(AREA_NAMES) + 'dispellable duration ignore_warnings'.split())
+NESTING_ATTRIBUTES = set('subeffects, attack subeffects'.split(', '))
+SUBSPELL_INHERITED_ATTRIBUTES = set(list(SINGLE_MODIFIERS) + list(AREA_NAMES) + 'dispellable, duration, ignore warnings'.split(', '))
 
 # list: 0th is spell point cost of 0th level spells, 1st is spell point cost of
 # 1st level spells, etc.
@@ -57,8 +57,8 @@ def import_data(args):
         modifiers = yaml.load(modifiersfile)
     if args.get('abilities') is not None:
         filename = 'abilities.yaml'
-    elif args.get('magic_items') is not None:
-        filename = 'magic_items.yaml'
+    elif args.get('magic items') is not None:
+        filename = 'magic items.yaml'
     else:
         filename = 'spells.yaml'
     with open(filename, 'r') as spellsfile:
@@ -91,7 +91,7 @@ class Spell:
 
     @property
     def ignore_warnings(self):
-        return self.attributes.get('ignore_warnings')
+        return self.attributes.get('ignore warnings')
 
     @property
     def affects_multiple(self):
@@ -128,7 +128,7 @@ class Spell:
         attribute_name = PLURAL_MAPPINGS.get(attribute_name, attribute_name)
         return (
             attribute_name in self.attributes
-            or attribute_name in self.attributes.get('attack_subeffects', {})
+            or attribute_name in self.attributes.get('attack subeffects', {})
             or attribute_name in self.attributes.get('subeffects', {})
         )
 
@@ -198,7 +198,7 @@ class Spell:
             if attribute_name == 'subeffects':
                 for subeffect in attribute:
                     self.add_modifier('subeffect', self.calculate_subeffect_modifier(subeffect, all_modifiers))
-            elif attribute_name == 'attack_subeffects':
+            elif attribute_name == 'attack subeffects':
                 self.add_attack_subeffects_modifiers(attribute_name, attribute, all_modifiers)
             elif attribute_name == 'triggered':
                 for modifier in self.calculate_triggered_modifier(all_modifiers):
@@ -218,13 +218,13 @@ class Spell:
                     spell_level = self.calculate_buffs_modifier(attribute, all_modifiers)
                 elif attribute_name == 'conditions':
                     spell_level = self.calculate_conditions_modifier(attribute, all_modifiers)
-                elif attribute_name == 'limit_affected':
+                elif attribute_name == 'limit affected':
                     spell_level = self.calculate_limit_affected_modifier(attribute, all_modifiers)
                 elif attribute_name == 'range':
                     spell_level = self.calculate_range_modifier(attribute, all_modifiers)
                 elif attribute_name == 'antibuffs':
                     spell_level = self.calculate_antibuffs_modifier(attribute, all_modifiers)
-                elif attribute_name == 'instant_effect':
+                elif attribute_name == 'instant effect':
                     spell_level = self.calculate_instant_effect_modifier(attribute, all_modifiers)
                 elif attribute_name == 'teleport':
                     spell_level = self.calculate_teleport_modifier(attribute, all_modifiers)
@@ -232,8 +232,8 @@ class Spell:
                     spell_level = self.calculate_breakable_modifier(attribute, all_modifiers)
                 elif attribute_name == 'misc':
                     spell_level = attribute
-                elif attribute_name == 'at_will_class_feature':
-                    spell_level = all_modifiers['at_will_class_feature']
+                elif attribute_name == 'at will class feature':
+                    spell_level = all_modifiers['at will class feature']
                 elif attribute_name in SINGLE_MODIFIERS:
                     spell_level = self.calculate_generic_modifier(attribute_name, attribute, all_modifiers)
                 #elif attribute_name in PLURAL_MODIFIERS:
@@ -263,9 +263,9 @@ class Spell:
         else:
             success_modifier = 0
 
-        if 'noncritical_effect' in attribute:
+        if 'noncritical effect' in attribute:
             noncritical_effect_modifier = self.calculate_subeffect_modifier(
-                attribute['noncritical_effect'], all_modifiers
+                attribute['noncritical effect'], all_modifiers
             )
             if success_modifier != 0 and noncritical_effect_modifier > success_modifier + 3:
                 raise Exception("Spell {0} has noncritical effect more powerful than success ({1})".format(self.name, self.attributes))
@@ -273,9 +273,9 @@ class Spell:
         else:
             noncritical_effect_modifier = 0
 
-        if 'critical_success' in attribute:
+        if 'critical success' in attribute:
             critical_success_modifier = self.calculate_critical_success_modifier(
-                attribute['critical_success'], success_modifier + noncritical_effect_modifier, all_modifiers
+                attribute['critical success'], success_modifier + noncritical_effect_modifier, all_modifiers
             )
             self.add_modifier('attack critical success', max(0, critical_success_modifier) + 1)
 
@@ -296,7 +296,7 @@ class Spell:
     def calculate_success_modifier(self, success_effects, all_modifiers):
         modifier = sum([
             self.calculate_subeffect_modifier(success_effects, all_modifiers),
-            all_modifiers['attack']['success_only']
+            all_modifiers['attack']['success only']
         ])
         if modifier <= 0 and not self.ignore_warnings:
             print "#Warning: Spell {0} has success subeffect with level {1}, which may be too weak".format(
@@ -306,7 +306,7 @@ class Spell:
     def calculate_critical_success_modifier(self, critical_success_effects, success_modifier, all_modifiers):
         modifier = sum([
             self.calculate_subeffect_modifier(critical_success_effects, all_modifiers),
-            all_modifiers['attack']['critical_success_only'],
+            all_modifiers['attack']['critical success only'],
             -success_modifier
         ])
         if modifier < -1 and not self.ignore_warnings:
@@ -320,7 +320,7 @@ class Spell:
     def calculate_failure_modifier(self, failure_effects, success_modifier, all_modifiers):
         modifier = sum([
             self.calculate_subeffect_modifier(failure_effects, all_modifiers),
-            all_modifiers['attack']['failure_only'],
+            all_modifiers['attack']['failure only'],
             -success_modifier
         ])
         if modifier < -1 and not self.ignore_warnings:
@@ -342,7 +342,7 @@ class Spell:
             modifier = max(3, modifier - 2)
         elif targets == 'two':
             modifier = max(2, modifier - 3)
-        elif targets == 'automatically_find_one':
+        elif targets == 'automatically find one':
             modifier = max(1, modifier - 2)
         elif targets == 'enemies':
             # 'enemies' matters more for larger areas
@@ -371,18 +371,18 @@ class Spell:
                 buffed_statistics = ensure_list(buff[buff_name])
                 for buffed_statistic in buffed_statistics:
                     modifier += self.calculate_generic_modifier('buffs', {'bonuses': buffed_statistic}, all_modifiers)
-            elif buff_name == 'awesome_point':
+            elif buff_name == 'awesome point':
                 buffed_statistics = ensure_list(buff[buff_name])
                 for buffed_statistic in buffed_statistics:
-                    modifier += self.calculate_generic_modifier('buffs', {'awesome_point': buffed_statistic}, all_modifiers)
+                    modifier += self.calculate_generic_modifier('buffs', {'awesome point': buffed_statistic}, all_modifiers)
             else:
                 modifier += self.calculate_generic_modifier('buffs', buff, all_modifiers)
-        if self.attributes.get('personal_only'):
-            duration_type = 'personal_buff'
-        elif self.attributes.get('noncombat_buff'):
-            duration_type = 'noncombat_buff'
+        if self.attributes.get('personal only'):
+            duration_type = 'personal buff'
+        elif self.attributes.get('noncombat buff'):
+            duration_type = 'noncombat buff'
         else:
-            duration_type = 'nonpersonal_buff'
+            duration_type = 'nonpersonal buff'
 
         # if self.affects_multiple:
             # modifier += 1
@@ -421,17 +421,17 @@ class Spell:
         # advantage is usually minimal
         if attribute == 'concentration' and self.has_attribute('knowledge'):
             modifier = min(modifier + 1, 0)
-        # long duration matters less for temporary hit points 
+        # long duration matters less for temporary hit points
         if (
-            attribute not in ('short', 'concentration', 'round', 'personal_long')
+            attribute not in ('short', 'concentration', 'round', 'personal long')
             and self.has_attribute('buffs')
-            and 'temporary_hp' in self.get_attribute('buffs')
+            and 'temporary hp' in self.get_attribute('buffs')
         ):
             modifier = max(0, modifier - 1)
         return modifier
 
     def calculate_instant_effect_modifier(self, attribute, all_modifiers):
-        return self.calculate_generic_modifier('instant_effect', attribute, all_modifiers)
+        return self.calculate_generic_modifier('instant effect', attribute, all_modifiers)
 
     def calculate_limit_affected_modifier(self, attribute, all_modifiers):
         if (
@@ -444,7 +444,7 @@ class Spell:
             attribute = {'buff': attribute}
         else:
             attribute = {'normal': attribute}
-        return self.calculate_generic_modifier('limit_affected', attribute, all_modifiers)
+        return self.calculate_generic_modifier('limit affected', attribute, all_modifiers)
 
     def calculate_range_modifier(self, attribute, all_modifiers):
         if self.has_attribute('buffs') or self.has_attribute('teleport'):
@@ -481,7 +481,7 @@ class Spell:
         #   within the area
         # or it could mean we're affecting five targets with a spell that would
         #   otherwise not have an area
-        if attribute in ('five', 'two', 'automatically_find_one'):
+        if attribute in ('five', 'two', 'automatically find one'):
             # if there is an area, the modifier is handled in calculate_area_modifier
             for area_name in AREA_NAMES:
                 if self.has_attribute(area_name):
@@ -501,23 +501,23 @@ class Spell:
         return modifier
 
     def calculate_triggered_modifier(self, all_modifiers):
-        if not (self.has_attribute('trigger_condition') and self.has_attribute('triggered') and self.get_attribute('triggered')):
-            raise Exception("Spell {0} with trigger must have both 'triggered: true' and 'trigger_condition' ({1})".format(self.name, self.attributes))
+        if not (self.has_attribute('trigger condition') and self.has_attribute('triggered') and self.get_attribute('triggered')):
+            raise Exception("Spell {0} with trigger must have both 'triggered: true' and 'trigger condition' ({1})".format(self.name, self.attributes))
         modifiers = list()
-        modifiers.append(self.calculate_generic_modifier('trigger_condition', self.get_attribute('trigger_condition'), all_modifiers))
-        if self.has_attribute('trigger_duration'):
-            modifiers.append(self.calculate_duration_modifier(self.get_attribute('trigger_duration'), all_modifiers, duration_type = 'trigger'))
+        modifiers.append(self.calculate_generic_modifier('trigger condition', self.get_attribute('trigger condition'), all_modifiers))
+        if self.has_attribute('trigger duration'):
+            modifiers.append(self.calculate_duration_modifier(self.get_attribute('trigger duration'), all_modifiers, duration_type = 'trigger'))
         return modifiers
 
     def calculate_triggers_modifier(self, attribute_name, attribute, all_modifiers):
         spell_level = 0
         for trigger in attribute:
             try:
-                trigger_condition = trigger['trigger_condition']
+                trigger_condition = trigger['trigger condition']
                 trigger_effect = trigger['subeffect']
             except KeyError:
                 raise Exception("Spell {0} has invalid trigger {1}".format(self.name, pprinter.pformat(trigger)))
-            spell_level += all_modifiers['trigger_condition'][trigger_condition]
+            spell_level += all_modifiers['trigger condition'][trigger_condition]
             spell_level += self.calculate_subeffect_modifier(trigger_effect, all_modifiers)
         return spell_level
 
@@ -538,7 +538,7 @@ class Spell:
                 if key not in spell_attributes and key != 'ignore':
                     spell_attributes[key] = base_spell[key]
         # every spell also inherits from the default spell to avoid unnecessary duplication
-        default_spell = spells['default_spell']
+        default_spell = spells['default spell']
         for key in default_spell:
             if key not in spell_attributes:
                 spell_attributes[key] = default_spell[key]
@@ -579,7 +579,7 @@ if __name__ == '__main__':
             print
     else:
         for spell_name in sorted(spells.keys()):
-            if spell_name == 'default_spell':
+            if spell_name == 'default spell':
                 continue
             spell = Spell.create_by_name(spell_name, spells, all_modifiers, args['verbose'])
             if args['type'] and not spell.has_nested_attribute(args['type']):
