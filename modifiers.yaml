@@ -78,17 +78,22 @@ buffs:
   # attacks
   alter weapon: 1
   aqueous blade: 3
-  extra attack: 5
-  extra attack with penalty: 3 # at -5 attack bonus
+  # make sure this doesn't stack well with other crit range bonuses
+  critical range: 4
+  critical multiplier: 4
+  extra attack: 8
+  extra attack with penalty: 4 # at -5 attack bonus
   flame blade: 3
-  increase size: 5
+  increase size: 4 # mix of upsides and downsides
   increase weapon size: 2
   reduce size: 3
+  ignore concealment: 2 # but not total concealment
   weapon reach: 2
   melee weapon range: 2 # plus spell range
   # defenses
   concealment: 3
   cover: 3
+  critical_immunity: 2
   damage reduction:
     energy all: 2
     energy single: 1
@@ -109,6 +114,7 @@ buffs:
     grapple: 2
     movement effects: 1
     negative energy: 3
+    overwhelm: 5
     poison: 3
     regeneration: 5
     unaware: 3
@@ -118,7 +124,8 @@ buffs:
   shield of faith: 2
   retributive damage: 4
   scent: 3
-  skill: 0.5
+  skill:
+    spellpower: 2 # +spellpower, to max of 2x spellpower
   share pain: 3
   spell resistance limited: 2
   spell resistance: 4
@@ -183,10 +190,11 @@ conditions:
   charmed: 8 # as minus6
   command: 18 # like stunned, but better
   confused: 14 # as minus8
+  crouching: 5
   damage if damaged: 4
   dazed: 8 # as staggered
   dazzled: 5
-  deafened: 3
+  deafened: 4
   die at zero: 8
   disoriented: 8 # compelled to move randomly
   dominated: 20
@@ -219,6 +227,7 @@ conditions:
   paralyzed: 18
   partially blinded: 5
   panicked: 14
+  prone: 14
   require concentration: 2
   sickened: 2
   severely impaired: 11
@@ -296,7 +305,10 @@ duration:
     round: -3
     concentration: -2
     short: 0
-    personal long: 1 # actually making it long requires +2 spell levels
+    # actually making it long requires +2 spell levels
+    # all 'personal long' spells should be close range
+    # because you don't benefit from close range when casting it on yourself
+    personal long: 0 
     medium: 5
     long: 6
     extreme: 7
@@ -310,7 +322,7 @@ duration:
   noncombat buff:
     concentration: -2
     short: 0
-    personal long: 1
+    personal long: 0
     medium: 2
     long: 3
     extreme: 5
@@ -338,9 +350,9 @@ instant effect:
   dispel: 7
   negative levels: 7 # one negative level per two spell levels
   full negative levels: 14 # one negative level per spell level
+  maneuver: 3 # +spellpower
   nothing: 0
-  shove weak: 1
-  shove strong: 2
+  shove: 1 # +spellpower; one of the weaker maneuvers
   prismatic: 5
   prone: 2
   remove conditions:
@@ -363,7 +375,7 @@ limit affected:
     creature type: -2
     falling: -4
     language: -2
-    max size large: -1
+    max size: -1
     mind affecting: -1
     nonalignment: -1
     near ground: -1 # within 10 feet of the ground
@@ -376,7 +388,7 @@ limit affected:
     alignment: -1
     creature type: -1
     falling: -4
-    max size large: 0
+    max size: 0
     mind affecting: 0
     nonalignment: -0.5
     near ground: -0.5 # within 10 feet of the ground

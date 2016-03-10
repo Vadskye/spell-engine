@@ -118,6 +118,7 @@ aid:
     - temporary hp
     - immune: fear
   duration: personal long
+  range: close
 air walk:
   buff: walking flight
   duration: short
@@ -180,7 +181,6 @@ banishment:
   trigger condition: standard action by you
   trigger duration: concentration
 barkskin:
-  breakable: damage reduction easy
   buff:
     damage reduction: physical
   duration: personal long
@@ -231,7 +231,7 @@ burning hands:
   burst: medium cone
   damage: normal
   targets: all
-call lightning: #-1 die size - lower than normal, higher than AOE
+call lightning: #-1 die size because of the 50' line
   damage: normal
   expended: caster level
   range: medium
@@ -474,7 +474,7 @@ curse of the wayward mind:
   range: close
 darkvision:
   buff: darkvision
-  duration: long
+  duration: medium
   noncombat buff: true
 default spell:
   casting time: standard
@@ -678,7 +678,7 @@ earths pull:
     failure:
       condition: half speed
   duration: short
-  limit affected: max size large
+  limit affected: max size
   range: close
 #earthen blade:
 earth glide:
@@ -726,21 +726,15 @@ enervation greater:
     failure:
       instant effect: negative levels
   range: close
-enlarge monster:
-  base: enlarge person
-  limit affected: max size large
-enlarge monster mass:
-  base: enlarge person mass
-  limit affected: max size large
-enlarge person:
+enlarge:
   buffs:
     - increase size
-  casting time: full round buff
   duration: short
-  limit affected: creature type
-  range: medium
-enlarge person mass:
-  base: enlarge person
+  range: close
+  limit affected: max size
+  misc: -1 # in the specific case of enlarge, max size matters
+enlarge mass:
+  base: enlarge
   range: medium
   targets: five
 entangle:
@@ -905,7 +899,7 @@ forcecage:
       condition: out of battle
   duration: short
   range: medium
-  limit affected: max size large
+  limit affected: max size
 foresee probability:
   buff: foresee probability
   duration: short
@@ -987,15 +981,6 @@ ghoul touch:
       duration: short
 #giant vermin
 glitterdust:
-  condition: faerie fire
-  duration: short
-  burst: medium radius
-  range: medium
-  targets: all
-  spell resistance: false
-  breakable: deal energy damage
-glitterdust alt:
-  range: medium
   attack subeffects:
     effect:
       condition: faerie fire
@@ -1004,8 +989,12 @@ glitterdust alt:
     critical success:
       condition: severely impaired
   duration: short
-  spell resistance: false
-  breakable: deal energy damage
+  burst: small radius
+  range: medium
+  targets: all
+glitterdust greater:
+  base: glitterdust
+  burst: large radius
 grasping hand:
   attack subeffects:
     success:
@@ -1028,7 +1017,7 @@ grease:
       instant effect: prone
   targets: all
 gust of wind:
-  instant effect: shove strong
+  instant effect: shove
   zone: large line
   targets: all
 harm:
@@ -1143,7 +1132,7 @@ hypnotic pattern greater:
   misc: 1 # make the lights mobile
 ice storm:
   range: medium
-  zone: small cylinder
+  zone: medium cylinder
   targets: all
   subeffects:
     - damage: normal
@@ -1195,10 +1184,13 @@ invulnerability lesser:
   buff:
     damage reduction: all
   personal only: true
-personal shield:
-  duration: personal long
-  buff:
-    damage reduction: physical
+invulnerability:
+  buffs:
+    - damage reduction: all
+    - spell resistance
+  misc: 1 # no way to overcome DR
+  personal only: true
+  duration: long
 inflict light wounds:
   damage: normal
   range: medium
@@ -1565,14 +1557,15 @@ read mind greater:
 read mind mass:
   base: read mind
   targets: five
-reduce person:
+shrink:
   buff: reduce size
-  casting time: full round buff
   duration: short
-  limit affected: creature type
+  limit affected: max size
+  misc: -1 # in the specific case of reduce, min size actually matters
+  range: close
+shrink mass:
+  base: shrink
   range: medium
-reduce person mass:
-  base: reduce person
   targets: five
 regeneration lesser:
   damage: fast healing
@@ -1659,6 +1652,7 @@ see invisibility:
   duration: personal long
   buff: see invisibility
   noncombat buff: true
+  range: close
 see invisibility mass:
   casting time: full round buff
   buff: see invisibility
@@ -1678,6 +1672,7 @@ share pain:
 shield of faith:
   buff: shield of faith
   duration: personal long
+  range: close
 shillelagh:
   buffs:
     - increase weapon size
@@ -1702,6 +1697,9 @@ shout:
     success:
       condition: deafened
       duration: short
+    critical success:
+      condition: deafened
+      duration: permanent
 shout greater:
   base: shout
   burst: large cone
@@ -1743,7 +1741,7 @@ slow:
     failure:
       condition: half speed
   duration: short
-  range: close
+  range: medium
 slow mass:
   base: slow
   range: medium
@@ -1763,10 +1761,11 @@ sound burst:
   range: close
   damage: normal
   targets: all
-spell resistance:
+resist magic:
   range: close
   duration: short
   buff: spell resistance
+  dispellable: false
 #spell turning
 spider climb:
   buff: climb speed
@@ -1796,8 +1795,9 @@ stinking cloud:
 stoneskin:
   buff:
     damage reduction: physical
-  duration: personal long
-  range: close
+  duration: long
+  personal only: true
+  misc: 1 # immune to critical hits
 storm of vengeance:
   damage: normal
   burst: colossal radius
@@ -1876,6 +1876,7 @@ totemic mind:
     attribute: plus2
   duration: personal long
   choose effect: true
+  range: close
 totemic mind mass:
   buff:
     attribute: plus2
@@ -1888,6 +1889,7 @@ totemic mind greater:
     attribute: plus4
   duration: personal long
   choose effect: true
+  range: close
 totemic power:
   base: totemic mind
 totemic power greater:
@@ -1908,6 +1910,7 @@ tremorsense:
   buff: tremorsense
   duration: personal long
   noncombat buff: true
+  range: close
 timestream:
   condition: slowed
   breakable: leave area
@@ -1940,6 +1943,7 @@ unliving eyes:
   buff: lifesight
   duration: personal long
   noncombat buff: true
+  range: close
 unliving heart:
   buffs:
     - temporary hp
@@ -1947,6 +1951,12 @@ unliving heart:
   duration: long
   misc: -1 # temporary hit points don't scale well with long duration
   personal only: true
+unliving touch:
+  damage: normal
+  triggered: true
+  trigger condition: standard action by you
+  trigger duration: long
+  misc: 1.5 # the duration scaling should be as a personal buff
 wail of the banshee:
   burst: medium radius
   components: nosomatic
@@ -2029,12 +2039,13 @@ windstrike:
   range: medium
   subeffects:
     - damage: normal
-    - instant effect: shove weak
+    - instant effect: shove
 windstrike greater:
   range: extreme
   subeffects:
     - damage: normal
-    - instant effect: shove strong
+    - instant effect: shove
+      misc: 1 # extra bonus to shoving
 zephyr blade:
   buff: weapon reach
   duration: personal long
@@ -2120,3 +2131,50 @@ super death knell:
       condition: no zero threshold
   range: medium
   duration: short
+go away:
+  burst: medium radius
+  targets: enemies
+  subeffects:
+    - damage: normal
+    - instant effect: shove
+boon of awareness:
+  buff:
+    skill: spellpower
+  duration: short
+  range: close
+  noncombat buff: true
+boon of awareness mass:
+  base: boon of awareness
+  range: medium
+  targets: five
+boon of many eyes:
+  buff:
+    immune: overwhelm
+  duration: short
+  range: close
+boon of precision:
+  buffs:
+    - critical range
+    - critical multiplier
+  duration: short
+  range: close
+  misc: -1 # expend spell to avoid scaling with other crit chance bonuses
+create ballista:
+  damage: normal
+  range: long
+  triggered: true
+  trigger condition: damage every round
+  trigger duration: short
+  breakable: deal physical damage
+telekinetic shove:
+  instant effect: shove
+  range: close
+  triggered: true
+  trigger condition: every round
+  trigger duration: short
+kneel:
+  attack subeffects:
+    success:
+      condition: crouching
+  duration: short
+  range: medium

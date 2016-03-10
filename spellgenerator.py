@@ -428,6 +428,8 @@ class Spell:
             and 'temporary hp' in self.get_attribute('buffs')
         ):
             modifier = max(0, modifier - 1)
+        if attribute == 'personal long' and not self.attributes.get('range', None) == 'close' and not self.ignore_warnings:
+            print "#Warning: spell {0} with 'personal long' duration should be close range".format(self.name)
         return modifier
 
     def calculate_instant_effect_modifier(self, attribute, all_modifiers):

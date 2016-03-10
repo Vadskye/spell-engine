@@ -3,193 +3,205 @@
 ambush:
   range: close
   ignore: true
-  casting_time: swift_on_attack
-ambush_lethal:
+  casting time: swift on attack
+ambush lethal:
   base: ambush
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: staggered
       duration: short
-    critical_success:
-      instant_effect: death
-ambush_paralyzing:
+    critical success:
+      instant effect: death
+ambush paralyzing:
   base: ambush
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: staggered
       duration: short
-    critical_success:
+    critical success:
       condition: paralyzed
       duration: short
-ambush_hamstring:
+ambush hamstring:
   base: ambush
-  condition: half_speed
+  condition: half speed
   duration: short
-ambush_dazing:
+ambush dazing:
   base: ambush
   condition: staggered
   duration: short
-ambush_confusing:
+ambush confusing:
   base: ambush
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: disoriented
-    critical_success:
+    critical success:
       condition: confused
   duration: short
-ambush_dispelling:
+ambush dispelling:
   base: ambush
-  attack_subeffects:
+  attack subeffects:
     success:
-      instant_effect: dispel
-ambush_immobilizing:
+      instant effect: dispel
+ambush immobilizing:
   base: ambush
   condition: immobilized
   duration: short
-boots_of_swift_passage:
+boots of swift passage:
   teleport:
     range: close
-  casting_time: move
-bracers_of_repulsion:
-  casting_time: immediate
-  instant_effect: shove_strong
-invoke_trickery:
-  attack_subeffects:
+  casting time: move
+bracers of repulsion:
+  casting time: immediate
+  instant effect: shove strong
+invoke trickery:
+  attack subeffects:
     success:
       condition: disoriented
       duration: round
   range: medium
-invoke_damage:
+invoke damage:
   damage: normal
   range: medium
-invoke_war:
+invoke war:
   damage: normal
   burst: small radius
   targets: all
-invoke_damage_area:
+invoke damage area:
   damage: normal
   burst: medium radius
   targets: all
-channel_energy:
+channel energy:
   damage: normal
   burst: medium radius
   targets: all
-lesser_domain_aspect_chaos:
+lesser domain aspect chaos:
   duration: short
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: disoriented
-  limit_affected: alignment
+  limit affected: alignment
   range: medium
-lore_resist_energy:
+lore resist energy:
   buff:
-    damage_reduction: energy_all
-  duration: class_feature
-domain_aspect_chaos:
-  buff: retributive_damage
-  duration: class_feature
-  limit_affected: alignment
+    damage reduction: energy all
+  duration: class feature
+domain aspect chaos:
+  buff: retributive damage
+  duration: class feature
+  limit affected: alignment
   range: close
-domain_aspect_travel:
-  buff: double_speed
-  duration: class_feature
-default_spell:
-  casting_time: standard
+domain aspect travel:
+  buff: double speed
+  duration: class feature
+default spell:
+  casting time: standard
   dispellable: true
-  spell_resistance: true
-greatreach_bracers:
-  casting_time: swift
+  spell resistance: true
+greatreach bracers:
+  casting time: swift
   duration: round
-  buff: weapon_reach
-heroic_recovery:
-  casting_time: immediate
+  buff: weapon reach
+heroic recovery:
+  casting time: immediate
   damage: healing
   misc: -2 # heroic: only works on a 20
-heroic_vengeance:
+heroic vengeance:
   range: medium
-  casting_time: immediate
+  casting time: immediate
   damage: normal
   misc: -2 # heroic: only works on a 20
 smite:
   range: close # some smites are melee, some smites are ranged
   ignore: true
-  casting_time: swift_on_attack
-smite_disorienting:
+  casting time: swift on attack
+smite disorienting:
   base: smite
   condition: disoriented
   duration: short
-smite_dispelling:
+smite dispelling:
   base: smite
-  attack_subeffects:
+  attack subeffects:
     success:
-      instant_effect: dispel
-smite_dispelling_greater:
+      instant effect: dispel
+smite dispelling greater:
   base: smite
-  instant_effect: dispel
-smite_staggering:
+  instant effect: dispel
+smite staggering:
   base: smite
-  attack_subeffects:
+  attack subeffects:
     success:
       condition: staggered
       duration: short
-smite_devastating:
+smite devastating:
   base: smite
   damage: normal
-smite_prone:
+smite prone:
   base: smite
   subeffects:
-    - damage: physical_attack
-    - instant_effect: prone
-smite_suggestion:
+    - damage: physical attack
+    - instant effect: prone
+smite suggestion:
   base: smite
-  limit_affected: mind_affecting
-  attack_subeffects:
+  limit affected: mind affecting
+  attack subeffects:
     success:
       condition: suggestion
       duration: short
-strike_immobilizing:
-  casting_time: swift_on_attack
-  attack_subeffects:
+strike disorienting:
+  casting time: swift on attack
+  attack subeffects:
+    success:
+      condition: disoriented
+      duration: short
+strike immobilizing:
+  casting time: swift on attack
+  attack subeffects:
     success:
       condition: immobilized
       duration: short
-strike_taunting:
-  casting_time: swift_on_attack
+strike staggering:
+  casting time: swift on attack
+  attack subeffects:
+    success:
+      condition: staggered
+      duration: short
+strike taunting:
+  casting time: swift on attack
   condition: taunted
   duration: short
   range: close
-taunting_rage:
-  attack_subeffects:
+taunting rage:
+  attack subeffects:
     success:
       condition: taunted
       duration: short
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
-taunting_rage_improved:
-  base: taunting_rage
+  trigger condition: every round
+  trigger duration: short
+taunting rage improved:
+  base: taunting rage
   targets: five
-terrifying_rage:
-  attack_subeffects:
+terrifying rage:
+  attack subeffects:
     success:
       condition: shaken
       duration: short
   triggered: true
-  trigger_condition: every_round
-  trigger_duration: short
-terrifying_rage_improved:
-  base: terrifying_rage
+  trigger condition: every round
+  trigger duration: short
+terrifying rage improved:
+  base: terrifying rage
   targets: five
-wild_aspect_climb:
-  buff: climb_speed
-  duration: class_feature
-wild_aspect_grow:
-  buff: increase_size
-  duration: class_feature
-wild_aspect_weapon:
-  buff: natural_weapon
-  duration: class_feature
-wild_aspect_swiftstrike:
-  buff: extra_attack
+wild aspect climb:
+  buff: climb speed
+  duration: class feature
+wild aspect grow:
+  buff: increase size
+  duration: class feature
+wild aspect weapon:
+  buff: natural weapon
+  duration: class feature
+wild aspect swiftstrike:
+  buff: extra attack
   misc: -1 # must be with natural weapon
-  duration: class_feature
+  duration: class feature
