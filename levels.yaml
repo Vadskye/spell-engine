@@ -39,7 +39,11 @@ blasphemy: 6
 bleed: 5
 bless: 1
 bless mass: 4
-blur: 3
+blur: 2
+boon of awareness: 1
+boon of awareness mass: 4.5
+boon of many eyes: 4
+boon of precision: 6
 burning hands: 1
 call lightning: 3
 call lightning greater: 6
@@ -65,6 +69,7 @@ cone of cold greater: 6
 cone of nauseated: 15
 confusion: 3
 confusion mass: 6
+create ballista: 3
 #Warning: Spell cripple has crit success subeffect with level 1, which may be too strong
 cripple: 7
 #Warning: Spell crushing hand has crit success subeffect with level 1, which may be too strong
@@ -74,7 +79,7 @@ cure light wounds mass: 4
 curse of blood and bone: 2
 curse of enfeeblement: 4.0
 curse of the wayward mind: 8.0
-darkvision: 2
+darkvision: 1
 death knell: 6
 death ward: 3
 death ward mass: 6.5
@@ -113,10 +118,8 @@ earthspike mass: 4
 energy conversion: 7
 enervation: 4
 enervation greater: 8
-enlarge monster: 4.0
-enlarge monster mass: 7.0
-enlarge person: 3.0
-enlarge person mass: 6.0
+enlarge: 2
+enlarge mass: 5.5
 entangle: 1
 entangling growth: 4
 entropic shield: 1
@@ -157,18 +160,18 @@ gender swap: 5
 gentle descent: 1
 gentle descent mass: 4.5
 ghoul touch: 2
-glitterdust: 3
-glitterdust alt: 2
+glitterdust: 4
+glitterdust greater: 8
 grasping hand: 10
 #Warning: Spell grease has success subeffect with level -1, which may be too weak
 #Warning: Spell grease.subspell has nonpositive raw level 0, which is usually bad
 grease: 1
-gust of wind: 2
+gust of wind: 1
 harm: 6
-haste: 5
+haste: 6
 haste lesser: 2
-haste mass: 8.5
-haste personal: 6
+haste mass: 9.5
+haste personal: 7
 heal: 6
 heat metal: 1
 heroism: 4
@@ -183,7 +186,7 @@ holy word: 6
 horrid wilting: 10
 hypnotic pattern: 2
 hypnotic pattern greater: 6
-ice storm: 4
+ice storm: 6
 implosion: 9
 #Warning: Spell imprisonment has crit success subeffect with level 1.0, which may be too strong
 imprisonment: 8.0
@@ -197,10 +200,12 @@ interposing hand: 0
 invisibility: 3
 invisibility greater: 6
 invisibility mass: 6.5
+invulnerability: 9
 invulnerability lesser: 4
 iron body: 8.0
 #Warning: Spell irresistible dance has failure subeffect with level -3, which may be too weak
 irresistible dance: 10
+kneel: 0
 levitate: 3.5
 lifeseeking missile: 3
 lightning bolt: 3
@@ -225,7 +230,6 @@ moment of prescience: 2
 moment of prescience greater: 6
 nondetection: 5
 orders wrath: 3
-personal shield: 2
 #Warning: Spell phantasmal killer has crit success subeffect with level 2, which may be too strong
 phantasmal killer: 4
 #Warning: Spell phantasmal killer mass has crit success subeffect with level 2, which may be too strong
@@ -259,18 +263,17 @@ radiant lance: 1
 read mind: 2
 read mind greater: 6
 read mind mass: 5
-reduce person: 1.0
-reduce person mass: 4.0
 regeneration: 6
 regeneration lesser: 1
 repulsion: 5
 resilient sphere: 5
-resist energy: 1
+resist energy: 0
+resist magic: 4
 retributive shield: 4
 revelation of destruction: 8
 revelation of prowess: 7
 reverse gravity: 8
-righteous might: 4.5
+righteous might: 3.5
 rock blast: 2
 rotburst: 3
 rotburst greater: 7
@@ -284,25 +287,24 @@ share pain: 2
 shield of faith: 1
 shillelagh: 1
 shocking grasp: 1
-#Warning: Spell shout has success subeffect with level 0, which may be too weak
-shout: 3
-#Warning: Spell shout greater has success subeffect with level 0, which may be too weak
-shout greater: 6
+shout: 4
+shout greater: 7
+shrink: 1
+shrink mass: 4.5
 silence: 2
 silence mass: 5
 skysmite: 6
 sleep: 1
 sleep mass: 4
-slow: 2
+slow: 3
 slow mass: 6
 solid fog: 6
 sound burst: 2
-spell resistance: 3
 spider climb: 2
 spiritual weapon: 3
 spore cloud: 2
 stinking cloud: 3
-stoneskin: 3
+stoneskin: 4
 storm of vengeance: 12
 stormlord: 6
 strip the flesh: 6
@@ -311,6 +313,8 @@ suggestion mass: 10
 sunbeam: 4
 sunburst: 6
 super death knell: 6
+telekinetic blast: 5
+telekinetic shove: 2
 telepathy: 5
 #Warning: Spell temporal stasis has failure subeffect with level -3, which may be too weak
 temporal stasis: 7
@@ -329,6 +333,7 @@ true strike: 1.5
 unholy blight: 3
 unliving eyes: 5
 unliving heart: 1
+unliving touch: 4.0
 wail of the banshee: 9
 wall of fire: 2
 wall of fire greater: 5
@@ -345,5 +350,6 @@ web: 8
 windstrike: 2
 windstrike greater: 5
 zephyr blade: 1
-zephyr blade greater: 4
+zephyr blade greater: 3
 zoom zoom: 3
+
