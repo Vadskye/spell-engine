@@ -265,6 +265,7 @@ read mind greater: 6
 read mind mass: 5
 regeneration: 6
 regeneration lesser: 1
+regeneration lesser mass: 5
 repulsion: 5
 resilient sphere: 5
 resist energy: 0
