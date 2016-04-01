@@ -52,7 +52,7 @@ boots of swift passage:
   casting time: move
 bracers of repulsion:
   casting time: immediate
-  instant effect: shove strong
+  instant effect: shove
 invoke trickery:
   attack subeffects:
     success:

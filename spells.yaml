@@ -1569,6 +1569,10 @@ shrink mass:
   targets: five
 regeneration lesser:
   damage: fast healing
+regeneration lesser mass:
+  base: regeneration lesser
+  range: close
+  targets: five
 regeneration:
   subeffects:
     - damage: fast healing
@@ -2049,6 +2053,7 @@ windstrike greater:
 zephyr blade:
   buff: weapon reach
   duration: personal long
+  range: close
 zephyr blade greater:
   buffs:
     - weapon reach
@@ -2131,12 +2136,12 @@ super death knell:
       condition: no zero threshold
   range: medium
   duration: short
-go away:
+telekinetic blast:
   burst: medium radius
   targets: enemies
   subeffects:
     - damage: normal
-    - instant effect: shove
+    - instant effect: shove # sort of - it's not literally a shove, but this works
 boon of awareness:
   buff:
     skill: spellpower

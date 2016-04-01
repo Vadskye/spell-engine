@@ -57,8 +57,8 @@ def import_data(args):
         modifiers = yaml.load(modifiersfile)
     if args.get('abilities') is not None:
         filename = 'abilities.yaml'
-    elif args.get('magic items') is not None:
-        filename = 'magic items.yaml'
+    elif args.get('magic_items') is not None:
+        filename = 'magic_items.yaml'
     else:
         filename = 'spells.yaml'
     with open(filename, 'r') as spellsfile:

@@ -1,0 +1,108 @@
+# items never receive "personal only" modifiers
+# because an item can simply be given to the person who needs it
+# so a touch range item is the same level as a personal item
+default spell:
+  casting time: standard
+  dispellable: true
+  spell resistance: true
+bashing:
+  base: passive
+  buff: alter weapon
+  misc: -1 # bashing just makes shield bashing possible
+belt of healing:
+  damage: healing
+disorienting:
+  base: weapon strike
+  condition: disoriented
+  duration: short
+  limit affected: mind affecting
+energy resistance lesser:
+  casting time: immediate
+  duration: round
+  buff:
+    damage reduction: energy single
+energy resistance:
+  base: passive
+  buff:
+    damage reduction: energy all
+flaming:
+  base: weapon strike
+  damage: normal
+flaming burst armor:
+  range: close
+  casting time: immediate
+  damage: normal
+  difficult trigger: true
+flaming burst weapon:
+  range: close
+  casting time: immediate
+  damage: normal
+gauntlet of the ram:
+  casting time: immediate
+  difficult trigger: true
+  instant effect: shove
+ghost touch:
+  base: passive
+  buff: alter weapon
+invulnerability lesser:
+  buff:
+    damage reduction: physical
+  duration: short
+invulnerability:
+  base: passive
+  buff:
+    damage reduction: physical
+invulnerability greater:
+  base: passive
+  buff:
+    damage reduction: all
+  misc: 1 # not overcome by anything
+levitation:
+  buff: levitation
+  duration: short
+nondetection:
+  base: passive
+  buff: spell resistance limited
+spell resistance:
+  buff: spell resistance
+  duration: short
+teleportation lesser:
+  teleport:
+    range: medium
+teleportation:
+  teleport:
+    range: extreme
+    unrestricted: true
+thundering:
+  base: weapon strike
+  burst: small radius
+  attack subeffects:
+    success:
+      condition: deafened
+      duration: short
+  targets: all
+vanishing cloak:
+  breakable: leave area
+  condition: fog
+  duration: short
+  range: medium
+  spell resistance: false
+  targets: all
+  zone: medium radius
+
+
+
+
+
+
+
+
+
+passive:
+  duration: extreme
+  personal only: true
+  ignore: true
+weapon strike:
+  range: close
+  misc: 2
+  ignore: true
