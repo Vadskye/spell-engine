@@ -1,0 +1,448 @@
+area: # has special handling with 'knowledge' abilities
+  cone:
+    medium: 2
+    large: 5
+  cylinder:
+    small: 2
+    medium: 4
+    large: 7
+  line:
+    small: 1
+    medium: 2
+    large: 4 # 50 x 10
+    huge: 5 # 100 x 10
+    gargantuan: 6 # 100 x 20
+  radius:
+    small: 2
+    medium: 4
+    large: 6
+    huge: 7 # 100' radius
+    gargantuan: 8 # 200' radius
+    colossal: 9 # 500' radius
+  wall:
+    medium: 1
+    large: 2
+    huge: 3 # 100'
+breakable:
+  easy damage reduction: -1 # like bludgeoning, piercing, slashing, fire
+  deal energy damage: -1 # like wall of fire
+  deal physical damage: -1 # like crushing hand
+  grapple: -1
+  if attack: -5
+  if attack per round: -2
+  if damaged: -3
+  maze: -1
+  standard skill check: -3
+  leave area: -6
+  leave area impeded: -3  # if the effect prevents you from leaving its area
+  leave area lingering: -2 # if the effect lingers after leaving the area
+  standard action by any: -2
+  standard action by target: -3
+  specific spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
+  violent action by any: -6
+buffs:
+  legend point:
+    all: 3
+    defensive: 2
+    physical: 2
+  legend point regeneration:
+    short: 2
+    medium: 1
+    # any longer delay is pointless
+  all attributes:
+    plus2: 8
+    plus4: 15
+  attribute:
+    plus2: 2
+    plus4: 5
+  physical attributes:
+    plus2: 5
+    plus4: 10
+  mental attributes:
+    plus2: 5
+    plus4: 10
+  # attacks
+  alter weapon: 1
+  aqueous blade: 4
+  # make sure this doesn't stack well with other crit range bonuses
+  critical range: 4
+  critical multiplier: 4
+  extra attack: 8
+  extra attack with penalty: 4 # at -5 attack bonus
+  flame blade: 3
+  increase size: 5 # mix of upsides and downsides
+  increase weapon size: 2
+  reduce size: 4
+  ignore concealment: 2 # but not total concealment
+  weapon reach: 2
+  ranged melee weapon:
+    close: 2
+    medium: 3
+    long: 4
+  # defenses
+  cover: 3
+  critical_immunity: 2
+  damage reduction:
+    energy all: 3
+    energy single: 1
+    physical half: 2
+    physical: 4
+    spell: 3
+    alignment: 4
+    all: 5
+  delay damage: 5
+  half miss all: 8
+  half miss physical: 5
+  half miss ranged: 3
+  cover miss physical: 2
+  reduce overwhelm:
+    by five: 5
+  immune:
+    construct: 9
+    death: 1
+    fear: 1
+    grapple: 2
+    movement effects: 1
+    negative energy: 2
+    poison: 3
+    regeneration: 5
+    unaware: 3
+    underwater: 1
+  low light vision: 1
+  mage armor: 2 # a bit low, but mage armor is special
+  shield of faith: 3
+  retributive damage:
+    melee: 4
+    close: 5
+    medium: 5.5
+    long: 6
+    extreme: 6.5
+  scent: 3
+  share pain: 4
+  spell resistance limited: 2
+  spell resistance: 4
+  temporary hp: 3
+  unapproachable: 7
+  # special/misc
+  all skills:
+    plus5: 5 # same cost as 5 skills
+    plus10: 8 # same cost as 5 skills
+  climb speed: 2
+  darkvision: 1
+  disguise: 1
+  double speed: 3
+  ten foot speed: 2
+  earth glide: 7
+  ethereal: 9
+  feather fall: 1
+  flight: 7
+  foresee probability: 3
+  gaseous form: 6
+  glide: 2
+  hide attack effects: 1
+  increase overwhelm: 3
+  invisible: 10
+  levitation: 5
+  lifesight: 6
+  natural weapon: 1
+  radiate light: 0
+  see invisibility: 3
+  skill:
+    extra plus5: 1
+    extra plus10: 1
+    plus5: 1
+    plus10: 4
+  telepathy: 6
+  time stop: 14
+  tremorsense: 2
+  true seeing: 9
+  undead: 1
+  walking flight: 7
+  water walk: 2
+  win initiative: 6
+casting time:
+  immediate: 4
+  personal move: 2 # only very few spells should be move - stuff like teleportation
+  standard: 0
+  swift: 4
+  # the casting time is somewhat offset by the double roll
+  swift on attack: 2
+choose effect:
+  true: 1
+  false: 0
+components:
+  all: 0
+  none: 2
+  nosomatic: 1
+  noverbal: 1
+conditions:
+  antimagic: 9
+  asleep: 20 # as paralyzed
+  aversion: 8
+  blinded: 14 # as minus8
+  charmed: 8 # as minus6
+  command: 18 # like stunned, but better
+  confused: 14 # as minus8
+  crouching: 5
+  damage if damaged: 4
+  dazed: 8 # as staggered
+  dazzled: 5
+  deafened: 4
+  die at zero: 8
+  disoriented: 8 # compelled to move randomly
+  dominated: 20
+  dimension lock: 5
+  exhausted: 8
+  faerie fire: 1
+  fascinated: 5
+  fatigued: 3
+  feeblemind: 14
+  fog: 4
+  forget: 5
+  frightened: 8
+  gender swap: 3
+  grappled: 11
+  grease: 3
+  half speed: 2
+  quarter speed: 5
+  ignited: 5 # impaired + d6 / round, but removable
+  immobilized: 11
+  impassable: 5
+  impaired: 5
+  limited action: 14
+  link vitality: 8
+  lower max hp: 3
+  nauseated: 17
+  no action: 17
+  no zero threshold: 5
+  no violence: 14
+  out of battle: 11
+  paralyzed: 18
+  partially blinded: 5
+  panicked: 14
+  prone: 14
+  require concentration: 2
+  sickened: 2
+  severely impaired: 11
+  shaken: 2
+  silenced: 5
+  slowed: 8 # as staggered
+  staggered: 8
+  stunned: 17
+  stasis: 11 # assuming immunity - equivalent to out of battle
+  suggestion: 11
+  summon: 4
+  take double damage: 11
+  take double damage once: 5
+  taunted: 5
+  underwater penalties: 5
+damage:
+  critical overbleed:
+    10: 4
+    5: 5
+    2: 6
+    full: 7
+  physical attack: 1
+  fast healing: 5
+  healing: 3
+  normal: 3
+  kill at zero: 8
+  over time: 5
+  cantrip: 1
+duration:
+  condition:
+    round: -3
+    concentration: -2
+    until standard action: -1
+    short: 0
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 3.5 # x4
+    year: 4 # x12
+    created: 4
+    permanent: 6 # x???
+  damage over time:
+    round: -3
+    concentration: -2
+    until standard action: -1
+    short: 0
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 3.5 # x4
+    year: 4 # x12
+    created: 4
+    permanent: 6 # x???
+  personal buff:
+    round: -2
+    concentration: -1
+    short fixed: 0
+    short: 1
+    medium: 3
+    long: 4
+    extreme: 5
+    week: 7
+    month: 7.5
+    year: 8
+    permanent: 9
+    # 'personal only' is redundant with being a class feature, so increase
+    # the cost
+    class feature: 4
+    activated class feature: 3
+  nonpersonal buff:
+    round: -2
+    concentration: -1
+    short fixed: 0
+    short: 1
+    # actually making it long requires +2 spell levels
+    # all 'personal long' spells should be close range
+    # because you don't benefit from close range when casting it on yourself
+    personal long: 1
+    medium: 6
+    long: 7
+    extreme: 8
+    week: 9
+    month: 9.5
+    year: 10
+    permanent: 12
+    # match cost of long duration personal-only buff
+    class feature: 3
+    activated class feature: 2
+  noncombat buff:
+    round: -2
+    concentration: -1
+    short fixed: 0
+    short: 1
+    personal long: 1
+    medium: 3
+    long: 4
+    extreme: 6
+    week: 9
+    month: 9.5
+    year: 10
+    permanent: 12
+    class feature: 3
+    activated class feature: 2
+  trigger:
+    concentration: 0 # part of "standard action by you"
+    short: 0
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 3.5 # x4
+    year: 4 # x12
+    permanent: 6 # x???
+expended:
+  single use: -3
+  five: -2 # or other values between single use and caster level
+  caster level: -1
+instant effect:
+  banishment: 14
+  critical damage: 8 # one critical damage
+  death: 17
+  dispel: 7
+  negative levels: 7 # one negative level per two spell levels
+  full negative levels: 14 # one negative level per spell level
+  maneuver: 3 # +spellpower
+  nothing: 0
+  shove: 1 # +spellpower; one of the weaker maneuvers
+  prismatic: 5
+  prone: 2
+  remove heal conditions: 3
+knowledge:
+  alignment: 3
+  creature or object location: 4
+  creature location: 3
+  object location: 2
+  lies: 5
+  thoughts: 8
+  vulnerabilities: 1
+limit affected:
+  normal:
+    alignment: -2
+    creature type: -2
+    language: -2
+    max size: -1
+    mind affecting: -1
+    nonalignment: -1
+    near ground: -1 # within 10 feet of the ground
+    on ground: -1
+    on stone: -2
+    near plants: -2 # within 5 feet of plants
+    touching metal: -2
+    light vulnerable: -6
+  buff:
+    alignment: -1
+    creature type: -1
+    falling: -4
+    max size: 0
+    mind affecting: 0
+    nonalignment: -0.5
+    near ground: -0.5 # within 10 feet of the ground
+    on ground: -0.5
+range:
+  normal:
+    personal: -1
+    touch: 0
+    close: 1
+    medium: 2
+    long: 3
+    extreme: 4
+  buff:
+    personal: -1
+    touch: 0
+    close: 1
+    medium: 1.5
+    long: 2
+    extreme: 2.5
+shapeable:
+  true: 1
+  false: 0
+spell resistance:
+  true: 0
+  false: 1
+targets:
+  area:
+    all: 0
+    five: -1
+    enemies: ~ # custom logic
+    allies: 0
+    automatically find one: ~ # custom logic
+  normal:
+    one: 0
+    five: 3
+    automatically find one: ~ # custom logic
+teleport:
+  range:
+    close: 0
+    medium: 1
+    long: 2
+    extreme: 3
+  type:
+    line of effect: 2
+    unrestricted: 5
+trigger:
+  condition:
+    every round: 4 # requires duration, assumes effects don't stack
+    every round stacking: 6 # requires duration
+    damage every round: 2 # cost shouldn't stack with damage, since damage is reduced
+    # damage every round has unique damage scaling; if inescapable, it's
+    # spellpower. If AOE escapable, there is a -1 die size penalty.
+    enter zone: 1
+    break prohibition: 1
+    standard action by any: 3
+    standard action by you: 2
+  duration:
+    concentration: 0 # part of "standard action by you"
+    short: 0
+    medium: 1 # x10
+    long: 1.5 # x6
+    extreme: 2 # x12
+    week: 3 # x14
+    month: 3.5 # x4
+    year: 4 # x12
+    permanent: 6 # x???
