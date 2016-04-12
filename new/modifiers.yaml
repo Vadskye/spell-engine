@@ -5,7 +5,7 @@ area: # has special handling with 'knowledge' abilities
   cylinder:
     small: 2
     medium: 4
-    large: 7
+    large: 6
   line:
     small: 1
     medium: 2
@@ -20,10 +20,27 @@ area: # has special handling with 'knowledge' abilities
     gargantuan: 8 # 200' radius
     colossal: 9 # 500' radius
   wall:
-    medium: 1
-    large: 2
-    huge: 3 # 100'
+    medium: 2
+    large: 3
+    huge: 4 # 100'
+# different area types have special modifiers
+area type:
+    burst: 0
+    emanation: 0
+    limit: 0
+    zone: -2
+battlefield effects:
+  balance to move: 3
+  cover: 1 # usually by walls
+  damage: 4
+  difficult terrain: 1
+  fog: 1
+  impassable: 6 # for walls
+  prismatic: 5
+  underwater penalties: 3
+  weak damage: 1 # like wall of thorns
 breakable:
+  combat: -2 # if you engage in combat against the target
   easy damage reduction: -1 # like bludgeoning, piercing, slashing, fire
   deal energy damage: -1 # like wall of fire
   deal physical damage: -1 # like crushing hand
@@ -33,13 +50,10 @@ breakable:
   if damaged: -3
   maze: -1
   standard skill check: -3
-  leave area: -6
-  leave area impeded: -3  # if the effect prevents you from leaving its area
-  leave area lingering: -2 # if the effect lingers after leaving the area
   standard action by any: -2
   standard action by target: -3
   specific spell: -1 # remove curse, etc. Not for use on spells with less than one month of duration
-  violent action by any: -6
+  violent action by any: -3
 buffs:
   legend point:
     all: 3
@@ -120,7 +134,7 @@ buffs:
   scent: 3
   share pain: 4
   spell resistance limited: 2
-  spell resistance: 4
+  spell resistance: 5
   temporary hp: 3
   unapproachable: 7
   # special/misc
@@ -176,66 +190,68 @@ components:
   nosomatic: 1
   noverbal: 1
 conditions:
-  antimagic: 9
-  asleep: 20 # as paralyzed
-  aversion: 8
-  blinded: 14 # as minus8
-  charmed: 8 # as minus6
-  command: 18 # like stunned, but better
-  confused: 14 # as minus8
-  crouching: 5
-  damage if damaged: 4
-  dazed: 8 # as staggered
-  dazzled: 5
-  deafened: 4
-  die at zero: 8
-  disoriented: 8 # compelled to move randomly
-  dominated: 20
-  dimension lock: 5
-  exhausted: 8
+  # simple conditions with only minor downsides
   faerie fire: 1
-  fascinated: 5
-  fatigued: 3
-  feeblemind: 14
-  fog: 4
-  forget: 5
-  frightened: 8
-  gender swap: 3
-  grappled: 11
-  grease: 3
-  half speed: 2
-  quarter speed: 5
-  ignited: 5 # impaired + d6 / round, but removable
-  immobilized: 11
-  impassable: 5
-  impaired: 5
-  limited action: 14
-  link vitality: 8
-  lower max hp: 3
-  nauseated: 17
-  no action: 17
-  no zero threshold: 5
-  no violence: 14
-  out of battle: 11
-  paralyzed: 18
-  partially blinded: 5
-  panicked: 14
-  prone: 14
-  require concentration: 2
-  sickened: 2
-  severely impaired: 11
-  shaken: 2
-  silenced: 5
-  slowed: 8 # as staggered
-  staggered: 8
-  stunned: 17
-  stasis: 11 # assuming immunity - equivalent to out of battle
-  suggestion: 11
-  summon: 4
-  take double damage: 11
-  take double damage once: 5
-  taunted: 5
-  underwater penalties: 5
+  fatigued: 2
+  gender swap: 2 # this should only be accessible by high level, but doesn't do much
+  half speed: 1
+  lower max hp: 1
+  shaken: 1
+  sickened: 1
+  # lose ability to take less important actions
+  # or low probability of losing important actions
+  crouching: 3
+  deafened: 3
+  die from critical: 3 # die from taking critical damage at 0 HP
+  dimension lock: 3
+  forget: 3
+  quarter speed: 3
+  ignited: 3 # implied removal mechanics
+  impaired: 3
+  no zero threshold: 3
+  shaken: 3
+  silenced: 3
+  take double damage once: 3
+  partially blinded: 5 # +2 for removing special vision
+  # lose ability to take a subset of "real" actions
+  dazed: 6
+  die at zero: 6
+  disoriented: 6
+  entangled: 5 # impaired + fatigued
+  exhausted: 5 # impaired + fatigued
+  fascinated: 6
+  immobilized: 6
+  slowed: 6
+  staggered: 6
+  taunted: 6
+  # significant reduction in ability to act
+  # but can still try to do things normally, mostly
+  aversion: 8 # conditional severe impairment, but often better
+  charmed: 9 # weird - how does interact with combat?
+  command movement: 9 # like staggered, but worse
+  frightened: 9 # conditional severe impairment, but can be better
+  no violence: 9
+  out of battle: 9
+  severely impaired: 9
+  stasis: 9
+  suggestion: 9 # like aversion, but more flexible
+  take double damage: 9
+  # can take only a small subset of actions with any success
+  # or can only act normally with small probability
+  antimagic: 12
+  blinded: 12
+  confused: 12
+  grappled: 12
+  feeblemind: 12
+  # can take no actions
+  command full movement: 16 # slightly better than no actions
+  nauseated: 15
+  panicked: 15
+  paralyzed: 15 # mental actions offset coup de grace
+  stunned: 15
+  # even worse than unable to act
+  asleep: 18 # if can be woken, use "breakable"
+  dominated: 18
 damage:
   critical overbleed:
     10: 4
@@ -247,35 +263,38 @@ damage:
   healing: 3
   normal: 3
   kill at zero: 8
-  over time: 5
+  # do not confuse DOT effects with battlefield effect: damage
+  over time: 3
   cantrip: 1
 duration:
   condition:
+    round: -1
+    concentration: 0
+    brief: 0 # 2 rounds
+    until standard action: 1
+    short fixed: 2
+    medium: 3 # x10
+    long: 3.5 # x6
+    extreme: 4 # x12
+    week: 5 # x14
+    month: 5.5 # x4
+    year: 6 # x12
+    created: 6
+    permanent: 8 # x???
+  battlefield effect:
     round: -3
     concentration: -2
-    until standard action: -1
+    brief: -2
+    short fixed: 0
     short: 0
-    medium: 1 # x10
-    long: 1.5 # x6
-    extreme: 2 # x12
-    week: 3 # x14
-    month: 3.5 # x4
-    year: 4 # x12
+    medium: 1
+    long: 1.5
+    extreme: 2
+    week: 3
+    month: 3.5
+    year: 4
     created: 4
-    permanent: 6 # x???
-  damage over time:
-    round: -3
-    concentration: -2
-    until standard action: -1
-    short: 0
-    medium: 1 # x10
-    long: 1.5 # x6
-    extreme: 2 # x12
-    week: 3 # x14
-    month: 3.5 # x4
-    year: 4 # x12
-    created: 4
-    permanent: 6 # x???
+    permanent: 6
   personal buff:
     round: -2
     concentration: -1
@@ -427,6 +446,7 @@ teleport:
     unrestricted: 5
 trigger:
   condition:
+    battlefield effect: 2 # the effect triggers every round in the area, like a battlefield effect
     every round: 4 # requires duration, assumes effects don't stack
     every round stacking: 6 # requires duration
     damage every round: 2 # cost shouldn't stack with damage, since damage is reduced
@@ -446,3 +466,10 @@ trigger:
     month: 3.5 # x4
     year: 4 # x12
     permanent: 6 # x???
+# damage die rules
+# base: d10 per 2 spellpower
+# save half: +1 die size
+# save negates: +2 die size
+# AOE: -2 die size
+# AOE battlefield effect (brief): -3 die size
+# AOE battlefield effect (short+): -4 die size

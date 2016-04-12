@@ -3,19 +3,18 @@ ablative spellshield: 1
 acid arrow: 2
 acid arrow greater: 5
 acid fog: 6
-agony: 5
+agony: 3
 aid: 2
 air walk: 4
 antilife shell: 7
 antimagic field: 7
 aqueous blade: 2
 assimilate: 10
-aversion: 2
+aversion: 3
 bane: 1
-bane mass: 5
-banishment: 4
+bane mass: 4
 barkskin: 2
-black tentacles: 3
+black tentacles: 5
 blade barrier: 4
 blasphemy: 5
 bleed: 5
@@ -31,40 +30,37 @@ boon of perception mass: 4.5
 boon of precision: 5
 burning hands: 1
 call lightning: 3
-call lightning greater: 8
+call lightning greater: 6
 calm emotions: 3
-certain blind: 11
-certain daze: 5
-certain daze round: 2
+certain blind: 9
+certain daze: 3
 chain lightning: 6
 chaos hammer: 2
-charm monster: 4
+charm monster: 5
 charm monster mass: 8
-charm person: 2
-charm person mass: 7
-clenched fist: 5
+charm person: 3
+charm person mass: 6
+clenched fist: 8
 cloak of chaos: 8
 cloak of single chaos: 5
-cloud of bats: 0
-color spray: 0
-command: 0
-command mass: 3
-cone of cold: 3
-cone of cold greater: 6
-cone of nauseated: 15
-confusion: 2
-confusion mass: 5
+cloud of bats: 2
+color spray: 1
+command: 3
+command mass: 6
+cone of cold: 2
+cone of cold greater: 5
+cone of nauseated: 13
+confusion: 3
 create ballista: 3
-cripple: 5
-crushing hand: 5
+cripple: 4
 cure light wounds: 1
 cure light wounds mass: 4
-curse of blood and bone: 1.0
-curse of the wayward mind: 8.0
+curse of blood and bone: 2
+curse of the wayward mind: 4
 darkvision: 1
-death knell: 6
+death knell: 3
 death ward: 4.5
-deep slumber: 8
+deep slumber: 9
 deflection: 3
 delay damage: 3
 delay poison: 1
@@ -75,10 +71,10 @@ dictum: 5
 dimension door: 4
 dimension door mass: 7
 dimension slide: 2
-dimensional anchor: 2.0
+dimensional anchor: 2
 discern lies: 3.5
 discern vulnerability: 3
-discordant song: 7
+discordant song: 5
 disintegrate: 6
 disjointed time: 3
 dismissal: 1
@@ -88,12 +84,12 @@ dispel magic greater: 7
 displacement: 3
 divine favor: 3
 divine might: 5
-dominate monster: 8
+dominate monster: 9
 dominate person: 6
 drain life: 3
 earth glide: 4
-earthquake: 9.0
-earths pull: 1
+earthquake: 8
+earths pull: 4
 earthspike: 1
 earthspike mass: 4
 energy conversion: 6
@@ -102,15 +98,15 @@ enervation greater: 8
 enlarge: 2
 enlarge mass: 5.5
 entangle: 1
-entangling growth: 4
+entangle greater: 4
 entropic shield: 1
 ethereal jaunt: 5
 etherealness: 9
 excrete slime: 1
 eyebite: 3
 faerie fire: 1
-fear: 1
-fear mass: 5
+fear: 2
+fear mass: 6
 feather fall: 0.5
 feeblemind: 7
 finger of death: 6
@@ -122,8 +118,8 @@ fireball: 3
 flame blade: 1
 flame strike: 5
 fly: 4
-fog cloud: 1
-fog sea: 6
+fog cloud: 2
+fog sea: 7
 fog shield: 5
 forcecage: 5
 foresee probability: -0.5
@@ -132,17 +128,17 @@ freedom: 2
 freedom mass: 5.5
 freedom personal: 3
 frost shield: 1
-fungal growth: 2
+fungal growth: 3
 funny hats: 2
 gaseous form: 3
-gender swap: 4.0
+gender swap: 6
 gentle descent: 0
 gentle descent mass: 3.5
-ghoul touch: 2
+ghoul touch: 3
 glitterdust: 3
 glitterdust greater: 7
 grasping hand: 10
-grease: -1
+grease: 2
 gust of wind: 1
 harm: 6
 haste: 5
@@ -153,19 +149,19 @@ heal: 6
 heat metal: 1
 heroism: 4
 heroism mass: 7.5
-hold monster: 5
-hold monster mass: 9
-hold person: 3
-hold person mass: 7
+hold monster: 3
+hold monster mass: 7
+hold person: 1
+hold person mass: 5
 holy aura: 8
 holy smite: 2
 holy word: 5
 horrid wilting: 10
-hypnotic pattern: 2
-hypnotic pattern greater: 6
+hypnotic pattern: 4
+hypnotic pattern greater: 8
 ice storm: 6
-implosion: 8
-imprisonment: 6.0
+implosion: 9
+imprisonment: 9
 inertial shield: 2
 inertial shield mass: 5
 inflict critical wounds: 4
@@ -176,15 +172,13 @@ interposing hand: -1
 invisibility: 3
 invisibility greater: 6
 invisibility mass: 6.5
-invulnerability: 9
+invulnerability: 10
 invulnerability lesser: 4
 iron body: 8
-irresistible dance: 10
-kneel: 0
+irresistible dance: 9
 levitate: 3.5
 lifeseeking missile: 3
 lightning bolt: 3
-link vitality mass: 4
 living missile: 5
 locate creature: 3
 locate entity: 4
@@ -195,29 +189,29 @@ mages disjunction: 10
 magic missile: 1
 mark of tracking: 2
 maze: 8
-meteor swarm: 10
+meteor swarm: 9
 missile storm: 4
 missile storm greater: 8
 moment of prescience: 3
 nondetection: 4
 orders wrath: 2
-phantasmal killer: 1
-phantasmal killer mass: 5
-polar ray: 5
-power word blind: 9
-power word confuse: 8
-power word daze: 2
-power word impair: 5
-power word stun: 4
+phantasmal killer: 2
+phantasmal killer mass: 6
+polar ray: 6
+power word blind: 7
+power word confuse: 6
+power word impair: 4
+power word stagger: 1
+power word stun: 3
 precognition: 4
 precognition greater: 7
 precognition lesser: 1
 prismatic beam: 3
-prismatic blue: 3
-prismatic green: 3
-prismatic indigo: 6
+prismatic blue: 4
+prismatic green: 4
+prismatic indigo: 4
 prismatic orange: 6
-prismatic red: 3
+prismatic red: 4
 prismatic spray: 6
 prismatic storm: 9
 prismatic wall: 5
@@ -235,55 +229,54 @@ regeneration lesser mass: 5
 repulsion: 5
 resilient sphere: 5
 resist energy: 1
-resist magic: 3.5
+resist magic: 3
 retributive shield: 4
-revelation of destruction: 8
+revelation of destruction: 6
 revelation of prowess: 7
 reverse gravity: 8
 rock blast: 2
 rotburst: 3
 rotburst greater: 7
-rotting touch: 1
-scorching ray: 2
+rotting grasp: 1
+scorching ray: 3
 searing light: 2
 see invisibility: 1
 see invisibility mass: 4
 shadow umbra: 7
 share pain: 2
 shield of faith: 1
-shocking grasp: 0
-shout: 3
-shout greater: 6
+shocking grasp: 1
+shout: 4
+shout greater: 7
 shrink: 1
 shrink mass: 4.5
 silence: 2
 silence mass: 5
 skysmite: 6
-sleep: 0
-sleep mass: 3
+sleep: 1
+sleep mass: 4
 slow: 3
-slow mass: 6
-solid fog: 6
+slow mass: 7
+solid fog: 5
 sound burst: 2
 spider climb: 2
 spiritual weapon: 3
-spore cloud: 2
+spore cloud: 1
 stinking cloud: 3
 stoneskin: 4
 storm of vengeance: 12
 stormlord: 5
-strip the flesh: 6.0
-suggestion: 5
-suggestion mass: 9
-sunbeam: 3
-sunburst: 5
-super death knell: 6
+strip the flesh: 6
+suggestion: 4
+suggestion mass: 8
+sunbeam: 5
+sunburst: 9
 telekinetic blast: 5
 telekinetic shove: 2
 telepathy: 5
 temporal stasis: 6
 time stop: 9
-timestream: 3
+timestream: 1
 totemic mind: 1
 totemic mind greater: 4
 totemic mind mass: 3.0
@@ -301,14 +294,13 @@ unliving touch: 4.0
 wail of the banshee: 9
 wall of fire: 2
 wall of fire greater: 5
-wall of force: 6
+wall of force: 5
 wall of thorns: 2
-wall of thorns greater: 5
+wall of thorns greater: 6
 water walk: 3.5
-waves of fatigue: 4
-waves of fatigue greater: 6
-waves of fatigue lesser: 1
-web: 8
+waves of exhaustion: 6
+waves of fatigue: 3
+web: 5
 windstrike: 2
 windstrike greater: 5
 zephyr blade: 2

@@ -19,6 +19,7 @@ Options:
 KNOWN_ABILITY_PROPERTIES = [
     'attack subeffects',
     'area',
+    'battlefield effects',
     'breakable',
     'buffs',
     'casting time',
@@ -46,6 +47,7 @@ KNOWN_ABILITY_PROPERTIES = [
 # exactly one of these properties must be present in any given ability
 PRIMARY_PROPERTIES = [
     'attack subeffects',
+    'battlefield effects',
     'buffs',
     'conditions',
     'damage',
@@ -64,6 +66,7 @@ REQUIRED_PROPERTIES = [
 # these properties are sometimes written in the yaml file in singular form
 # they should be converted to arrays for consistency
 PLURAL_KEY_MAPPINGS = {
+    'battlefield effect': 'battlefield effects',
     'buff': 'buffs',
     'condition': 'conditions',
 }
@@ -175,6 +178,8 @@ class Ability:
                     self.duration_type = 'nonpersonal buff'
             elif self.knowledge is not None:
                 self.duration_type = 'personal buff'
+            elif self.battlefield_effects is not None:
+                self.duration_type = 'battlefield effect'
             elif self.conditions is not None:
                 self.duration_type = 'condition'
             elif self.damage is not None:
@@ -264,15 +269,41 @@ class Ability:
                 self.warn("has nonpositive property '{0}'".format(
                     property_name
                 ))
+        # also check that each subability is individually positive
+        if self.subeffects is not None:
+            for subeffect_properties in self.subeffects:
+                subability = self.create_subability(subeffect_properties)
+                if subability.level() <= 0:
+                    self.warn("has nonpositive subeffect with level {}".format(
+                        subability.level()
+                    ))
+        # attack subeffects are also handled better below
+        # this won't catch errors such as 'success' being < 3
+        if self.attack_subeffects is not None:
+            for property_name in ['critical success', 'effect', 'failure',
+                                  'noncritical effect', 'success']:
+                if property_name in self.attack_subeffects:
+                    subability = self.create_subability(self.attack_subeffects[property_name])
+                    if subability.level() <= 0:
+                        self.warn("has nonpositive attack subeffect '{}' with level {}".format(
+                            property_name,
+                            subability.level()
+                        ))
 
         # abilities with a duration must have something to apply
         # the duration to
+        need_duration = (self.battlefield_effects is not None
+                         or self.buffs is not None
+                         or self.conditions is not None
+                         or self.knowledge is not None)
         if (self.duration is not None
-                and (self.buffs is None
-                     and self.conditions is None
-                     and self.knowledge is None
-                     and self.damage != 'over time')):
+                and not need_duration):
             self.die("has duration with no purpose")
+
+        # abilities that need a duration must have a duration
+        if (self.duration is None
+                and need_duration):
+            self.die("is missing required property 'duration'")
 
         # abilities with targets = 'five' should not have small areas
         if (self.targets == 'five'
@@ -405,6 +436,8 @@ class Ability:
     def _area_modifier(self):
         modifier = RAW_MODIFIERS['area'][self.area_shape][self.area_size]
 
+        modifier += RAW_MODIFIERS['area type'][self.area_type]
+
         # knowledge spells pay less for areas
         if self.knowledge is not None:
             return modifier / 2.0
@@ -428,14 +461,18 @@ class Ability:
                 + sublevels.get('noncritical effect', 0)
             )
 
-        # TODO: remove this!
-        # this only exists for compatibility checking
-        # in the new system, critical success should not cost
-        # a level
-        if 'critical success' in sublevels:
-            level_modifier += 1
-
         return level_modifier
+
+    def _battlefield_effects_modifier(self):
+        modifier = 0
+
+        for effect in self.battlefield_effects:
+            try:
+                modifier += RAW_MODIFIERS['battlefield effects'][effect]
+            except KeyError:
+                modifier += RAW_MODIFIERS['conditions'][effect]
+
+        return modifier
 
     def _calculate_attack_subability_levels(self):
         sublevels = dict()
@@ -510,10 +547,12 @@ class Ability:
     def _dispellable_modifier(self):
         if self.dispellable:
             return 0
-        elif self.duration is None:
+        # if the duration is effectively free, not being dispellable is useless
+        elif self.duration is None or self._duration_modifier() <= 1:
             return 0
+        # for normal durations, being dispellable doesn't matter much
         else:
-            return 1 + self._duration_modifier() * 0.5
+            return int(self._duration_modifier() / 4) + 1
 
     def _duration_modifier(self):
         # if the duration only exists to be passed on to
@@ -521,7 +560,10 @@ class Ability:
         if self.duration_type == 'subeffect':
             return 0
         else:
-            return RAW_MODIFIERS['duration'][self.duration_type][self.duration]
+            try:
+                return RAW_MODIFIERS['duration'][self.duration_type][self.duration]
+            except KeyError:
+                self.die("has unrecognized duration '{}'".format(self.duration))
 
     def _expended_modifier(self):
         return RAW_MODIFIERS['expended'][self.expended]

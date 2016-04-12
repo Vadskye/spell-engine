@@ -22,17 +22,15 @@ acid arrow greater:
       damage: normal
     success:
       condition: staggered
-      duration: concentration
+      duration: brief
   range: medium
   spell resistance: false
 acid fog:
-  breakable: leave area
   range: medium
-  subeffects:
-    - condition: fog
-      duration: short
-    - damage: over time
-      duration: short
+  battlefield effects:
+    - fog
+    - damage
+  duration: short
   targets: all
   spell resistance: false
   area: medium cylinder zone
@@ -40,10 +38,10 @@ agony:
   attack subeffects:
     success:
       condition: take double damage
-      duration: short
+      duration: brief
     failure:
       condition: take double damage once
-      duration: short
+      duration: brief
   range: medium
   limit affected: mind affecting
 aid:
@@ -64,8 +62,9 @@ antilife shell:
   targets: all
   range: personal
 antimagic field:
-  condition: antimagic
+  battlefield effect: antimagic
   duration: short
+  misc: -3 # also affects the caster
   area: small radius emanation
   targets: all
 aqueous blade:
@@ -82,36 +81,22 @@ assimilate:
       noncombat: true
 aversion:
   limit affected: mind affecting
-  range: medium
+  range: close
   attack subeffects:
     critical success:
       condition: aversion
       duration: permanent
     success:
       condition: aversion
-      duration: short
+      duration: short fixed
 bane:
-  # condition: damage if damaged
   condition: impaired
-  range: close
-  duration: short
+  duration: short fixed
   limit affected: mind affecting
+  range: close
 bane mass:
   $ref: bane
   targets: five
-  range: medium
-banishment:
-  range: medium
-  spell resistance: false
-  attack subeffects:
-    noncritical effect:
-      damage: normal
-    critical success:
-      instant effect: banishment
-      limit affected: creature type
-  trigger:
-    condition: standard action by you
-    duration: concentration
 barkskin:
   buff:
     damage reduction: physical
@@ -120,29 +105,24 @@ barkskin:
 black tentacles:
   attack subeffects:
     effect:
-      subeffects:
-        - damage: normal
-        - condition: half speed
-          duration: short
+      battlefield effects:
+        - damage
+        - difficult terrain
+      duration: short
     critical success:
-      subeffects:
-        - condition: immobilized
-          breakable: grapple
-          duration: short
-  breakable: leave area
-  trigger:
-    condition: every round
-    duration: short
+      condition: immobilized
+      duration: short fixed
   targets: all
+  range: medium
   area: medium radius zone
 blade barrier:
-  damage: normal
-  trigger:
-    condition: enter zone
-    duration: short
-  shapeable: true
+  battlefield effects:
+    - damage
+    - cover
   targets: all
+  misc: 1 # can also be radius
   area: huge wall zone
+  duration: short
 blasphemy:
   components: nosomatic
   $ref: unholy blight
@@ -177,7 +157,7 @@ call lightning greater:
       damage: normal
     success:
       condition: staggered
-      duration: short
+      duration: brief
   expended: caster level
   range: medium
   trigger:
@@ -197,15 +177,11 @@ calm emotions:
 certain blind:
   condition: blinded
   range: close
-  duration: short
+  duration: brief
 certain daze:
   condition: dazed
   range: close
-  duration: short
-certain daze round:
-  condition: dazed
-  range: close
-  duration: round
+  duration: brief
 chain lightning:
   damage: normal
   area: medium radius burst
@@ -220,7 +196,7 @@ chaos hammer:
       damage: normal
     critical success:
       condition: disoriented
-      duration: short
+      duration: short fixed
   area: small radius burst
   targets: all
 charm monster:
@@ -229,9 +205,8 @@ charm monster:
   range: medium
 charm monster mass:
   $ref: charm monster
-  area: large radius limit
-  targets: all
-  range: ~
+  targets: five
+  range: medium
 charm person:
   components: noverbal
   limit affected: creature type
@@ -243,19 +218,18 @@ charm person:
     critical success:
       condition: charmed
       duration: permanent
+  breakable: combat
 charm person mass:
   $ref: charm person
-  area: large radius limit
-  targets: all
-  range: ~
+  targets: five
 #circle of death:
 clenched fist:
   subeffects:
     - damage: normal
     - attack subeffects:
-        critical success:
+        success:
           condition: staggered
-          duration: short
+          duration: brief
   range: medium
   trigger:
     condition: every round
@@ -273,40 +247,28 @@ cloak of chaos:
 #cloudkill:
 cloud of bats:
   area: medium cone burst
-  targets: all
-  attack subeffects:
-    success:
-      condition: impaired
-      duration: short
-    critical success:
-      condition: severely impaired
-      duration: short
+  targets: enemies
+  condition: impaired
+  duration: brief
 color spray:
   area: medium cone burst
-  attack subeffects:
-    critical success:
-      conditions:
-        - partially blinded
-        - partially blinded
-      duration: short
-    success:
-      condition: partially blinded
-      duration: short
+  condition: impaired
+  duration: brief
   targets: all
 #combat transformation:
 command:
   limit affected: language
+  components: nosomatic
   attack subeffects:
     critical success:
-      condition: stunned
-      duration: round
+      condition: command full movement
+      duration: brief
     success:
-      condition: severely impaired
-      duration: round
+      condition: command movement
+      duration: brief
     failure:
       condition: impaired
-      duration: round
-  misc: -1 # instead of suffering the given effects, the target can obey the command
+      duration: brief
   range: medium
 #command greater:
 command mass:
@@ -317,7 +279,7 @@ cone of cold:
   subeffects:
     - damage: normal
     - condition: half speed
-      duration: short
+      duration: brief
   targets: all
 cone of cold greater:
   $ref: cone of cold
@@ -327,42 +289,29 @@ confusion:
   attack subeffects:
     critical success:
       condition: confused
-      duration: short
+      duration: brief
     success:
       condition: disoriented
-      duration: short
+      duration: brief
   range: medium
-confusion mass:
-  $ref: confusion
-  area: medium radius limit
   targets: five
 #control water
 #create sound
 #creeping doom
 cripple:
   attack subeffects:
-    noncritical effect:
-      damage: normal
-    critical success:
-      condition: paralyzed
-      duration: short
-    success:
-      condition: staggered
-      duration: short
-  range: close
-#crushing despair:
-crushing hand:
-  attack subeffects:
     effect:
       damage: normal
     critical success:
-      breakable: deal physical damage
-      condition: grappled
-      duration: short
+      condition: paralyzed
+      duration: brief
+      misc: -2 # damage matters less if the creature is paralyzed
+      # and this paralysis is marginally better than normal
+    success:
+      condition: staggered
+      duration: brief
   range: medium
-  trigger:
-    condition: every round
-    duration: short
+#crushing despair:
 cure light wounds:
   damage: healing
   range: medium
@@ -376,30 +325,30 @@ curse of blood and bone:
       damage: normal
     critical success:
       condition: lower max hp
-      duration: year
+      duration: permanent
       dispellable: false
+      breakable: specific spell
     success:
       condition: lower max hp
-      duration: short
+      duration: short fixed
       dispellable: false
   range: medium
-  breakable: specific spell
 curse of the wayward mind:
   breakable: specific spell
   attack subeffects:
     critical success:
-      condition: confused
-      duration: year
+      condition: disoriented
+      duration: permanent
       dispellable: false
     success:
       condition: disoriented
-      duration: year
+      duration: medium
       dispellable: false
     failure:
-      condition: disoriented
-      duration: short
-      dispellable: false
-  range: close
+      condition: impaired
+      duration: short fixed
+      # dispellable: false # this is too minor to matter
+  range: medium
 darkvision:
   buff: darkvision
   duration: long
@@ -409,10 +358,14 @@ death knell:
     effect:
       damage: normal
     success:
-      condition: die at zero
-      duration: short
-  range: medium
-  #missing buff at 0 HP
+      subeffects:
+        - condition: die from critical
+          duration: brief
+        - buff: temporary hp
+          duration: short
+          range: personal
+  range: close
+  # missing buff at 0 HP
 death ward:
   buffs:
     - immune: death
@@ -424,15 +377,16 @@ deep slumber:
   attack subeffects:
     critical success:
       condition: asleep
-      duration: short
+      duration: brief
     success:
       condition: blinded
-      duration: short
+      duration: brief
     failure:
       condition: dazed
-      duration: short
+      duration: brief
   limit affected: mind affecting
   range: medium
+  targets: five
 deflection:
   buffs:
     - legend point: defensive
@@ -463,7 +417,7 @@ destruction:
       instant effect: death
     success:
       condition: staggered
-      duration: short
+      duration: short fixed
 detect alignment:
   knowledge: alignment
   area: large cone emanation
@@ -495,7 +449,7 @@ dimensional anchor:
   attack subeffects:
     success:
       condition: dimension lock
-      duration: short
+      duration: short fixed
       dispellable: false
     critical success:
       condition: dimension lock
@@ -512,6 +466,7 @@ discern vulnerability:
   casting time: swift
   range: medium
   knowledge: vulnerabilities
+  duration: short fixed # unnecessary, but spell engine needs it - fix later
 discordant song:
   area: medium radius burst
   range: medium
@@ -519,17 +474,17 @@ discordant song:
   attack subeffects:
     success:
       condition: disoriented
-      duration: short
+      duration: brief
     critical success:
       condition: confused
-      duration: short
+      duration: brief
 disintegrate:
   damage: kill at zero
   range: close
   misc: 1 #disintegrate objects
 disjointed time:
   condition: impaired
-  duration: short
+  duration: short fixed
   range: medium
 dismissal:
   range: medium
@@ -568,17 +523,17 @@ dominate person:
   attack subeffects:
     critical success:
       condition: dominated
-      duration: short
+      duration: short fixed
     success:
       condition: confused
-      duration: short
+      duration: short fixed
     failure:
       condition: staggered
-      duration: short
+      duration: short fixed
   limit affected: creature type
 dominate monster:
   $ref: dominate person
-  range: medium
+  range: long
   limit affected: mind affecting
 drain life:
   subeffects:
@@ -588,13 +543,8 @@ drain life:
       range: personal
   range: medium
 earths pull:
-  attack subeffects:
-    success:
-      condition: slowed
-      duration: short
-    failure:
-      condition: half speed
-      duration: short
+  condition: slowed
+  duration: short fixed
   limit affected: max size
   range: close
 #earthen blade:
@@ -603,14 +553,14 @@ earth glide:
   duration: short
 earthquake:
   targets: all
-  area: medium radius zone
+  area: large radius burst
   attack subeffects:
     effect:
       instant effect: prone
     success:
       condition: immobilized
       breakable: grapple
-      duration: short
+      duration: short fixed # actually until it escapes
       dispellable: false
   limit affected: on ground
 earthspike:
@@ -655,21 +605,17 @@ enlarge mass:
   range: medium
   targets: five
 entangle:
-  attack subeffects:
-    success:
-      condition: slowed
-      duration: short
-    failure:
-      condition: half speed
-      duration: short
-  range: medium
-  breakable: grapple
+  condition: entangled
+  duration: brief
+  range: close
   limit affected: near plants
   spell resistance: false
-entangling growth:
+entangle greater:
   $ref: entangle
-  range: long
+  duration: short fixed
   limit affected: ~
+  # this was present before, but wasn't worth a spell level because of the short duration
+  breakable: grapple
 entropic shield:
   buff: half miss ranged
   range: close
@@ -688,14 +634,14 @@ eyebite:
     effect:
       damage: normal
     success:
-      condition: impaired
-      duration: short
+      condition: partially blinded
+      duration: brief
     critical success:
-      condition: severely impaired
-      duration: short
+      condition: blinded
+      duration: brief
 faerie fire:
   condition: faerie fire
-  duration: short
+  duration: brief
   area: small radius burst
   range: medium
   targets: all
@@ -704,13 +650,13 @@ fear:
   attack subeffects:
     critical success:
       condition: panicked
-      duration: short
+      duration: brief
     success:
       condition: frightened
-      duration: short
+      duration: brief
     failure:
       condition: shaken
-      duration: short
+      duration: brief
   limit affected: mind affecting
   range: close
 fear mass:
@@ -731,10 +677,10 @@ feeblemind:
       duration: permanent
     success:
       condition: feeblemind
-      duration: short
+      duration: short fixed
     failure:
       condition: dazed
-      duration: short
+      duration: short fixed
   limit affected: mind affecting
   range: close
 finger of death:
@@ -746,10 +692,10 @@ finger of death:
       instant effect: death
     success:
       condition: staggered
-      duration: short
+      duration: short fixed
     failure:
       condition: sickened
-      duration: short
+      duration: short fixed
 fire seeds:
   area: small radius burst
   damage: normal
@@ -796,8 +742,7 @@ fly:
   duration: short
   buff: flight
 fog cloud:
-  breakable: leave area
-  condition: fog
+  battlefield effect: fog
   duration: short
   range: medium
   spell resistance: false
@@ -807,16 +752,17 @@ fog sea:
   $ref: fog cloud
   area: colossal radius zone
 fog shield:
-  condition: fog
+  battlefield effect: fog
   duration: short
   spell resistance: false
   targets: all
   area: medium radius emanation
+  misc: 3 # fog following you is significantly better
 forcecage:
   attack subeffects:
     success:
       condition: out of battle
-      duration: short
+      duration: short fixed
   range: medium
   limit affected: max size
 foresee probability:
@@ -881,24 +827,29 @@ gentle descent mass:
 ghoul touch:
   range: close
   attack subeffects:
+    critical success:
+      condition: paralyzed
+      duration: brief
     success:
-      condition: staggered
-      duration: short
+      conditions:
+        - staggered
+        - impaired
+      duration: brief
     failure:
-      condition: sickened
-      duration: short
+      condition: impaired
+      duration: brief
 #giant vermin
 glitterdust:
   attack subeffects:
     effect:
       condition: faerie fire
-      duration: short
+      duration: brief
     success:
       condition: partially blinded
-      duration: short
+      duration: brief
     critical success:
-      condition: severely impaired
-      duration: short
+      condition: blinded
+      duration: brief
   area: small radius burst
   range: medium
   targets: all
@@ -908,8 +859,9 @@ glitterdust greater:
 grasping hand:
   attack subeffects:
     success:
+      breakable: grapple
       condition: grappled
-      duration: short
+      duration: brief
   range: medium
   trigger:
     condition: every round
@@ -920,15 +872,17 @@ grease:
   spell resistance: false
   attack subeffects:
     effect:
-      condition: grease
-      breakable: leave area impeded
+      battlefield effect: balance to move
       duration: short
     success:
       instant effect: prone
+      trigger:
+        condition: battlefield effect
+        duration: short
   targets: all
 gust of wind:
   instant effect: shove
-  area: large line zone
+  area: large line burst
   targets: all
 harm:
   range: medium
@@ -993,13 +947,8 @@ hold monster mass:
 hold person:
   range: close
   limit affected: creature type
-  attack subeffects:
-    success:
-      condition: immobilized
-      duration: short
-    failure:
-      condition: quarter speed
-      duration: short
+  condition: immobilized
+  duration: brief
 hold person mass:
   $ref: hold person
   range: medium
@@ -1014,7 +963,7 @@ holy smite:
       damage: normal
     critical success:
       condition: dazed
-      duration: short
+      duration: short fixed
   area: small radius burst
   targets: all
 holy word:
@@ -1032,9 +981,9 @@ hypnotic pattern:
   range: medium
   duration: short
   targets: all
-  condition: fascinated
+  battlefield effect: fascinated
   limit affected: mind affecting
-  breakable: violent action by any
+  breakable: violent action by any # inherent in fascinated
 hypnotic pattern greater:
   $ref: hypnotic pattern
   duration: medium
@@ -1046,12 +995,10 @@ ice storm:
   targets: all
   subeffects:
     - damage: normal
-    - condition: grease
-      duration: short
-      breakable: leave area impeded
-      misc: 1 # min level 1
+    - battlefield effect: balance to move
+      duration: short fixed
 implosion:
-  range: medium
+  range: long
   attack subeffects:
     noncritical effect:
       damage: normal
@@ -1059,28 +1006,22 @@ implosion:
       instant effect: death
     success:
       condition: staggered
-      duration: short
+      duration: short fixed
   trigger:
     condition: standard action by you
     duration: concentration
 imprisonment:
   range: medium
-  limit affected: on ground
   attack subeffects:
     noncritical effect:
-      damage: normal
+      subeffects:
+        - damage: normal
+        - condition: slowed
+          duration: short fixed
     critical success:
       breakable: specific spell
       condition: stasis
       duration: permanent
-      dispellable: false
-    success:
-      condition: slowed
-      duration: short
-      dispellable: false
-    failure:
-      condition: half speed
-      duration: short
       dispellable: false
 inertial shield:
   duration: short
@@ -1134,7 +1075,6 @@ invisibility greater:
 invisibility mass:
   $ref: invisibility
   range: medium
-  area: medium radius limit
   targets: five
 iron body:
   duration: short
@@ -1144,15 +1084,17 @@ iron body:
   misc: -1 # half speed
   range: personal
 irresistible dance:
-  range: close
+  range: medium
   limit affected: mind affecting
   attack subeffects:
     success:
       condition: stunned
-      duration: short
+      duration: brief
     failure:
-      condition: dazed
-      duration: short
+      conditions:
+        - dazed
+        - impaired
+      duration: brief
 #knock:
 levitate:
   range: medium
@@ -1170,23 +1112,19 @@ lightning bolt:
 locate creature:
   knowledge: creature location
   range: extreme
+  duration: short fixed
 locate entity:
   knowledge: creature or object location
   range: extreme
+  duration: short fixed
 locate object:
   knowledge: object location
   range: extreme
+  duration: short fixed
 longstrider:
   buff: ten foot speed
   duration: long
   range: personal
-link vitality mass:
-  area: medium radius limit
-  targets: five
-  attack subeffects:
-    success:
-      condition: link vitality
-      duration: short
 mage armor:
   buff: mage armor
   duration: long
@@ -1203,9 +1141,8 @@ magic missile:
   range: medium
 mark of tracking:
   knowledge: creature or object location
-  # long duration is +2
-  # but having to target the creature offsets this by about 2
-  # so skip both
+  duration: long
+  misc: -4 # for targeting restrictions? maybe need to fix knowledge duration handling
   range: medium
 #magic vestment:
 ##magic weapon
@@ -1253,7 +1190,7 @@ orders wrath:
       damage: normal
     critical success:
       condition: slowed
-      duration: short
+      duration: short fixed
   area: small radius burst
   targets: all
 phantasmal killer:
@@ -1265,10 +1202,10 @@ phantasmal killer:
       misc: -1 # must hit both Will and Fort
     success:
       condition: frightened
-      duration: short
+      duration: brief
     failure:
       condition: shaken
-      duration: short
+      duration: brief
 phantasmal killer mass:
   $ref: phantasmal killer
   range: medium
@@ -1280,23 +1217,18 @@ polar ray:
   range: close
   subeffects:
     - damage: normal
-    - attack subeffects:
-        success:
-          condition: slowed
-          duration: short
-        failure:
-          condition: half speed
-          duration: short
+    - condition: slowed
+      duration: brief
 power word blind:
   components: nosomatic
   range: close
   attack subeffects:
     success:
       condition: blinded
-      duration: short
+      duration: brief
     failure:
-      condition: impaired
-      duration: short
+      condition: partially blinded
+      duration: brief
 power word confuse:
   components: nosomatic
   limit affected: mind affecting
@@ -1304,29 +1236,27 @@ power word confuse:
   attack subeffects:
     success:
       condition: confused
-      duration: short
+      duration: brief
     failure:
       condition: disoriented
-      duration: short
-power word daze:
-  components: nosomatic
-  limit affected: mind affecting
-  range: close
-  attack subeffects:
-    success:
-      condition: dazed
-      duration: short
+      duration: brief
 power word impair:
   components: nosomatic
-  limit affected: mind affecting
   range: close
   attack subeffects:
     success:
       condition: severely impaired
-      duration: short
+      duration: brief
     failure:
       condition: impaired
-      duration: short
+      duration: brief
+power word stagger:
+  components: nosomatic
+  range: close
+  attack subeffects:
+    success:
+      condition: staggered
+      duration: brief
 power word stun:
   components: nosomatic
   limit affected: mind affecting
@@ -1335,14 +1265,14 @@ power word stun:
     success:
       conditions:
         - dazed
-        - half speed
-      duration: short
+        - impaired
+      duration: brief
     critical success:
       condition: stunned
-      duration: short
+      duration: brief
     failure:
-      condition: half speed
-      duration: short
+      condition: impaired
+      duration: brief
 precognition lesser:
   buffs:
     - legend point: all
@@ -1374,64 +1304,58 @@ prismatic storm:
   targets: all
   range: medium
 prismatic wall:
-  breakable: deal energy damage
-  area: large wall zone
-  instant effect: prismatic
+  area: huge wall zone
+  battlefield effect: prismatic
   targets: all
-  trigger:
-    condition: enter zone
-    duration: short
+  duration: short
   range: medium
-prismatic red:
+
+# the actual prismatic effects
+prismatic blue:
   range: medium
   attack subeffects:
     effect:
       damage: normal
     success:
-      condition: impaired
-      duration: short
+      condition: slowed
+      duration: brief
+prismatic green:
+  range: medium
+  condition: staggered
+  duration: brief
+prismatic indigo:
+  range: medium
+  condition: disoriented
+  duration: brief
 prismatic orange:
   range: medium
   attack subeffects:
     success:
-      condition: blinded
-      duration: round
+      condition: frightened
+      duration: short fixed
+    failure:
+      condition: shaken
+      duration: short fixed
+prismatic red:
+  range: medium
+  subeffects:
+    - damage: normal
+    - condition: ignited
+      duration: brief
 prismatic yellow:
   range: medium
   attack subeffects:
     effect:
       damage: normal
     success:
-      condition: staggered
-      duration: round
-prismatic green:
-  range: medium
-  subeffects:
-    - damage: normal
-    - condition: sickened
-      duration: short
-prismatic blue:
-  range: medium
-  attack subeffects:
-    success:
-      condition: slowed
-      duration: short
-    failure:
-      condition: half speed
-      duration: short
-prismatic indigo:
-  range: medium
-  attack subeffects:
-    success:
-      condition: confused
-      duration: round
+      condition: partially blinded
+      duration: brief
 prohibition:
-  area: large radius emanation
-  damage: normal
-  targets: all
-  trigger:
-    condition: break prohibition
-    duration: short
+  area: large radius zone
+  misc: 1 # for the trigger shenanigans and damage increase
+  battlefield effect: damage
+  duration: short
+  targets: enemies # because a well chosen trigger should only hit foes
 protection from alignment:
   buff:
     damage reduction: alignment
@@ -1473,11 +1397,12 @@ regeneration:
         immune: regeneration
       duration: short fixed
 repulsion:
-  condition: shaken
+  attack subeffects:
+    success:
+      battlefield effect: impassable
+      duration: short
   area: large radius emanation
-  duration: short
   targets: all
-  misc: 1 # slightly larger range than shaken
 resist energy:
   buff:
     damage reduction: energy all
@@ -1499,15 +1424,14 @@ retributive shield:
 revelation of destruction:
   range: close
   condition: severely impaired
-  duration: short
+  duration: brief
 revelation of prowess:
   $ref: precognition greater
 reverse gravity:
   area: medium cylinder zone
-  attack subeffects:
-    success:
-      condition: immobilized
-      duration: concentration
+  battlefield effect: immobilized
+  duration: short
+  misc: 2 # better than regular immobilization
   targets: all
   range: medium
 divine might:
@@ -1516,31 +1440,34 @@ divine might:
     - damage reduction: physical
   duration: short
   range: personal
-rotting touch:
+rotting grasp:
   damage: over time
+  range: medium
 rotburst:
   damage: over time
   area: small radius burst
+  range: medium
   targets: all
 rotburst greater:
   $ref: rotburst
   area: large radius burst
 scorching ray:
   range: close
-  attack subeffects:
-    effect:
-      damage: normal
-    success:
-      condition: ignited
-      duration: short
+  subeffects:
+    - damage: normal
+    - condition: ignited
+      duration: brief
 searing light:
   range: close
   attack subeffects:
     effect:
       damage: normal
+    critical success:
+      condition: blinded
+      duration: brief
     success:
-      condition: impaired
-      duration: short
+      condition: partially blinded
+      duration: brief
 see invisibility:
   duration: personal long
   buff: see invisibility
@@ -1572,8 +1499,8 @@ shocking grasp:
       damage: normal
     critical success:
       condition: staggered
-      duration: short
-  misc: 1 # for the bonus against metallic targets
+      duration: short fixed
+  misc: 2 # for the bonus against metallic targets
 shout:
   components: nosomatic
   area: medium cone burst
@@ -1583,7 +1510,7 @@ shout:
       damage: normal
     success:
       condition: deafened
-      duration: short
+      duration: short fixed
     critical success:
       condition: deafened
       duration: permanent
@@ -1594,9 +1521,9 @@ silence:
   attack subeffects:
     success:
       condition: silenced
-      duration: short
+      duration: short fixed
   range: medium
-  misc: 2 # for utility as a buff
+  misc: 2 # for utility as a buff and true "short" duration
 silence mass:
   $ref: silence
   targets: five
@@ -1613,7 +1540,7 @@ sleep:
     critical success:
       condition: exhausted
       duration: medium
-      misc: 1 # for the compulsion to sleep
+      misc: 3 # for the compulsion to sleep and inability to wake up
     success:
       condition: fatigued
       duration: medium
@@ -1622,14 +1549,9 @@ sleep mass:
   $ref: sleep
   targets: five
 slow:
-  attack subeffects:
-    success:
-      condition: slowed
-      duration: short
-    failure:
-      condition: half speed
-      duration: short
-  range: medium
+  condition: slowed
+  duration: brief
+  range: close
 slow mass:
   $ref: slow
   range: medium
@@ -1638,12 +1560,11 @@ solid fog:
   area: medium cylinder zone
   range: medium
   spell resistance: false
-  conditions:
+  battlefield effects:
     - underwater penalties
     - fog
   targets: all
   duration: short
-  breakable: leave area
 sound burst:
   area: small radius burst
   range: close
@@ -1669,18 +1590,18 @@ spiritual weapon:
 spore cloud:
   area: medium radius burst
   condition: sickened
-  duration: short
+  duration: brief
   targets: all
 stinking cloud:
   area: medium radius zone
-  duration: short
   spell resistance: false
-  conditions:
-    - fog
-    - sickened
+  subeffects:
+    - battlefield effect: fog
+      duration: short
+    - condition: sickened
+      duration: brief
   range: medium
   targets: all
-  breakable: leave area
 stoneskin:
   buff:
     damage reduction: physical
@@ -1702,44 +1623,41 @@ stormlord:
   range: personal
 strip the flesh:
   range: close
-  breakable: standard skill check
   attack subeffects:
     effect:
       damage: normal
     success:
+      # duration is too short for this to cost a full spell level
+      # breakable: standard skill check
       condition: take double damage
-      duration: short
+      duration: brief
       dispellable: false
 suggestion:
   components: nosomatic
   range: close
   limit affected: mind affecting
+  misc: -1 # penalty against threatened targets
   attack subeffects:
     critical success:
       condition: suggestion
       duration: permanent
     success:
       condition: suggestion
-      duration: short
+      duration: short fixed
 suggestion mass:
   $ref: suggestion
   range: medium
   targets: five
 sunbeam:
+  $ref: searing light
+  range: ~
   area: large line burst
   targets: all
-  subeffects:
-    - damage: normal
-    - attack subeffects:
-        critical success:
-          conditions:
-            - blinded
-          duration: short
-          limit affected: light vulnerable
 sunburst:
-  $ref: sunbeam
-  area: medium radius burst
-  range: medium
+  $ref: searing light
+  range: ~
+  area: large radius burst
+  targets: enemies
 telepathy:
   buff: telepathy
   range: personal
@@ -1752,10 +1670,10 @@ temporal stasis:
       duration: permanent
     success:
       condition: out of battle
-      duration: short
+      duration: short fixed
     failure:
-      condition: half speed
-      duration: short
+      condition: quarter speed
+      duration: short fixed
 time stop:
   buff: time stop
   duration: short fixed
@@ -1794,20 +1712,16 @@ transmute flesh and stone:
     success:
       conditions:
         - die at zero
-      duration: short
+      duration: short fixed
 tremorsense:
   buff: tremorsense
   duration: personal long
   noncombat: true
   range: close
 timestream:
-  condition: slowed
-  breakable: leave area
+  battlefield effect: slowed
   duration: round
   area: large line zone
-  trigger:
-    duration: short
-    condition: every round
   targets: all
 true seeing:
   buff: true seeing
@@ -1825,7 +1739,7 @@ unholy blight:
       damage: normal
     critical success:
       condition: staggered
-      duration: short
+      duration: short fixed
   area: small radius burst
   targets: all
 unliving eyes:
@@ -1856,77 +1770,66 @@ wail of the banshee:
 wall of fire:
   breakable: deal energy damage
   area: medium wall zone
-  damage: normal
+  battlefield effects:
+    - damage
+    - weak damage
+  duration: short
   targets: all
-  trigger:
-    condition: enter zone
-    duration: short
   range: medium
 wall of fire greater:
   $ref: wall of fire
   area: huge wall zone
-  shapeable: true
+  misc: 1 # multiple shapes
 wall of force:
-  area: huge wall zone
-  condition: impassable
+  area: large wall zone
+  battlefield effect: impassable
   targets: all
-  duration: short
+  duration: short fixed
   range: medium
 wall of thorns:
-  breakable: leave area impeded
-  area: medium wall zone
+  area: large wall zone
   range: medium
   targets: all
-  misc: -1 # can be hacked through / burned
-  subeffects:
-    - damage: cantrip
-      trigger:
-        condition: enter zone
-        duration: short
-    - condition: quarter speed
-      duration: short
+  breakable: deal physical damage # can be hacked through / burned
+  battlefield effects:
+    - weak damage
+    - quarter speed
+  duration: short
 wall of thorns greater:
   $ref: wall of thorns
-  area: huge wall zone
-  shapeable: true
+  battlefield effects:
+    - damage
+    - quarter speed
+  shapeable: 1
 water walk:
   buff: water walk
   targets: five
   range: medium
   duration: short
   noncombat: true
-waves of fatigue greater:
+waves of exhaustion:
   area: large cone burst
-  attack subeffects:
-    success:
-      condition: exhausted
-      duration: short
-    failure:
-      condition: fatigued
-      duration: short
-  targets: all
-waves of fatigue lesser:
-  area: medium cone burst
-  condition: fatigued
-  duration: short
+  condition: exhausted
+  duration: brief
   targets: all
 waves of fatigue:
-  $ref: waves of fatigue lesser
   area: large cone burst
-web:
-  breakable: grapple
-  # can also break the webs?
-  area: medium radius zone
+  condition: fatigued
+  duration: brief
   targets: all
-  attack subeffects:
-    success:
-      condition: immobilized
+web:
+  area: medium radius burst
+  targets: all
+  subeffects:
+    - battlefield effect: difficult terrain
       duration: short
-    failure:
-      condition: half speed
-      duration: short
-  misc: -2 # between two opposing sides
-  misc: -1 # webs are easy to destroy
+    - attack subeffects:
+        success:
+          condition: immobilized
+          duration: short fixed
+          breakable: grapple
+  misc: -1 # between two opposing sides
+  breakable: deal physical damage
   range: medium
 windstrike:
   range: medium
@@ -1947,7 +1850,7 @@ zephyr blade:
   range: close
 cone of nauseated:
   condition: nauseated
-  duration: short
+  duration: brief
   area: medium cone burst
   targets:  all
 excrete slime:
@@ -1963,32 +1866,35 @@ radiant lance:
   subeffects:
     - damage: normal
     - condition: faerie fire
-      duration: short
+      duration: brief
   range: close
 resilient sphere:
   attack subeffects:
     success:
       condition: out of battle
-      duration: short
+      duration: short fixed
   range: close
 gender swap:
   attack subeffects:
     success:
-      condition: severely impaired
-      duration: short
-      misc: 1
+      conditions:
+        - severely impaired
+        - gender swap
+      duration: short fixed
       dispellable: false
     critical success:
-      condition: severely impaired
-      duration: short
-      misc: 6
+      conditions:
+        - severely impaired
+        - gender swap
+      duration: short fixed
+      misc: 8 # because the gender swap is permanent
       dispellable: false
+      breakable: specific spell
     failure:
-      condition: impaired
-      duration: short
+      condition: dazed
+      duration: short fixed
       dispellable: false
   range: close
-  breakable: specific spell
   limit affected: creature type
 living missile:
   subeffects:
@@ -2008,18 +1914,6 @@ bleed:
     success:
       instant effect: critical damage
   range: close
-super death knell:
-  attack subeffects:
-    success:
-      conditions:
-        - die at zero
-        - summon
-      duration: short
-      misc: -1 # summon only happens if the creature dies
-    failure:
-      condition: no zero threshold
-      duration: short
-  range: medium
 telekinetic blast:
   area: medium radius burst
   targets: enemies
@@ -2080,9 +1974,3 @@ telekinetic shove:
   trigger:
     condition: every round
     duration: short
-kneel:
-  attack subeffects:
-    success:
-      condition: crouching
-      duration: short
-  range: medium
